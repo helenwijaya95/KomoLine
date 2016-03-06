@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KomoLine.Entities.Controller
+{
+    public class IllegalAccessException : Exception
+    {
+        public IllegalAccessException(string Message): base(Message)
+        {
+
+        }
+    }
+}
