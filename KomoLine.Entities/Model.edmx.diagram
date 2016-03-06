@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c67f1627388a497789aa854638308672" Name="Diagram1">
+        <EntityTypeShape EntityType="komolineModel.CategoryEntity" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.ProductEntity" Width="1.5" PointX="5.625" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.RatingEntity" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.ReviewEntity" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.TagEntity" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.TransactionEntity" Width="1.5" PointX="7.875" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="komolineModel.UserEntity" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="komolineModel.FK_products_category" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_products_owner" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_tags_product" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_transactions_product" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_ratings" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_reviews" ManuallyRouted="false" />
+        <AssociationConnector Association="komolineModel.FK_transactions_buyer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
