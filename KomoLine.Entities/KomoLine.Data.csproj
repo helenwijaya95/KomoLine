@@ -7,8 +7,8 @@
     <ProjectGuid>{C66144E0-5805-47F5-B3CC-694899C69385}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KomoLine.Entities</RootNamespace>
-    <AssemblyName>KomoLine.Entities</AssemblyName>
+    <RootNamespace>KomoLine.Data</RootNamespace>
+    <AssemblyName>KomoLine.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,7 +51,7 @@
     <Compile Include="CategoryEntity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controller\PasswordHash.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +119,12 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KomoLine.Helper\KomoLine.Helper.csproj">
+      <Project>{f1b8f4fe-f028-49ae-81df-229d5479ad46}</Project>
+      <Name>KomoLine.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

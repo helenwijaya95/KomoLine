@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KomoLine.Entities
+namespace KomoLine.Data
 {
     using System;
     using System.Collections.Generic;

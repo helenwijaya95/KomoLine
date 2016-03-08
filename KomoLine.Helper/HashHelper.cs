@@ -30,7 +30,7 @@ using System;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace KomoLine.Entities.Controller
+namespace KomoLine.Helper
 {
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.
@@ -38,7 +38,7 @@ namespace KomoLine.Entities.Controller
     /// www: http://crackstation.net/hashing-security.htm
     /// Compatibility: .NET 3.0 and later.
     /// </summary>
-    public class PasswordHash
+    public class HashHelper
     {
         // The following constants may be changed without breaking existing hashes.
         public const int SALT_BYTE_SIZE = 24;
