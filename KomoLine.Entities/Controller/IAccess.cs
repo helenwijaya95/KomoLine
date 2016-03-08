@@ -9,10 +9,8 @@ namespace KomoLine.Entities.Controller
 {
     public interface IAccess
     {
-        
-        void Register(User Reference, string Password, string Status = "buyer");
-        void Login(User Reference, string Username, string Password);
-        void Logout(User Reference);
+        void Register(User Biodata, string Password, string Status = "buyer");
+        User Login(string Username, string Password);
         List<Product> Search(string Query);
         List<Transaction> ViewPurchase(User Reference);
         List<Transaction> ViewSales(User Reference);

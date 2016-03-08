@@ -1,4 +1,5 @@
 ﻿using KomoLine.Entities.Controller;
+using KomoLine.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace KomoLine.Entities.Model
 {
     public class User
     {
-        public static User DefaultUser;
 
         private string username;
         private string name;
@@ -20,17 +20,6 @@ namespace KomoLine.Entities.Model
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
-
-        static User()
-        {
-            DefaultUser = new User()
-            {
-                username = "Visitor",
-                name = "Visitor",
-                photoPath = "Default.jpg"
-            };
-            //DefaultUser.userAccess = new GuestAccess(DefaultUser);
-        }
         
         public string Username
         {
@@ -55,7 +44,17 @@ namespace KomoLine.Entities.Model
         public string Email
         {
             get { return email; }
-            set { email = value; }
+            set 
+            {
+                if (RegexHelper.IsValidEmail(value))
+                {
+                    email = value; 
+                }
+                else
+                {
+                    throw new FormatException("Invalid Email Format");
+                }
+            }
         }
         public string Photo
         {
@@ -73,9 +72,32 @@ namespace KomoLine.Entities.Model
             set { confirmed = value; }
         }
 
-        public void test()
+        public static User GenerateDefaultUser()
         {
-            komolineEntities DBContext = new komolineEntities();
+            return new User()
+            {
+                username = "Guest",
+                name = "Guest",
+                photoPath = "Default.jpg",
+                address = null,
+                phoneNumber = null,
+                register = new DateTime(),
+                userAccess = null
+            };
+            //DefaultUser.userAccess = new GuestAccess(DefaultUser);
+        }
+
+        public void LogOut()
+        {
+            User Default = GenerateDefaultUser();
+            username = Default.username;
+            name = Default.username;
+            phoneNumber = Default.phoneNumber;
+            photoPath = Default.photoPath;
+            address = Default.address;
+            register = Default.register;
+            userAccess = Default.userAccess;
+
         }
     }
 }

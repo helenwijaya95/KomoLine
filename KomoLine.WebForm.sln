@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomoLine.Web", "KomoLine.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomoLine.Data", "KomoLine.Entities\KomoLine.Data.csproj", "{C66144E0-5805-47F5-B3CC-694899C69385}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomoLine.Helper", "KomoLine.Helper\KomoLine.Helper.csproj", "{F1B8F4FE-F028-49AE-81DF-229D5479AD46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C66144E0-5805-47F5-B3CC-694899C69385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C66144E0-5805-47F5-B3CC-694899C69385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C66144E0-5805-47F5-B3CC-694899C69385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B8F4FE-F028-49AE-81DF-229D5479AD46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B8F4FE-F028-49AE-81DF-229D5479AD46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B8F4FE-F028-49AE-81DF-229D5479AD46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B8F4FE-F028-49AE-81DF-229D5479AD46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
