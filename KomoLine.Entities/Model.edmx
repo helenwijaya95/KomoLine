@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="komolineModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="min_order" Type="double" />
+          <Property Name="description" Type="text" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="double" />
+          <Property Name="is_deleted" Type="bool" Nullable="false" />
+          <Property Name="owner_id" Type="int" Nullable="false" />
+          <Property Name="photo_path" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ratings">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="int" Nullable="false" />
+          <Property Name="rating" Type="double" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reviews">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="tag_name" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="tag_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transactions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="buyer_id" Type="int" Nullable="false" />
+          <Property Name="start_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="finish_time" Type="timestamp" Precision="0" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="quantity" Type="double" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="phone_number" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="photo_path" Type="varchar" MaxLength="255" />
+          <Property Name="register_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="confirmed_time" Type="timestamp" Precision="0" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="is_deleted" Type="bool" />
+        </EntityType>
+        <Association Name="FK_products_category">
+          <End Role="categories" Type="Self.categories" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_owner">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="owner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ratings">
+          <End Role="transactions" Type="Self.transactions" Multiplicity="1" />
+          <End Role="ratings" Type="Self.ratings" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="transactions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ratings">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reviews">
+          <End Role="transactions" Type="Self.transactions" Multiplicity="1" />
+          <End Role="reviews" Type="Self.reviews" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="transactions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reviews">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tags_product">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="tags" Type="Self.tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transactions_buyer">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transactions">
+              <PropertyRef Name="buyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transactions_product">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transactions">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="komolineModelStoreContainer">
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="ratings" EntityType="Self.ratings" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="reviews" EntityType="Self.reviews" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="tags" EntityType="Self.tags" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="transactions" EntityType="Self.transactions" Schema="komoline" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="komoline" store:Type="Tables" />
+          <AssociationSet Name="FK_products_category" Association="Self.FK_products_category">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_owner" Association="Self.FK_products_owner">
+            <End Role="users" EntitySet="users" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ratings" Association="Self.FK_ratings">
+            <End Role="transactions" EntitySet="transactions" />
+            <End Role="ratings" EntitySet="ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reviews" Association="Self.FK_reviews">
+            <End Role="transactions" EntitySet="transactions" />
+            <End Role="reviews" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_product" Association="Self.FK_tags_product">
+            <End Role="products" EntitySet="products" />
+            <End Role="tags" EntitySet="tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_buyer" Association="Self.FK_transactions_buyer">
+            <End Role="users" EntitySet="users" />
+            <End Role="transactions" EntitySet="transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_product" Association="Self.FK_transactions_product">
+            <End Role="products" EntitySet="products" />
+            <End Role="transactions" EntitySet="transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="komolineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryEntity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_category" FromRole="categories" ToRole="products" />
+        </EntityType>
+        <EntityType Name="ProductEntity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="min_order" Type="Double" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Double" />
+          <NavigationProperty Name="category" Relationship="Self.FK_products_category" FromRole="products" ToRole="categories" />
+          <NavigationProperty Name="user" Relationship="Self.FK_products_owner" FromRole="products" ToRole="users" />
+          <NavigationProperty Name="tags" Relationship="Self.FK_tags_product" FromRole="products" ToRole="tags" />
+          <NavigationProperty Name="transactions" Relationship="Self.FK_transactions_product" FromRole="products" ToRole="transactions" />
+          <Property Name="photo_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RatingEntity">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Double" Nullable="false" />
+          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="transaction" Relationship="Self.FK_ratings" FromRole="ratings" ToRole="transactions" />
+        </EntityType>
+        <EntityType Name="ReviewEntity">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="transaction" Relationship="Self.FK_reviews" FromRole="reviews" ToRole="transactions" />
+        </EntityType>
+        <EntityType Name="TagEntity">
+          <Key>
+            <PropertyRef Name="tag_name" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="tag_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="Self.FK_tags_product" FromRole="tags" ToRole="products" />
+        </EntityType>
+        <EntityType Name="TransactionEntity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="finish_time" Type="DateTime" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Double" />
+          <NavigationProperty Name="product" Relationship="Self.FK_transactions_product" FromRole="transactions" ToRole="products" />
+          <NavigationProperty Name="rating" Relationship="Self.FK_ratings" FromRole="transactions" ToRole="ratings" />
+          <NavigationProperty Name="review" Relationship="Self.FK_reviews" FromRole="transactions" ToRole="reviews" />
+          <NavigationProperty Name="user" Relationship="Self.FK_transactions_buyer" FromRole="transactions" ToRole="users" />
+        </EntityType>
+        <EntityType Name="UserEntity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="photo_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="register_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="confirmed_time" Type="DateTime" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_owner" FromRole="users" ToRole="products" />
+          <NavigationProperty Name="transactions" Relationship="Self.FK_transactions_buyer" FromRole="users" ToRole="transactions" />
+          <Property Name="is_deleted" Type="Boolean" />
+          <Property Name="status" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_products_category">
+          <End Role="categories" Type="komolineModel.CategoryEntity" Multiplicity="1" />
+          <End Role="products" Type="komolineModel.ProductEntity" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_products_owner">
+          <End Role="users" Type="komolineModel.UserEntity" Multiplicity="1" />
+          <End Role="products" Type="komolineModel.ProductEntity" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_tags_product">
+          <End Role="products" Type="komolineModel.ProductEntity" Multiplicity="1" />
+          <End Role="tags" Type="komolineModel.TagEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transactions_product">
+          <End Role="products" Type="komolineModel.ProductEntity" Multiplicity="1" />
+          <End Role="transactions" Type="komolineModel.TransactionEntity" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ratings">
+          <End Role="transactions" Type="komolineModel.TransactionEntity" Multiplicity="1" />
+          <End Role="ratings" Type="komolineModel.RatingEntity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="transactions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ratings">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reviews">
+          <End Role="transactions" Type="komolineModel.TransactionEntity" Multiplicity="1" />
+          <End Role="reviews" Type="komolineModel.ReviewEntity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="transactions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reviews">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transactions_buyer">
+          <End Role="users" Type="komolineModel.UserEntity" Multiplicity="1" />
+          <End Role="transactions" Type="komolineModel.TransactionEntity" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="komolineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryEntities" EntityType="komolineModel.CategoryEntity" />
+          <EntitySet Name="ProductEntities" EntityType="komolineModel.ProductEntity" />
+          <EntitySet Name="RatingEntities" EntityType="komolineModel.RatingEntity" />
+          <EntitySet Name="ReviewEntities" EntityType="komolineModel.ReviewEntity" />
+          <EntitySet Name="TagEntities" EntityType="komolineModel.TagEntity" />
+          <EntitySet Name="TransactionEntities" EntityType="komolineModel.TransactionEntity" />
+          <EntitySet Name="UserEntities" EntityType="komolineModel.UserEntity" />
+          <AssociationSet Name="FK_products_category" Association="Self.FK_products_category">
+            <End Role="categories" EntitySet="CategoryEntities" />
+            <End Role="products" EntitySet="ProductEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_owner" Association="Self.FK_products_owner">
+            <End Role="users" EntitySet="UserEntities" />
+            <End Role="products" EntitySet="ProductEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_product" Association="Self.FK_tags_product">
+            <End Role="products" EntitySet="ProductEntities" />
+            <End Role="tags" EntitySet="TagEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_product" Association="Self.FK_transactions_product">
+            <End Role="products" EntitySet="ProductEntities" />
+            <End Role="transactions" EntitySet="TransactionEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ratings" Association="Self.FK_ratings">
+            <End Role="transactions" EntitySet="TransactionEntities" />
+            <End Role="ratings" EntitySet="RatingEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reviews" Association="Self.FK_reviews">
+            <End Role="transactions" EntitySet="TransactionEntities" />
+            <End Role="reviews" EntitySet="ReviewEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_buyer" Association="Self.FK_transactions_buyer">
+            <End Role="users" EntitySet="UserEntities" />
+            <End Role="transactions" EntitySet="TransactionEntities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="komolineModelStoreContainer" CdmEntityContainer="komolineEntities">
+          <EntitySetMapping Name="CategoryEntities">
+            <EntityTypeMapping TypeName="komolineModel.CategoryEntity">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEntities">
+            <EntityTypeMapping TypeName="komolineModel.ProductEntity">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="min_order" ColumnName="min_order" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="created_time" ColumnName="created_time" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingEntities">
+            <EntityTypeMapping TypeName="komolineModel.RatingEntity">
+              <MappingFragment StoreEntitySet="ratings">
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="created_time" ColumnName="created_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewEntities">
+            <EntityTypeMapping TypeName="komolineModel.ReviewEntity">
+              <MappingFragment StoreEntitySet="reviews">
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="created_time" ColumnName="created_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagEntities">
+            <EntityTypeMapping TypeName="komolineModel.TagEntity">
+              <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionEntities">
+            <EntityTypeMapping TypeName="komolineModel.TransactionEntity">
+              <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="finish_time" ColumnName="finish_time" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEntities">
+            <EntityTypeMapping TypeName="komolineModel.UserEntity">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+                <ScalarProperty Name="register_time" ColumnName="register_time" />
+                <ScalarProperty Name="confirmed_time" ColumnName="confirmed_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_products_category" TypeName="komolineModel.FK_products_category" StoreEntitySet="products">
+            <EndProperty Name="categories">
+              <ScalarProperty Name="id" ColumnName="category" />
+            </EndProperty>
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_products_owner" TypeName="komolineModel.FK_products_owner" StoreEntitySet="products">
+            <EndProperty Name="users">
+              <ScalarProperty Name="id" ColumnName="owner_id" />
+            </EndProperty>
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_transactions_product" TypeName="komolineModel.FK_transactions_product" StoreEntitySet="transactions">
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+            <EndProperty Name="transactions">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_transactions_buyer" TypeName="komolineModel.FK_transactions_buyer" StoreEntitySet="transactions">
+            <EndProperty Name="users">
+              <ScalarProperty Name="id" ColumnName="buyer_id" />
+            </EndProperty>
+            <EndProperty Name="transactions">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
