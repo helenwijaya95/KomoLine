@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.Master.cs" Inherits="KomoLine.WebForm.Pages.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.Master.cs" Inherits="KomoLine.WebForm.Pages.Template" %>
 
 <!DOCTYPE html>
 

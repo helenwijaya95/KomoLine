@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Tester.aspx" />
     <Content Include="Pages\Welcome.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="Pages\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tester.aspx.cs">
+      <DependentUpon>Tester.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Tester.aspx.designer.cs">
+      <DependentUpon>Tester.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>

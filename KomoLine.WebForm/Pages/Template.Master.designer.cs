@@ -10,7 +10,7 @@
 namespace KomoLine.WebForm.Pages {
     
     
-    public partial class Site1 {
+    public partial class Template {
         
         /// <summary>
         /// Header control.

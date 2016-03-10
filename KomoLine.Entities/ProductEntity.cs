@@ -26,8 +26,8 @@ namespace KomoLine.Data
         public string description { get; set; }
         public System.DateTime created_time { get; set; }
         public Nullable<double> price { get; set; }
-        public int status { get; set; }
         public string photo_path { get; set; }
+        public bool is_deleted { get; set; }
     
         public virtual CategoryEntity category { get; set; }
         public virtual UserEntity user { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace KomoLine.Entities.Model
+namespace KomoLine.Data.Model
 {
     public class Transaction
     {
