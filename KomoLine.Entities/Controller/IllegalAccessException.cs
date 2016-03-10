@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomoLine.Entities.Controller
+namespace KomoLine.Data.Controller
 {
     public class IllegalAccessException : Exception
     {

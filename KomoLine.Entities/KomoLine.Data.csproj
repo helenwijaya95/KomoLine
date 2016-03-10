@@ -51,6 +51,12 @@
     <Compile Include="CategoryEntity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controller\AdminAccess.cs" />
+    <Compile Include="Controller\BuyerAccess.cs" />
+    <Compile Include="Controller\ControllerTest.cs" />
+    <Compile Include="Controller\GuestAccess.cs" />
+    <Compile Include="Controller\NoAccess.cs" />
+    <Compile Include="Controller\VendorAccess.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -73,13 +79,18 @@
     <Compile Include="Model\Rating.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="Model\Transaction.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="ProductEntity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingEntity.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorMessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessage.resx</DependentUpon>
     </Compile>
     <Compile Include="ReviewEntity.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -125,6 +136,12 @@
       <Project>{f1b8f4fe-f028-49ae-81df-229d5479ad46}</Project>
       <Name>KomoLine.Helper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ErrorMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

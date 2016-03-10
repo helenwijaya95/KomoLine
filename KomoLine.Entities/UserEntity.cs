@@ -30,6 +30,7 @@ namespace KomoLine.Data
         public string photo_path { get; set; }
         public System.DateTime register_time { get; set; }
         public Nullable<System.DateTime> confirmed_time { get; set; }
+        public Nullable<bool> is_deleted { get; set; }
         public string status { get; set; }
     
         public virtual ICollection<ProductEntity> products { get; set; }
