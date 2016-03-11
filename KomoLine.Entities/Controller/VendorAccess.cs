@@ -21,7 +21,7 @@ namespace KomoLine.Data.Controller
             set { base.Reference = value; }
         }
 
-        public VendorAccess(Account Reference)
+        internal VendorAccess(Account Reference)
             : base(Reference)
         {
             Name = "vendor";

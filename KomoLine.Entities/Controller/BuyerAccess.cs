@@ -21,7 +21,7 @@ namespace KomoLine.Data.Controller
             set { base.Reference = value; }
         }
 
-        public BuyerAccess(Account Reference)
+        internal BuyerAccess(Account Reference)
             : base(Reference)
         {
             Name = "buyer";

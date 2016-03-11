@@ -13,7 +13,7 @@ namespace KomoLine.Data.Controller
         public virtual Account Reference { get; set; }
         public virtual string Name { get; set; }
 
-        public NoAccess(Account Reference)
+        internal NoAccess(Account Reference)
         {
             this.Reference = Reference;
             this.Name = "invalid";
@@ -86,6 +86,22 @@ namespace KomoLine.Data.Controller
         }
 
         public virtual void Login(string Username, string Password)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+
+        public virtual Account GetUser(string Username)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual Product GetProduct(string ID)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual Transaction GetTransaction(string Code)
         {
             throw RESTRICTED_ACCESS;
         }

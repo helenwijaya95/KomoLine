@@ -23,7 +23,7 @@ namespace KomoLine.Data.Controller
             set { base.Reference = value; }
         }
 
-        public GuestAccess(Account Reference)
+        internal GuestAccess(Account Reference)
             : base(Reference)
         {
             Name = "guest";
@@ -31,7 +31,7 @@ namespace KomoLine.Data.Controller
         public override void Register(string Password, string Status = "buyer")
         {
             komolineEntities DbContext = new komolineEntities();
-            UserEntity e = Converter.Convert(Reference);
+            UserEntity e = Converter.ToEntity(Reference);
             e.register_time = DateTime.Now;
             e.password = HashHelper.CreateHash(Password);
             e.status = Status;
@@ -45,12 +45,17 @@ namespace KomoLine.Data.Controller
             var User = DbContext.UserEntities.SingleOrDefault(x => x.username == Username);
             if (User != null && HashHelper.ValidatePassword(Password, User.password))
             {
-                Converter.Convert(User, Reference);
+                Converter.ToModel(User, Reference);
             }
             else
             {
                 throw new ArgumentException(ErrorMessage.ERR_WRONG_LOGIN);
             }
+        }
+
+        public override List<Product> SearchProduct(string Query)
+        {
+            return base.SearchProduct(Query);
         }
     }
 }

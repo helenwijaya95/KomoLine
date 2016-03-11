@@ -21,7 +21,7 @@ namespace KomoLine.Data.Controller
             set { base.Reference = value; }
         }
 
-        public AdminAccess(Account Reference)
+        internal AdminAccess(Account Reference)
             : base(Reference)
         {
             Name = "admin";

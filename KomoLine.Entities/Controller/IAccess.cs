@@ -25,5 +25,8 @@ namespace KomoLine.Data.Controller
         List<Account> ViewUsers();
         List<Transaction> ViewTransactions();
         void Login(string Username, string Password);
+        Account GetUser(string Username);
+        Product GetProduct(string ID);
+        Transaction GetTransaction(string Code);
     }
 }
