@@ -12,10 +12,10 @@ namespace KomoLine.Data.Controller
         Account Reference { get; set; }
         string Name { get; set; }
         void Register(string Password, string Status = "buyer");
-        List<Product> SearchProduct(string Query);
+        List<Product> SearchProduct(string Query, List<SearchBy> Options);
         void DeleteProduct(Product OldProduct);
         void AddProduct(Product NewProduct);
-        void EditProduct(Product NewData);
+        void SaveProduct(Product NewData);
         void Purchase(Product Item);
         void CancelPurchase(Transaction Purchase);
         List<Transaction> ViewHistory();
@@ -28,5 +28,14 @@ namespace KomoLine.Data.Controller
         Account GetUser(string Username);
         Product GetProduct(string ID);
         Transaction GetTransaction(string Code);
+    }
+    public enum SearchBy
+    {
+        Category,
+        Name,
+        Description,
+        Tags,
+        Review,
+        ID
     }
 }

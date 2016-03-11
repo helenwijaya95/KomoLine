@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="products">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="min_order" Type="double" />
@@ -49,19 +49,20 @@
             <PropertyRef Name="product_id" />
           </Key>
           <Property Name="tag_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="transactions">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="buyer_id" Type="int" Nullable="false" />
           <Property Name="start_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="finish_time" Type="timestamp" Precision="0" />
           <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="quantity" Type="double" />
+          <Property Name="code" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -209,7 +210,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.FK_products_category" FromRole="categories" ToRole="products" />
         </EntityType>
@@ -217,7 +218,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="min_order" Type="Double" />
           <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -254,7 +255,7 @@
             <PropertyRef Name="product_id" />
           </Key>
           <Property Name="tag_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="product_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_id" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="product" Relationship="Self.FK_tags_product" FromRole="tags" ToRole="products" />
         </EntityType>
         <EntityType Name="TransactionEntity">
@@ -270,6 +271,7 @@
           <NavigationProperty Name="rating" Relationship="Self.FK_ratings" FromRole="transactions" ToRole="ratings" />
           <NavigationProperty Name="review" Relationship="Self.FK_reviews" FromRole="transactions" ToRole="reviews" />
           <NavigationProperty Name="user" Relationship="Self.FK_transactions_buyer" FromRole="transactions" ToRole="users" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserEntity">
           <Key>
@@ -436,6 +438,7 @@
           <EntitySetMapping Name="TransactionEntities">
             <EntityTypeMapping TypeName="komolineModel.TransactionEntity">
               <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="start_time" ColumnName="start_time" />
                 <ScalarProperty Name="finish_time" ColumnName="finish_time" />

@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace KomoLine.Controller
 {
-    public static class Converter
+    internal static class Converter
     {
         public static UserEntity ToEntity(Account User, UserEntity Storage = null)
         {
             UserEntity e = Storage ?? new UserEntity();
+            if (User == null) { return e; }
             e.address = User.Address;
             e.confirmed_time = User.ConfirmedOn;
             e.email = User.Email;
@@ -29,6 +30,7 @@ namespace KomoLine.Controller
         public static Account ToModel(UserEntity UserEntity, Account Storage = null)
         {
             Account u = Storage ?? new Account();
+            if (UserEntity == null) { return u; }
             u.Address = UserEntity.address;
             u.ConfirmedOn = UserEntity.confirmed_time;
             u.Email = UserEntity.email;
@@ -44,8 +46,38 @@ namespace KomoLine.Controller
         public static Product ToModel(ProductEntity ProductEntity, Product Storage = null)
         {
             Product p = Storage ?? new Product();
-
+            if (ProductEntity == null) { return p; }
+            p.Category = ProductEntity.category.name;
+            p.CreatedOn = ProductEntity.created_time;
+            p.Description = ProductEntity.description;
+            p.ID = ProductEntity.id;
+            p.MinimalOrder = ProductEntity.min_order ?? 0;
+            p.Name = ProductEntity.name;
+            p.Owner = ToModel(ProductEntity.user);
+            p.PhotoPath = ProductEntity.photo_path;
+            p.Price = ProductEntity.price ?? 0;
+            p.Rating = ProductEntity.transactions
+                .Select(x => x.rating.rating)
+                .DefaultIfEmpty(0)
+                .Average();
+            p.Reviews = ProductEntity.transactions
+                .Select(x => new {owner = x.user, content = x.review.content })
+                .ToDictionary(t => ToModel(t.owner), t => t.content);
+            p.Tags = ProductEntity.tags.Select(x => x.tag_name).ToList();
             return p;
+        }
+
+        public static ProductEntity ToEntity(Product Product, ProductEntity Storage = null)
+        {
+            ProductEntity pe = Storage ?? new ProductEntity();
+            pe.id = Product.ID ?? Converter.GenerateID();
+            pe.created_time = Product.CreatedOn;
+            pe.description = Product.Description;
+            pe.min_order = Product.MinimalOrder;
+            pe.name = Product.Name;
+            pe.photo_path = Product.PhotoPath;
+            pe.price = Product.Price;
+            return pe;
         }
 
         private static IAccess GetUserAccess(string Name, Account Reference)
@@ -64,8 +96,10 @@ namespace KomoLine.Controller
         {
             Guid g = Guid.NewGuid();
             string ID = Convert.ToBase64String(g.ToByteArray());
-            ID = ID.Replace("=", "").Replace("+", "_").Replace("/", "_");
-            return ID;
+            return ID
+                .Replace("=", "")
+                .Replace("+", "_")
+                .Replace("/", "_");
         }
     }
 }

@@ -39,7 +39,17 @@ namespace KomoLine.Data.Model
         public string PhoneNumber
         {
             get { return phoneNumber; }
-            set { phoneNumber = value; }
+            set
+            {
+                if (RegexHelper.IsValidPhoneNumber(value))
+                {
+                    phoneNumber = value;
+                }
+                else
+                {
+                    throw new FormatException("Invalid Phone number format");
+                }
+            }
         }
         public string Email
         {
@@ -75,7 +85,7 @@ namespace KomoLine.Data.Model
         public IAccess AccessType
         {
             get { return userAccess; }
-            set { userAccess = value; }
+            internal set { userAccess = value; }
         }
 
         public Account()
@@ -93,9 +103,9 @@ namespace KomoLine.Data.Model
             userAccess.Register(Password, Status);
         }
 
-        public List<Product> SearchProduct(string Query)
+        public List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
-            return userAccess.SearchProduct(Query);
+            return userAccess.SearchProduct(Query, Options);
         }
 
         public void DeleteProduct(Product OldProduct)
@@ -108,9 +118,9 @@ namespace KomoLine.Data.Model
             userAccess.AddProduct(NewProduct);
         }
 
-        public void EditProduct(Product NewData)
+        public void SaveProduct(Product NewData)
         {
-            userAccess.EditProduct(NewData);
+            userAccess.SaveProduct(NewData);
         }
 
         public void Purchase(Product Item)

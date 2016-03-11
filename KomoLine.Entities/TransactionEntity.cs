@@ -19,6 +19,7 @@ namespace KomoLine.Data
         public Nullable<System.DateTime> finish_time { get; set; }
         public string status { get; set; }
         public Nullable<double> quantity { get; set; }
+        public string code { get; set; }
     
         public virtual ProductEntity product { get; set; }
         public virtual RatingEntity rating { get; set; }

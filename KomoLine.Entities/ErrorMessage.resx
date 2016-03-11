@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ERR_ALREADY_EXIST" xml:space="preserve">
+    <value>Username has been taken. Keep trying!</value>
+  </data>
+  <data name="ERR_MISSING" xml:space="preserve">
+    <value>Item with ID: {0} doesn't exist. Sorry to dissapoint you</value>
+  </data>
   <data name="ERR_REDUNDANT_LOGIN" xml:space="preserve">
     <value>You already logged in... How much is enough with you?</value>
   </data>
-  <data name="ERR_RESTRICTED_ACCESS" xml:space="preserve">
-    <value>You don't have the access to use this feature. Maybe next time, little buddy... Maybe nest time.</value>
+  <data name="ERR_RESTRICTED_FEATURE" xml:space="preserve">
+    <value>You don't have the access to use this feature. Maybe next time, little buddy... Maybe next time.</value>
+  </data>
+  <data name="ERR_RESTRICTED_ITEM" xml:space="preserve">
+    <value>You don't have the access to manipulate this item. Are you sure this item is yours?</value>
   </data>
   <data name="ERR_WRONG_LOGIN" xml:space="preserve">
-    <value>Incorrect username or password</value>
+    <value>Incorrect username or password. Try again, you can do this!!</value>
   </data>
 </root>

@@ -9,7 +9,7 @@ namespace KomoLine.Data.Controller
 {
     public class NoAccess : IAccess
     {
-        private static readonly IllegalAccessException RESTRICTED_ACCESS = new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_ACCESS);
+        private static readonly IllegalAccessException RESTRICTED_ACCESS = new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_FEATURE);
         public virtual Account Reference { get; set; }
         public virtual string Name { get; set; }
 
@@ -24,7 +24,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual List<Product> SearchProduct(string Query)
+        public virtual List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
             throw RESTRICTED_ACCESS;
         }
@@ -39,7 +39,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual void EditProduct(Product NewData)
+        public virtual void SaveProduct(Product NewData)
         {
             throw RESTRICTED_ACCESS;
         }

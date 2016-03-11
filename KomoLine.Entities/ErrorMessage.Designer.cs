@@ -61,6 +61,24 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Username has been taken. Keep trying!.
+        /// </summary>
+        internal static string ERR_ALREADY_EXIST {
+            get {
+                return ResourceManager.GetString("ERR_ALREADY_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item with ID: {0} doesn&apos;t exist. Sorry to dissapoint you.
+        /// </summary>
+        internal static string ERR_MISSING {
+            get {
+                return ResourceManager.GetString("ERR_MISSING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You already logged in... How much is enough with you?.
         /// </summary>
         internal static string ERR_REDUNDANT_LOGIN {
@@ -70,16 +88,25 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You don&apos;t have the access to use this feature. Maybe next time, little buddy... Maybe nest time..
+        ///   Looks up a localized string similar to You don&apos;t have the access to use this feature. Maybe next time, little buddy... Maybe next time..
         /// </summary>
-        internal static string ERR_RESTRICTED_ACCESS {
+        internal static string ERR_RESTRICTED_FEATURE {
             get {
-                return ResourceManager.GetString("ERR_RESTRICTED_ACCESS", resourceCulture);
+                return ResourceManager.GetString("ERR_RESTRICTED_FEATURE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incorrect username or password.
+        ///   Looks up a localized string similar to You don&apos;t have the access to manipulate this item. Are you sure this item is yours?.
+        /// </summary>
+        internal static string ERR_RESTRICTED_ITEM {
+            get {
+                return ResourceManager.GetString("ERR_RESTRICTED_ITEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect username or password. Try again, you can do this!!.
         /// </summary>
         internal static string ERR_WRONG_LOGIN {
             get {
