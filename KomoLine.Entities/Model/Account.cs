@@ -142,7 +142,7 @@ namespace KomoLine.Data.Model
 
         public List<Transaction> ViewHistory()
         {
-            return userAccess.ViewHistory();
+            return userAccess.ViewPurchases();
         }
 
         public void SaveProfile()

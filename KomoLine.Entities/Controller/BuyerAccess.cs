@@ -71,12 +71,24 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            RatingEntity re = new RatingEntity();
-            re.rating = Rate;
-            re.created_time = DateTime.Now;
-            re.trans_id = trans.id;
-            re.transaction = trans;
-            DbContext.RatingEntities.Add(re);
+            if (string.Equals(trans.status, Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished), StringComparison.CurrentCultureIgnoreCase))
+            {
+                throw new InvalidOperationException(ErrorMessage.ERR_NOT_FINISHED);
+            }
+            if (trans.rating == null)
+            {
+                RatingEntity re = new RatingEntity();
+                re.rating = Rate;
+                re.created_time = DateTime.Now;
+                re.trans_id = trans.id;
+                re.transaction = trans;
+                DbContext.RatingEntities.Add(re);
+            }
+            else
+            {
+                trans.rating.rating = Rate;
+                trans.rating.created_time = DateTime.Now;
+            }
             DbContext.SaveChanges();
         }
 
@@ -84,12 +96,24 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            ReviewEntity re = new ReviewEntity();
-            re.content = Review;
-            re.created_time = DateTime.Now;
-            re.trans_id = trans.id;
-            re.transaction = trans;
-            DbContext.ReviewEntities.Add(re);
+            if (string.Equals(trans.status, Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished), StringComparison.CurrentCultureIgnoreCase))
+            {
+                throw new InvalidOperationException(ErrorMessage.ERR_NOT_FINISHED);
+            }
+            if (trans.review == null)
+            {
+                ReviewEntity re = new ReviewEntity();
+                re.content = Review;
+                re.created_time = DateTime.Now;
+                re.trans_id = trans.id;
+                re.transaction = trans;
+                DbContext.ReviewEntities.Add(re);
+            }
+            else
+            {
+                trans.review.content = Review;
+                trans.review.created_time = DateTime.Now;
+            }
             DbContext.SaveChanges();
         }
 
@@ -114,6 +138,37 @@ namespace KomoLine.Data.Controller
             }
             trans.status = Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished);
             DbContext.SaveChanges();
+        }
+
+        public override List<Transaction> ViewPurchases()
+        {
+            komolineEntities DbContext = new komolineEntities();
+            return DbContext.TransactionEntities
+                .Where(x => x.user.username == Reference.Username)
+                .Select(x => Converter.ToModel(x, null))
+                .ToList();
+        }
+
+        public override Transaction GetTransaction(string Code)
+        {
+            komolineEntities DbContext = new komolineEntities();
+            var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Code);
+            if (HasTransactionAccess(trans))
+            {
+                return Converter.ToModel(trans);
+            }
+            else
+            {
+                throw new InvalidOperationException(ErrorMessage.ERR_RESTRICTED_ITEM);
+            }
+        }
+
+        private bool HasTransactionAccess(TransactionEntity trans)
+        {
+            bool isAdmin = Reference.Role == UserRole.Admin;
+            bool isBuyer = trans.user.username == Reference.Username;
+            bool isVendor = trans.product.user.username == Reference.Username;
+            return isAdmin || isBuyer || isVendor;
         }
     }
 }

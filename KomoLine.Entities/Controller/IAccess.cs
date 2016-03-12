@@ -11,24 +11,25 @@ namespace KomoLine.Data.Controller
     {
         Account Reference { get; set; }
         UserRole Role { get; set; }
-        void Register(string Password, string Status = "buyer");
-        List<Product> SearchProduct(string Query, List<SearchBy> Options);
-        void DeleteProduct(Product OldProduct);
-        void AddProduct(Product NewProduct);
-        void SaveProduct(Product NewData);
-        void Purchase(Product Item, double Quantity);
-        void CancelPurchase(Transaction Purchase);
-        void FinishPurchase(Transaction Purchase);
-        void AcceptOrder(Transaction Purchase);
-        List<Transaction> ViewHistory();
-        void SaveProfile();
-        void ReviewPurchase(Transaction Purchase, string Review);
-        void RatePurchase(Transaction Purchase, int Rate);
-        List<Account> ViewUsers();
-        List<Transaction> ViewTransactions();
-        void Login(string Username, string Password);
-        Account GetUser(string Username);
-        Product GetProduct(string ID);
-        Transaction GetTransaction(string Code);
+        void Register(string Password, string Status = "buyer");//Guest only
+        List<Product> SearchProduct(string Query, List<SearchBy> Options);//Guest+
+        void DeleteProduct(Product OldProduct);//Vendor+
+        void AddProduct(Product NewProduct);//Vendor+
+        void SaveProduct(Product NewData);//Vendor+
+        void Purchase(Product Item, double Quantity);//Buyer+
+        void CancelPurchase(Transaction Purchase);//Buyer+
+        void FinishPurchase(Transaction Purchase);//Buyer+
+        void AcceptOrder(Transaction Purchase);//Vendor+
+        List<Transaction> ViewPurchases();//Buyer+
+        List<Transaction> ViewSales();//Vendor+
+        void SaveProfile();//Buyer+
+        void ReviewPurchase(Transaction Purchase, string Review);//Buyer+
+        void RatePurchase(Transaction Purchase, int Rate);//Buyer+
+        List<Account> ViewUsers();//Admin
+        List<Transaction> ViewTransactions();//Admin
+        void Login(string Username, string Password);//Guest only
+        Account GetUser(string Username);//Guest+
+        Product GetProduct(string ID);//Guest+
+        Transaction GetTransaction(string Code);//Buyer+
     }
 }

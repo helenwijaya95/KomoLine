@@ -54,7 +54,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual List<Transaction> ViewHistory()
+        public virtual List<Transaction> ViewPurchases()
         {
             throw RESTRICTED_ACCESS;
         }
@@ -113,6 +113,11 @@ namespace KomoLine.Data.Controller
         }
 
         public virtual void AcceptOrder(Transaction Purchase)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual List<Transaction> ViewSales()
         {
             throw RESTRICTED_ACCESS;
         }

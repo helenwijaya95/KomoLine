@@ -70,7 +70,7 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot accept this order because it has been cancelled by buyer. Remember to check your orders often..
+        ///   Looks up a localized string similar to You cannot accept this order because it has been cancelled. Remember to check your orders often..
         /// </summary>
         internal static string ERR_CANNOT_ACCEPT {
             get {
@@ -79,7 +79,7 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re not above consequences. You cannot cancel an accepted order. .
+        ///   Looks up a localized string similar to You&apos;re not above consequences. You cannot cancel an accepted order. Deal with it (haha, puns).
         /// </summary>
         internal static string ERR_CANNOT_CANCEL {
             get {
@@ -115,6 +115,15 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s not be too hasty. You&apos;re not allowed to do this before transaction is finished..
+        /// </summary>
+        internal static string ERR_NOT_FINISHED {
+            get {
+                return ResourceManager.GetString("ERR_NOT_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You already logged in... How much is enough with you?.
         /// </summary>
         internal static string ERR_REDUNDANT_LOGIN {
@@ -133,7 +142,7 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You don&apos;t have the access to manipulate this item. Are you sure this item is yours?.
+        ///   Looks up a localized string similar to You don&apos;t have the access to this item. Are you sure this item is yours?.
         /// </summary>
         internal static string ERR_RESTRICTED_ITEM {
             get {
