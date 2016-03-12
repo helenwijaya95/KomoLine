@@ -10,10 +10,10 @@ namespace KomoLine.Data.Controller
 {
     public class VendorAccess : BuyerAccess
     {
-        public override string Name
+        public override UserRole Role
         {
-            get { return base.Name; }
-            set { base.Name = value; }
+            get { return base.Role; }
+            set { base.Role = value; }
         }
 
         public override Account Reference
@@ -25,7 +25,7 @@ namespace KomoLine.Data.Controller
         internal VendorAccess(Account Reference)
             : base(Reference)
         {
-            Name = "vendor";
+            Role = UserRole.Vendor;
         }
 
         public override void AddProduct(Product NewProduct)
@@ -59,7 +59,7 @@ namespace KomoLine.Data.Controller
             }
             if (pe.user.username != Reference.Username)
             {
-                throw new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_ITEM);
+                throw new InvalidOperationException(ErrorMessage.ERR_RESTRICTED_ITEM);
             }
             pe = Converter.ToEntity(NewData, pe);
             pe.category = DbContext.CategoryEntities.SingleOrDefault(x => x.name == NewData.Category) ?? pe.category;
@@ -88,7 +88,7 @@ namespace KomoLine.Data.Controller
         public override void DeleteProduct(Product OldProduct)
         {
             komolineEntities DbContext = new komolineEntities();
-            ProductEntity pe = DbContext.ProductEntities.SingleOrDefault(x => x.id == OldProduct.ID);
+            ProductEntity pe = DbContext.ProductEntities.SingleOrDefault(x => x.id == OldProduct.ID && !x.is_deleted);
             if (pe == null)
             {
                 string error = string.Format(ErrorMessage.ERR_MISSING, OldProduct.ID);
@@ -96,7 +96,7 @@ namespace KomoLine.Data.Controller
             }
             if (pe.user.username != Reference.Username)
             {
-                throw new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_ITEM);
+                throw new InvalidOperationException(ErrorMessage.ERR_RESTRICTED_ITEM);
             }
             pe.is_deleted = true;
             DbContext.SaveChanges();

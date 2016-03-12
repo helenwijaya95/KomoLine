@@ -13,7 +13,15 @@ namespace KomoLine.WebForm.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Account lusi = new Account();
+            lusi.Login("lusi", "lusiana");
+
+            lusi.Name = "Kucing";
+            lusi.SaveProfile();
+
+            Product p = lusi.SearchProduct("eidz_V0nQU2EpSp9_uHEtg", new List<SearchBy>() { SearchBy.ID }).SingleOrDefault();
+
+            lusi.Purchase(p, 444);
         }
     }
 }

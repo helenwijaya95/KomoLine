@@ -20,6 +20,13 @@ namespace KomoLine.Data.Model
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
+        private UserRole role;
+
+        public UserRole Role
+        {
+            get { return role; }
+            internal set { role = value; }
+        }
         
         public string Username
         {
@@ -82,10 +89,10 @@ namespace KomoLine.Data.Model
             set { confirmed = value; }
         }
 
-        public IAccess AccessType
+        internal IAccess AccessType
         {
             get { return userAccess; }
-            internal set { userAccess = value; }
+            set { userAccess = value; }
         }
 
         public Account()
@@ -123,9 +130,9 @@ namespace KomoLine.Data.Model
             userAccess.SaveProduct(NewData);
         }
 
-        public void Purchase(Product Item)
+        public void Purchase(Product Item, double Quantity)
         {
-            userAccess.Purchase(Item);
+            userAccess.Purchase(Item,Quantity);
         }
 
         public void CancelPurchase(Transaction Purchase)
@@ -179,5 +186,14 @@ namespace KomoLine.Data.Model
             u.email = "example@domain.com";
             u.userAccess = new GuestAccess(u);
         }
+    }
+
+    public enum UserRole
+    {
+        Guest,
+        Buyer,
+        Vendor,
+        Admin,
+        Invalid
     }
 }

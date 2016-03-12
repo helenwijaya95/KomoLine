@@ -83,4 +83,15 @@ namespace KomoLine.Data.Model
             set { tags = value; }
         }
     }
+
+    public enum SearchBy
+    {
+        Category,
+        Name,
+        Description,
+        Tags,
+        Review,
+        ID,
+        Owner
+    }
 }

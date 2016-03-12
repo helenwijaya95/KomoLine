@@ -22,7 +22,7 @@ namespace KomoLine.Controller
             e.phone_number = User.PhoneNumber;
             e.photo_path = User.Photo;
             e.register_time = User.RegisterOn;
-            e.status = User.AccessType.Name;
+            e.status = Enum.GetName(typeof(UserRole),User.AccessType);
             e.username = User.Username;
             return e;
         }
@@ -57,10 +57,12 @@ namespace KomoLine.Controller
             p.PhotoPath = ProductEntity.photo_path;
             p.Price = ProductEntity.price ?? 0;
             p.Rating = ProductEntity.transactions
+                .Where(x => x.rating != null)
                 .Select(x => x.rating.rating)
                 .DefaultIfEmpty(0)
                 .Average();
             p.Reviews = ProductEntity.transactions
+                .Where(x => x.review != null)
                 .Select(x => new {owner = x.user, content = x.review.content })
                 .ToDictionary(t => ToModel(t.owner), t => t.content);
             p.Tags = ProductEntity.tags.Select(x => x.tag_name).ToList();
@@ -78,6 +80,32 @@ namespace KomoLine.Controller
             pe.photo_path = Product.PhotoPath;
             pe.price = Product.Price;
             return pe;
+        }
+
+        public static Transaction ToModel(TransactionEntity TransactionEntity, Transaction Storage = null)
+        {
+            Transaction t = Storage ?? new Transaction();
+            t.Buyer = ToModel(TransactionEntity.user);
+            t.Code = TransactionEntity.code;
+            t.ConfirmedOn = TransactionEntity.finish_time;
+            t.Product = ToModel(TransactionEntity.product);
+            t.Quantity = TransactionEntity.quantity ?? 0;
+            t.Rating = TransactionEntity.rating == null? (double?)null : TransactionEntity.rating.rating;
+            t.Review = TransactionEntity.review == null ? null : TransactionEntity.review.content;
+            t.StartOn = TransactionEntity.start_time;
+            t.Status = (TransactionStatus) Enum.Parse(typeof(TransactionStatus), TransactionEntity.status, true);
+            return t;
+        }
+
+        public static TransactionEntity ToEntity(Transaction Transaction, TransactionEntity Storage = null)
+        {
+            TransactionEntity te = Storage ?? new TransactionEntity();
+            te.code = Transaction.Code ?? Converter.GenerateID();
+            te.finish_time = Transaction.ConfirmedOn;
+            te.quantity = Transaction.Quantity;
+            te.start_time = Transaction.StartOn;
+            te.status = Enum.GetName(typeof(TransactionStatus),Transaction.Status);
+            return te;
         }
 
         private static IAccess GetUserAccess(string Name, Account Reference)

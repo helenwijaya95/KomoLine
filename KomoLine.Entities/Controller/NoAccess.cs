@@ -9,14 +9,14 @@ namespace KomoLine.Data.Controller
 {
     public class NoAccess : IAccess
     {
-        private static readonly IllegalAccessException RESTRICTED_ACCESS = new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_FEATURE);
+        private static readonly InvalidOperationException RESTRICTED_ACCESS = new InvalidOperationException(ErrorMessage.ERR_RESTRICTED_FEATURE);
         public virtual Account Reference { get; set; }
-        public virtual string Name { get; set; }
+        public virtual UserRole Role { get; set; }
 
         internal NoAccess(Account Reference)
         {
             this.Reference = Reference;
-            this.Name = "invalid";
+            this.Role = UserRole.Invalid;
         }
 
         public virtual void Register(string Password, string Status = "buyer")
@@ -44,7 +44,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual void Purchase(Product Item)
+        public virtual void Purchase(Product Item, double Quantity)
         {
             throw RESTRICTED_ACCESS;
         }
@@ -102,6 +102,17 @@ namespace KomoLine.Data.Controller
         }
 
         public virtual Transaction GetTransaction(string Code)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+
+        public virtual void FinishPurchase(Transaction Purchase)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual void AcceptOrder(Transaction Purchase)
         {
             throw RESTRICTED_ACCESS;
         }

@@ -11,11 +11,12 @@ namespace KomoLine.Data.Controller
 {
     public class GuestAccess : NoAccess
     {
-        private delegate List<ProductEntity> SearchStrategy(String Query, komolineEntities DbContext);
-        public override string Name
+        protected delegate List<ProductEntity> SearchStrategy(String Query, komolineEntities DbContext);
+
+        public override UserRole Role
         {
-            get { return base.Name; }
-            set { base.Name = value; }
+            get { return base.Role; }
+            set { base.Role = value; }
         }
 
         public override Account Reference
@@ -27,7 +28,7 @@ namespace KomoLine.Data.Controller
         internal GuestAccess(Account Reference)
             : base(Reference)
         {
-            Name = "guest";
+            Role = UserRole.Guest;
         }
         public override void Register(string Password, string Status = "buyer")
         {
@@ -67,29 +68,55 @@ namespace KomoLine.Data.Controller
             return result.Select(x => Converter.ToModel(x)).ToList();
         }
 
+        public override Product GetProduct(string ID)
+        {
+            komolineEntities DbContext = new komolineEntities();
+            var product = SearchByID(ID, DbContext).SingleOrDefault();
+            if (product == null)
+            {
+                string error = string.Format(ErrorMessage.ERR_MISSING, ID);
+                throw new ArgumentException(error);
+            }
+            return Converter.ToModel(product);
+        }
 
-        private static SearchStrategy SearchByName =
+        public override Account GetUser(string Username)
+        {
+            komolineEntities DbContext = new komolineEntities();
+            var acc = DbContext.UserEntities
+                .Where(x => x.username == Username && !(x.is_deleted ?? false))
+                .SingleOrDefault();
+            if (acc == null)
+            {
+                string error = string.Format(ErrorMessage.ERR_MISSING, Username);
+                throw new ArgumentException(error);
+            }
+            return Converter.ToModel(acc);
+        }
+
+
+        protected static SearchStrategy SearchByName =
             (n, db) =>
                 db.ProductEntities
                 .Where(x => !x.is_deleted && x.name
                     .ToLower()
                     .Contains(n))
                 .ToList();
-        private static SearchStrategy SearchByCategory =
+        protected static SearchStrategy SearchByCategory =
             (c, db) =>
                 db.ProductEntities
                 .Where(x => !x.is_deleted && x.category.name
                     .ToLower()
                     .Contains(c))
                 .ToList();
-        private static SearchStrategy SearchByDescription =
+        protected static SearchStrategy SearchByDescription =
             (d, db) =>
                 db.ProductEntities
                 .Where(x => !x.is_deleted && x.description
                     .ToLower()
                     .Contains(d))
                 .ToList();
-        private static SearchStrategy SearchByTag =
+        protected static SearchStrategy SearchByTag =
             (tag, db) =>
                 db.ProductEntities
                 .Where(x => !x.is_deleted && x.tags
@@ -97,7 +124,7 @@ namespace KomoLine.Data.Controller
                         .ToLower()
                         .Contains(tag)))
                 .ToList();
-        private static SearchStrategy SearchByReview =
+        protected static SearchStrategy SearchByReview =
             (r, db) =>
                 db.ProductEntities
                 .Where(x => !x.is_deleted && x.transactions
@@ -105,19 +132,25 @@ namespace KomoLine.Data.Controller
                         .ToLower()
                         .Contains(r)))
                 .ToList();
-        private static SearchStrategy SearchByID =
+        protected static SearchStrategy SearchByID =
             (ID, db) => 
                 db.ProductEntities
                 .Where(x => x.id == ID && !x.is_deleted)
                 .ToList();
-        private static Dictionary<SearchBy, SearchStrategy> SearchMethod = new Dictionary<SearchBy, SearchStrategy>()
+        protected static SearchStrategy SearchByOwner =
+            (Owner, db) =>
+                db.ProductEntities
+                .Where(x => !x.is_deleted && x.user.username == Owner)
+                .ToList();
+        protected static readonly Dictionary<SearchBy, SearchStrategy> SearchMethod = new Dictionary<SearchBy, SearchStrategy>()
         {
             {SearchBy.Category,SearchByCategory},
             {SearchBy.Description,SearchByDescription},
             {SearchBy.Name,SearchByName},
             {SearchBy.Review,SearchByReview},
             {SearchBy.Tags,SearchByTag},
-            {SearchBy.ID,SearchByID}
+            {SearchBy.ID,SearchByID},
+            {SearchBy.Owner,SearchByOwner}
         };
     }
 }

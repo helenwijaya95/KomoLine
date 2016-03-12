@@ -73,7 +73,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controller\IAccess.cs" />
-    <Compile Include="Controller\IllegalAccessException.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\Account.cs" />

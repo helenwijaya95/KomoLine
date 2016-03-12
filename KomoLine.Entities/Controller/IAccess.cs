@@ -10,14 +10,16 @@ namespace KomoLine.Data.Controller
     public interface IAccess
     {
         Account Reference { get; set; }
-        string Name { get; set; }
+        UserRole Role { get; set; }
         void Register(string Password, string Status = "buyer");
         List<Product> SearchProduct(string Query, List<SearchBy> Options);
         void DeleteProduct(Product OldProduct);
         void AddProduct(Product NewProduct);
         void SaveProduct(Product NewData);
-        void Purchase(Product Item);
+        void Purchase(Product Item, double Quantity);
         void CancelPurchase(Transaction Purchase);
+        void FinishPurchase(Transaction Purchase);
+        void AcceptOrder(Transaction Purchase);
         List<Transaction> ViewHistory();
         void SaveProfile();
         void ReviewPurchase(Transaction Purchase, string Review);
@@ -28,14 +30,5 @@ namespace KomoLine.Data.Controller
         Account GetUser(string Username);
         Product GetProduct(string ID);
         Transaction GetTransaction(string Code);
-    }
-    public enum SearchBy
-    {
-        Category,
-        Name,
-        Description,
-        Tags,
-        Review,
-        ID
     }
 }

@@ -70,11 +70,47 @@ namespace KomoLine.Data {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot accept this order because it has been cancelled by buyer. Remember to check your orders often..
+        /// </summary>
+        internal static string ERR_CANNOT_ACCEPT {
+            get {
+                return ResourceManager.GetString("ERR_CANNOT_ACCEPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re not above consequences. You cannot cancel an accepted order. .
+        /// </summary>
+        internal static string ERR_CANNOT_CANCEL {
+            get {
+                return ResourceManager.GetString("ERR_CANNOT_CANCEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot finish this transaction because vendor hasn&apos;t accept your order yet. Please remain calm and contact vendor again..
+        /// </summary>
+        internal static string ERR_CANNOT_FINISH {
+            get {
+                return ResourceManager.GetString("ERR_CANNOT_FINISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item with ID: {0} doesn&apos;t exist. Sorry to dissapoint you.
         /// </summary>
         internal static string ERR_MISSING {
             get {
                 return ResourceManager.GetString("ERR_MISSING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to order at least {0:N2} kg(s) to continue. Please contact vendor directly to negotiate this or change your order quantity..
+        /// </summary>
+        internal static string ERR_NOT_ENOUGH {
+            get {
+                return ResourceManager.GetString("ERR_NOT_ENOUGH", resourceCulture);
             }
         }
         
