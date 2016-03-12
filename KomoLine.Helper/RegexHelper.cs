@@ -21,7 +21,7 @@ namespace KomoLine.Helper
             // Use IdnMapping class to convert Unicode domain names.
             try
             {
-                strIn = Regex.Replace(strIn, @"(@)(.+)$", RegexHelper.DomainMapper,RegexOptions.None, TimeSpan.FromMilliseconds(200));
+                strIn = Regex.Replace(strIn, @"(@)(.+)$", RegexHelper.DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
             }
             catch (RegexMatchTimeoutException)
             {
@@ -38,6 +38,18 @@ namespace KomoLine.Helper
                       @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                       @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
                       RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsValidPhoneNumber(string Number)
+        {
+            try
+            {
+                return Regex.IsMatch(Number, @"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
             catch (RegexMatchTimeoutException)
             {

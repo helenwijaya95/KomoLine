@@ -9,14 +9,14 @@ namespace KomoLine.Data.Controller
 {
     public class NoAccess : IAccess
     {
-        private static readonly IllegalAccessException RESTRICTED_ACCESS = new IllegalAccessException(ErrorMessage.ERR_RESTRICTED_ACCESS);
+        private static readonly InvalidOperationException RESTRICTED_ACCESS = new InvalidOperationException(ErrorMessage.ERR_RESTRICTED_FEATURE);
         public virtual Account Reference { get; set; }
-        public virtual string Name { get; set; }
+        public virtual UserRole Role { get; set; }
 
-        public NoAccess(Account Reference)
+        internal NoAccess(Account Reference)
         {
             this.Reference = Reference;
-            this.Name = "invalid";
+            this.Role = UserRole.Invalid;
         }
 
         public virtual void Register(string Password, string Status = "buyer")
@@ -24,7 +24,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual List<Product> SearchProduct(string Query)
+        public virtual List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
             throw RESTRICTED_ACCESS;
         }
@@ -39,12 +39,12 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual void EditProduct(Product NewData)
+        public virtual void SaveProduct(Product NewData)
         {
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual void Purchase(Product Item)
+        public virtual void Purchase(Product Item, double Quantity)
         {
             throw RESTRICTED_ACCESS;
         }
@@ -54,7 +54,7 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-        public virtual List<Transaction> ViewHistory()
+        public virtual List<Transaction> ViewPurchases()
         {
             throw RESTRICTED_ACCESS;
         }
@@ -86,6 +86,38 @@ namespace KomoLine.Data.Controller
         }
 
         public virtual void Login(string Username, string Password)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+
+        public virtual Account GetUser(string Username)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual Product GetProduct(string ID)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual Transaction GetTransaction(string Code)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+
+        public virtual void FinishPurchase(Transaction Purchase)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual void AcceptOrder(Transaction Purchase)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual List<Transaction> ViewSales()
         {
             throw RESTRICTED_ACCESS;
         }

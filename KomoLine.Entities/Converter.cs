@@ -9,73 +9,103 @@ using System.Threading.Tasks;
 
 namespace KomoLine.Controller
 {
-    public static class Converter
+    internal static class Converter
     {
-        public static UserEntity Convert(Account User, UserEntity Storage = null)
+        public static UserEntity ToEntity(Account User, UserEntity Storage = null)
         {
-            UserEntity e;
-            if (Storage == null)
-            {
-                e = new UserEntity()
-                {
-                    address = User.Address,
-                    confirmed_time = User.ConfirmedOn,
-                    email = User.Email,
-                    name = User.Name,
-                    phone_number = User.PhoneNumber,
-                    photo_path = User.Photo,
-                    register_time = User.RegisterOn,
-                    status = User.AccessType.Name,
-                    username = User.Username
-                };
-            }
-            else
-            {
-                e = Storage;
-                e.address = User.Address;
-                e.confirmed_time = User.ConfirmedOn;
-                e.email = User.Email;
-                e.name = User.Name;
-                e.phone_number = User.PhoneNumber;
-                e.photo_path = User.Photo;
-                e.register_time = User.RegisterOn;
-                e.status = User.AccessType.Name;
-                e.username = User.Username;
-            }
+            UserEntity e = Storage ?? new UserEntity();
+            if (User == null) { return e; }
+            e.address = User.Address;
+            e.confirmed_time = User.ConfirmedOn;
+            e.email = User.Email;
+            e.name = User.Name;
+            e.phone_number = User.PhoneNumber;
+            e.photo_path = User.Photo;
+            e.register_time = User.RegisterOn;
+            e.status = Enum.GetName(typeof(UserRole),User.AccessType);
+            e.username = User.Username;
             return e;
         }
 
-        public static Account Convert(UserEntity UserEntity, Account Storage = null)
+        public static Account ToModel(UserEntity UserEntity, Account Storage = null)
         {
-            Account u;
-            if (Storage == null)
-            {
-                u = new Account()
-                {
-                    Address = UserEntity.address,
-                    ConfirmedOn = UserEntity.confirmed_time,
-                    Email = UserEntity.email,
-                    Name = UserEntity.name,
-                    PhoneNumber = UserEntity.phone_number,
-                    Photo = UserEntity.photo_path,
-                    RegisterOn = UserEntity.register_time,
-                    Username = UserEntity.username
-                };
-            }
-            else
-            {
-                u = Storage;
-                u.Address = UserEntity.address;
-                u.ConfirmedOn = UserEntity.confirmed_time;
-                u.Email = UserEntity.email;
-                u.Name = UserEntity.name;
-                u.PhoneNumber = UserEntity.phone_number;
-                u.Photo = UserEntity.photo_path;
-                u.RegisterOn = UserEntity.register_time;
-                u.Username = UserEntity.username;
-            }
+            Account u = Storage ?? new Account();
+            if (UserEntity == null) { return u; }
+            u.Address = UserEntity.address;
+            u.ConfirmedOn = UserEntity.confirmed_time;
+            u.Email = UserEntity.email;
+            u.Name = UserEntity.name;
+            u.PhoneNumber = UserEntity.phone_number;
+            u.Photo = UserEntity.photo_path;
+            u.RegisterOn = UserEntity.register_time;
+            u.Username = UserEntity.username;
             u.AccessType = GetUserAccess(UserEntity.status, u);
             return u;
+        }
+
+        public static Product ToModel(ProductEntity ProductEntity, Product Storage = null)
+        {
+            Product p = Storage ?? new Product();
+            if (ProductEntity == null) { return p; }
+            p.Category = ProductEntity.category.name;
+            p.CreatedOn = ProductEntity.created_time;
+            p.Description = ProductEntity.description;
+            p.ID = ProductEntity.id;
+            p.MinimalOrder = ProductEntity.min_order ?? 0;
+            p.Name = ProductEntity.name;
+            p.Owner = ToModel(ProductEntity.user);
+            p.PhotoPath = ProductEntity.photo_path;
+            p.Price = ProductEntity.price ?? 0;
+            p.Rating = ProductEntity.transactions
+                .Where(x => x.rating != null)
+                .Select(x => x.rating.rating)
+                .DefaultIfEmpty(0)
+                .Average();
+            p.Reviews = ProductEntity.transactions
+                .Where(x => x.review != null)
+                .Select(x => new {owner = x.user, content = x.review.content })
+                .ToDictionary(t => ToModel(t.owner), t => t.content);
+            p.Tags = ProductEntity.tags.Select(x => x.tag_name).ToList();
+            return p;
+        }
+
+        public static ProductEntity ToEntity(Product Product, ProductEntity Storage = null)
+        {
+            ProductEntity pe = Storage ?? new ProductEntity();
+            pe.id = Product.ID ?? Converter.GenerateID();
+            pe.created_time = Product.CreatedOn;
+            pe.description = Product.Description;
+            pe.min_order = Product.MinimalOrder;
+            pe.name = Product.Name;
+            pe.photo_path = Product.PhotoPath;
+            pe.price = Product.Price;
+            return pe;
+        }
+
+        public static Transaction ToModel(TransactionEntity TransactionEntity, Transaction Storage = null)
+        {
+            Transaction t = Storage ?? new Transaction();
+            t.Buyer = ToModel(TransactionEntity.user);
+            t.Code = TransactionEntity.code;
+            t.ConfirmedOn = TransactionEntity.finish_time;
+            t.Product = ToModel(TransactionEntity.product);
+            t.Quantity = TransactionEntity.quantity ?? 0;
+            t.Rating = TransactionEntity.rating == null? (double?)null : TransactionEntity.rating.rating;
+            t.Review = TransactionEntity.review == null ? null : TransactionEntity.review.content;
+            t.StartOn = TransactionEntity.start_time;
+            t.Status = (TransactionStatus) Enum.Parse(typeof(TransactionStatus), TransactionEntity.status, true);
+            return t;
+        }
+
+        public static TransactionEntity ToEntity(Transaction Transaction, TransactionEntity Storage = null)
+        {
+            TransactionEntity te = Storage ?? new TransactionEntity();
+            te.code = Transaction.Code ?? Converter.GenerateID();
+            te.finish_time = Transaction.ConfirmedOn;
+            te.quantity = Transaction.Quantity;
+            te.start_time = Transaction.StartOn;
+            te.status = Enum.GetName(typeof(TransactionStatus),Transaction.Status);
+            return te;
         }
 
         private static IAccess GetUserAccess(string Name, Account Reference)
@@ -88,6 +118,16 @@ namespace KomoLine.Controller
                 case "admin": return new AdminAccess(Reference);
                 default: return new NoAccess(Reference);
             }
+        }
+        
+        private static string GenerateID()
+        {
+            Guid g = Guid.NewGuid();
+            string ID = Convert.ToBase64String(g.ToByteArray());
+            return ID
+                .Replace("=", "")
+                .Replace("+", "_")
+                .Replace("/", "_");
         }
     }
 }

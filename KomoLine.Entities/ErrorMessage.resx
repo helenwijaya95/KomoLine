@@ -117,13 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ERR_ALREADY_EXIST" xml:space="preserve">
+    <value>Username has been taken. Keep trying!</value>
+  </data>
+  <data name="ERR_CANNOT_ACCEPT" xml:space="preserve">
+    <value>You cannot accept this order because it has been cancelled. Remember to check your orders often.</value>
+  </data>
+  <data name="ERR_CANNOT_CANCEL" xml:space="preserve">
+    <value>You're not above consequences. You cannot cancel an accepted order. Deal with it (haha, puns)</value>
+  </data>
+  <data name="ERR_CANNOT_FINISH" xml:space="preserve">
+    <value>You cannot finish this transaction because vendor hasn't accept your order yet. Please remain calm and contact vendor again.</value>
+  </data>
+  <data name="ERR_MISSING" xml:space="preserve">
+    <value>Item with ID: {0} doesn't exist. Sorry to dissapoint you</value>
+  </data>
+  <data name="ERR_NOT_ENOUGH" xml:space="preserve">
+    <value>You need to order at least {0:N2} kg(s) to continue. Please contact vendor directly to negotiate this or change your order quantity.</value>
+  </data>
+  <data name="ERR_NOT_FINISHED" xml:space="preserve">
+    <value>Let's not be too hasty. You're not allowed to do this before transaction is finished.</value>
+  </data>
   <data name="ERR_REDUNDANT_LOGIN" xml:space="preserve">
     <value>You already logged in... How much is enough with you?</value>
   </data>
-  <data name="ERR_RESTRICTED_ACCESS" xml:space="preserve">
-    <value>You don't have the access to use this feature. Maybe next time, little buddy... Maybe nest time.</value>
+  <data name="ERR_RESTRICTED_FEATURE" xml:space="preserve">
+    <value>You don't have the access to use this feature. Maybe next time, little buddy... Maybe next time.</value>
+  </data>
+  <data name="ERR_RESTRICTED_ITEM" xml:space="preserve">
+    <value>You don't have the access to this item. Are you sure this item is yours?</value>
   </data>
   <data name="ERR_WRONG_LOGIN" xml:space="preserve">
-    <value>Incorrect username or password</value>
+    <value>Incorrect username or password. Try again, you can do this!!</value>
   </data>
 </root>

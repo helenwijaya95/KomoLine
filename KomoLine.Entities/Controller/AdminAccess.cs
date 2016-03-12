@@ -9,10 +9,10 @@ namespace KomoLine.Data.Controller
 {
     public class AdminAccess : VendorAccess
     {
-        public override string Name
+        public override UserRole Role
         {
-            get { return base.Name; }
-            set { base.Name = value; }
+            get { return base.Role; }
+            set { base.Role = value; }
         }
 
         public override Account Reference
@@ -21,10 +21,10 @@ namespace KomoLine.Data.Controller
             set { base.Reference = value; }
         }
 
-        public AdminAccess(Account Reference)
+        internal AdminAccess(Account Reference)
             : base(Reference)
         {
-            Name = "admin";
+            Role = UserRole.Admin;
         }
     }
 }

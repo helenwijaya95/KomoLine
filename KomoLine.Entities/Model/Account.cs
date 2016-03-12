@@ -20,6 +20,13 @@ namespace KomoLine.Data.Model
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
+        private UserRole role;
+
+        public UserRole Role
+        {
+            get { return role; }
+            internal set { role = value; }
+        }
         
         public string Username
         {
@@ -39,7 +46,17 @@ namespace KomoLine.Data.Model
         public string PhoneNumber
         {
             get { return phoneNumber; }
-            set { phoneNumber = value; }
+            set
+            {
+                if (RegexHelper.IsValidPhoneNumber(value))
+                {
+                    phoneNumber = value;
+                }
+                else
+                {
+                    throw new FormatException("Invalid Phone number format");
+                }
+            }
         }
         public string Email
         {
@@ -72,7 +89,7 @@ namespace KomoLine.Data.Model
             set { confirmed = value; }
         }
 
-        public IAccess AccessType
+        internal IAccess AccessType
         {
             get { return userAccess; }
             set { userAccess = value; }
@@ -93,9 +110,9 @@ namespace KomoLine.Data.Model
             userAccess.Register(Password, Status);
         }
 
-        public List<Product> SearchProduct(string Query)
+        public List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
-            return userAccess.SearchProduct(Query);
+            return userAccess.SearchProduct(Query, Options);
         }
 
         public void DeleteProduct(Product OldProduct)
@@ -108,14 +125,14 @@ namespace KomoLine.Data.Model
             userAccess.AddProduct(NewProduct);
         }
 
-        public void EditProduct(Product NewData)
+        public void SaveProduct(Product NewData)
         {
-            userAccess.EditProduct(NewData);
+            userAccess.SaveProduct(NewData);
         }
 
-        public void Purchase(Product Item)
+        public void Purchase(Product Item, double Quantity)
         {
-            userAccess.Purchase(Item);
+            userAccess.Purchase(Item,Quantity);
         }
 
         public void CancelPurchase(Transaction Purchase)
@@ -125,7 +142,7 @@ namespace KomoLine.Data.Model
 
         public List<Transaction> ViewHistory()
         {
-            return userAccess.ViewHistory();
+            return userAccess.ViewPurchases();
         }
 
         public void SaveProfile()
@@ -169,5 +186,14 @@ namespace KomoLine.Data.Model
             u.email = "example@domain.com";
             u.userAccess = new GuestAccess(u);
         }
+    }
+
+    public enum UserRole
+    {
+        Guest,
+        Buyer,
+        Vendor,
+        Admin,
+        Invalid
     }
 }
