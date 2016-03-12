@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Data\ITHB\Semester 6\Rekayasa Perangkat Lunak Lanjut\KomoLine\KomoLine\KomoLine.Entities\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\College\Semester 6\Advanced System Engineering\Project\KomoLine.Entities\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
