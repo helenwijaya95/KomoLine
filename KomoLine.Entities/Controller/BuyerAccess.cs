@@ -71,10 +71,7 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            if (string.Equals(trans.status, Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished), StringComparison.CurrentCultureIgnoreCase))
-            {
-                throw new InvalidOperationException(ErrorMessage.ERR_NOT_FINISHED);
-            }
+            AlterTransaction(trans, TransactionStatus.Finished, TransactionStatus.Finished, ErrorMessage.ERR_NOT_FINISHED);
             if (trans.rating == null)
             {
                 RatingEntity re = new RatingEntity();
@@ -96,10 +93,7 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            if (string.Equals(trans.status, Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished), StringComparison.CurrentCultureIgnoreCase))
-            {
-                throw new InvalidOperationException(ErrorMessage.ERR_NOT_FINISHED);
-            }
+            AlterTransaction(trans, TransactionStatus.Finished, TransactionStatus.Finished, ErrorMessage.ERR_NOT_FINISHED);
             if (trans.review == null)
             {
                 ReviewEntity re = new ReviewEntity();
@@ -121,10 +115,7 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            if(string.Equals(trans.status,Enum.GetName(typeof(TransactionStatus), TransactionStatus.Started),StringComparison.CurrentCultureIgnoreCase)){
-                throw new InvalidOperationException(ErrorMessage.ERR_CANNOT_CANCEL);
-            }
-            trans.status = Enum.GetName(typeof(TransactionStatus), TransactionStatus.Canceled);
+            AlterTransaction(trans, TransactionStatus.Started, TransactionStatus.Canceled, ErrorMessage.ERR_CANNOT_CANCEL);
             DbContext.SaveChanges();
         }
 
@@ -132,11 +123,8 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
-            if (string.Equals(trans.status, Enum.GetName(typeof(TransactionStatus), TransactionStatus.Accepted), StringComparison.CurrentCultureIgnoreCase))
-            {
-                throw new InvalidOperationException(ErrorMessage.ERR_CANNOT_CANCEL);
-            }
-            trans.status = Enum.GetName(typeof(TransactionStatus), TransactionStatus.Finished);
+            AlterTransaction(trans, TransactionStatus.Accepted, TransactionStatus.Finished, ErrorMessage.ERR_CANNOT_FINISH);
+            trans.finish_time = DateTime.Now;
             DbContext.SaveChanges();
         }
 
@@ -163,12 +151,31 @@ namespace KomoLine.Data.Controller
             }
         }
 
-        private bool HasTransactionAccess(TransactionEntity trans)
+        protected bool HasTransactionAccess(TransactionEntity trans)
         {
             bool isAdmin = Reference.Role == UserRole.Admin;
             bool isBuyer = trans.user.username == Reference.Username;
             bool isVendor = trans.product.user.username == Reference.Username;
             return isAdmin || isBuyer || isVendor;
+        }
+
+        protected bool CheckStatus(TransactionEntity te, TransactionStatus ts)
+        {
+            return string.Equals(
+                te.status,
+                Enum.GetName(
+                    typeof(TransactionStatus),
+                    ts),
+                StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        protected void AlterTransaction(TransactionEntity Entity, TransactionStatus From, TransactionStatus Target, string ErrorMessage)
+        {
+            if (!CheckStatus(Entity, From))
+            {
+                throw new InvalidOperationException(ErrorMessage);
+            }
+            Entity.status = Enum.GetName(typeof(TransactionStatus), Target);
         }
     }
 }

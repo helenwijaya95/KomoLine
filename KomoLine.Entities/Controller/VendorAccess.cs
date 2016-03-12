@@ -101,5 +101,22 @@ namespace KomoLine.Data.Controller
             pe.is_deleted = true;
             DbContext.SaveChanges();
         }
+
+        public override void AcceptOrder(Transaction Purchase)
+        {
+            komolineEntities DbContext = new komolineEntities();
+            var trans = DbContext.TransactionEntities.SingleOrDefault(x => x.code == Purchase.Code);
+            AlterTransaction(trans, TransactionStatus.Started, TransactionStatus.Accepted, ErrorMessage.ERR_CANNOT_ACCEPT);
+            DbContext.SaveChanges();
+        }
+
+        public override List<Transaction> ViewSales()
+        {
+            komolineEntities DbContext = new komolineEntities();
+            return DbContext.TransactionEntities
+                .Where(x => x.product.user.username == Reference.Username)
+                .Select(x => Converter.ToModel(x, null))
+                .ToList();
+        }
     }
 }
