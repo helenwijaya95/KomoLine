@@ -121,5 +121,16 @@ namespace KomoLine.Data.Controller
         {
             throw RESTRICTED_ACCESS;
         }
+
+        public virtual void ConfirmVendor(Account Vendor)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+
+        public virtual void BlockUser(Account User)
+        {
+            throw RESTRICTED_ACCESS;
+        }
     }
 }
