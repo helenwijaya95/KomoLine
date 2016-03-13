@@ -10,7 +10,7 @@ namespace KomoLine.Data.Model
 {
     public class Account
     {
-
+        //Fields
         private string username;
         private string name;
         private string address;
@@ -21,7 +21,7 @@ namespace KomoLine.Data.Model
         private DateTime? confirmed;
         private IAccess userAccess;
         private UserRole role;
-
+        //Properties
         public UserRole Role
         {
             get { return role; }
@@ -94,10 +94,16 @@ namespace KomoLine.Data.Model
             get { return userAccess; }
             set { userAccess = value; }
         }
-
+        //Constructor
         public Account()
         {
             Account.SetDefault(this);
+        }
+        #region Guest Features
+        //Methods: Guest
+        public void Login(string Username, string Password)
+        {
+            userAccess.Login(Username, Password);
         }
 
         public void LogOut()
@@ -115,6 +121,58 @@ namespace KomoLine.Data.Model
             return userAccess.SearchProduct(Query, Options);
         }
 
+        public Product GetProduct(string ID)
+        {
+            return userAccess.GetProduct(ID);
+        }
+
+        public Account GetProfile(string Username)
+        {
+            return userAccess.GetUser(Username);
+        }
+        #endregion
+        #region Buyer Features
+        //Methods: Buyer
+        public Transaction GetTransaction(string Code)
+        {
+            return userAccess.GetTransaction(Code);
+        }
+        public void SaveProfile()
+        {
+            userAccess.SaveProfile();
+        }
+        public void Purchase(Product Item, double Quantity)
+        {
+            userAccess.Purchase(Item,Quantity);
+        }
+
+        public void CancelPurchase(Transaction Purchase)
+        {
+            userAccess.CancelPurchase(Purchase);
+        }
+
+        public void FinishPurchase(Transaction Purchase)
+        {
+            userAccess.FinishPurchase(Purchase);
+        }
+
+        public void ReviewPurchase(Transaction Purchase, string Review)
+        {
+            userAccess.ReviewPurchase(Purchase, Review);
+        }
+
+        public void RatePurchase(Transaction Purchase, int Rate)
+        {
+            userAccess.RatePurchase(Purchase, Rate);
+        }
+
+        public List<Transaction> ViewPurchase()
+        {
+            return userAccess.ViewPurchases();
+        }
+        #endregion
+        #region Vendor Features
+        //Methods: Vendor
         public void DeleteProduct(Product OldProduct)
         {
             userAccess.DeleteProduct(OldProduct);
@@ -130,36 +188,17 @@ namespace KomoLine.Data.Model
             userAccess.SaveProduct(NewData);
         }
 
-        public void Purchase(Product Item, double Quantity)
+        public void AcceptOrder(Transaction Order)
         {
-            userAccess.Purchase(Item,Quantity);
+            userAccess.AcceptOrder(Order);
         }
 
-        public void CancelPurchase(Transaction Purchase)
+        public List<Transaction> ViewSales()
         {
-            userAccess.CancelPurchase(Purchase);
+            return userAccess.ViewSales();
         }
-
-        public List<Transaction> ViewHistory()
-        {
-            return userAccess.ViewPurchases();
-        }
-
-        public void SaveProfile()
-        {
-            userAccess.SaveProfile();
-        }
-
-        public void ReviewPurchase(Transaction Purchase, string Review)
-        {
-            userAccess.ReviewPurchase(Purchase, Review);
-        }
-
-        public void RatePurchase(Transaction Purchase, int Rate)
-        {
-            userAccess.RatePurchase(Purchase, Rate);
-        }
-
+        #endregion
+        #region Admin Features
         public List<Account> ViewUsers()
         {
             return userAccess.ViewUsers();
@@ -170,10 +209,16 @@ namespace KomoLine.Data.Model
             return userAccess.ViewTransactions();
         }
 
-        public void Login(string Username, string Password)
+        public void ConfirmVendor(Account Vendor)
         {
-            userAccess.Login(Username, Password);
+            userAccess.ConfirmVendor(Vendor);
         }
+
+        public void BlockUser(Account User)
+        {
+            userAccess.BlockUser(User);
+        }
+        #endregion
 
         private static void SetDefault(Account u)
         {
