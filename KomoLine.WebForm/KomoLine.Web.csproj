@@ -100,6 +100,7 @@
     <Content Include="Global.asax" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\Tester.aspx" />
+    <Content Include="Pages\Profile.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Pages\Tester.aspx.designer.cs">
       <DependentUpon>Tester.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

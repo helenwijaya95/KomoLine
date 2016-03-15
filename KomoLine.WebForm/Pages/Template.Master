@@ -6,6 +6,7 @@
 <head runat="server">
     <title>KomoLine: Online Platform for Commodity</title>
     <asp:ContentPlaceHolder ID="Header" runat="server">
+        <link href="Content/bootstrap.min.css" rel="stylesheet">
     </asp:ContentPlaceHolder>
 </head>
 <body>
