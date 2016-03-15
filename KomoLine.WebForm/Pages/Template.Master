@@ -5,8 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>KomoLine: Online Platform for Commodity</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+
     <asp:ContentPlaceHolder ID="Header" runat="server">
-        <link href="Content/bootstrap.min.css" rel="stylesheet">
     </asp:ContentPlaceHolder>
 </head>
 <body>
