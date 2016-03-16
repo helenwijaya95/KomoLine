@@ -20,12 +20,10 @@ namespace KomoLine.Data.Model
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
-        private UserRole role;
         //Properties
         public UserRole Role
         {
-            get { return role; }
-            internal set { role = value; }
+            get { return userAccess.Role; }
         }
         
         public string Username
