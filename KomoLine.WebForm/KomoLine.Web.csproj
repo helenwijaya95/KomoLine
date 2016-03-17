@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\SearchResult.aspx" />
     <Content Include="Pages\Welcome.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -103,12 +104,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MyModule1.cs" />
     <Compile Include="Pages\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchResult.aspx.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SearchResult.aspx.designer.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>
