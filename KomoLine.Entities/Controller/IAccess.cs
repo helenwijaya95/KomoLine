@@ -1,28 +1,37 @@
-﻿using KomoLine.Entities.Model;
+﻿using KomoLine.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomoLine.Entities.Controller
+namespace KomoLine.Data.Controller
 {
     public interface IAccess
     {
-        
-        void Register(User Reference, string Password, string Status = "buyer");
-        void Login(User Reference, string Username, string Password);
-        void Logout(User Reference);
-        List<Product> Search(string Query);
-        List<Transaction> ViewPurchase(User Reference);
-        List<Transaction> ViewSales(User Reference);
-        void CancelTransaction(User Reference, Transaction Transaction);
-        void Rate(User Reference, Transaction Transaction, double Rating);
-        void Review(User Reference, Transaction Transaction, string Content);
-        void SaveProfile(User Reference);
-        void AddProduct(User Reference, Product NewProduct);
-        void DeleteProduct(User Reference, Product OldProduct);
-        void EditProduct(User Reference, Product NewProduct);
-
+        Account Reference { get; set; }
+        UserRole Role { get; set; }
+        void Register(string Password, string Status = "buyer");//Guest only
+        void Login(string Username, string Password);//Guest only
+        List<Product> SearchProduct(string Query, List<SearchBy> Options);//Guest+
+        Account GetUser(string Username);//Guest+
+        Product GetProduct(string ID);//Guest+
+        void Purchase(Product Item, double Quantity);//Buyer+
+        void CancelPurchase(Transaction Purchase);//Buyer+
+        void FinishPurchase(Transaction Purchase);//Buyer+
+        List<Transaction> ViewPurchases();//Buyer+
+        void SaveProfile();//Buyer+
+        void ReviewPurchase(Transaction Purchase, string Review);//Buyer+
+        void RatePurchase(Transaction Purchase, int Rate);//Buyer+
+        Transaction GetTransaction(string Code);//Buyer+
+        void DeleteProduct(Product OldProduct);//Vendor+
+        void AddProduct(Product NewProduct);//Vendor+
+        void SaveProduct(Product NewData);//Vendor+
+        void AcceptOrder(Transaction Purchase);//Vendor+
+        List<Transaction> ViewSales();//Vendor+
+        List<Account> ViewUsers();//Admin
+        List<Transaction> ViewTransactions();//Admin
+        void ConfirmVendor(Account Vendor);//Admin
+        void BlockUser(Account User);//Admin
     }
 }

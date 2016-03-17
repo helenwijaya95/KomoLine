@@ -9,21 +9,21 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="products">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="min_order" Type="double" />
           <Property Name="description" Type="text" />
           <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="price" Type="double" />
-          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="is_deleted" Type="bool" Nullable="false" />
           <Property Name="owner_id" Type="int" Nullable="false" />
           <Property Name="photo_path" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -49,19 +49,20 @@
             <PropertyRef Name="product_id" />
           </Key>
           <Property Name="tag_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="transactions">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="product_id" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="buyer_id" Type="int" Nullable="false" />
           <Property Name="start_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="finish_time" Type="timestamp" Precision="0" />
           <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="quantity" Type="double" />
+          <Property Name="code" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -69,7 +70,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="255" />
           <Property Name="phone_number" Type="varchar" MaxLength="30" />
@@ -78,6 +79,7 @@
           <Property Name="register_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="confirmed_time" Type="timestamp" Precision="0" />
           <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="is_deleted" Type="bool" />
         </EntityType>
         <Association Name="FK_products_category">
           <End Role="categories" Type="Self.categories" Multiplicity="1" />
@@ -208,7 +210,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.FK_products_category" FromRole="categories" ToRole="products" />
         </EntityType>
@@ -216,25 +218,25 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="min_order" Type="Double" />
           <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="price" Type="Double" />
-          <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="category" Relationship="Self.FK_products_category" FromRole="products" ToRole="categories" />
           <NavigationProperty Name="user" Relationship="Self.FK_products_owner" FromRole="products" ToRole="users" />
           <NavigationProperty Name="tags" Relationship="Self.FK_tags_product" FromRole="products" ToRole="tags" />
           <NavigationProperty Name="transactions" Relationship="Self.FK_transactions_product" FromRole="products" ToRole="transactions" />
           <Property Name="photo_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_deleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="RatingEntity">
           <Key>
             <PropertyRef Name="trans_id" />
           </Key>
           <Property Name="trans_id" Type="Int32" Nullable="false" />
-          <Property Name="rating1" Type="Double" Nullable="false" />
+          <Property Name="rating" Type="Double" Nullable="false" />
           <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="transaction" Relationship="Self.FK_ratings" FromRole="ratings" ToRole="transactions" />
         </EntityType>
@@ -253,7 +255,7 @@
             <PropertyRef Name="product_id" />
           </Key>
           <Property Name="tag_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="product_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_id" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="product" Relationship="Self.FK_tags_product" FromRole="tags" ToRole="products" />
         </EntityType>
         <EntityType Name="TransactionEntity">
@@ -269,6 +271,7 @@
           <NavigationProperty Name="rating" Relationship="Self.FK_ratings" FromRole="transactions" ToRole="ratings" />
           <NavigationProperty Name="review" Relationship="Self.FK_reviews" FromRole="transactions" ToRole="reviews" />
           <NavigationProperty Name="user" Relationship="Self.FK_transactions_buyer" FromRole="transactions" ToRole="users" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserEntity">
           <Key>
@@ -276,7 +279,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="phone_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -284,9 +287,10 @@
           <Property Name="photo_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="register_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="confirmed_time" Type="DateTime" />
-          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="products" Relationship="Self.FK_products_owner" FromRole="users" ToRole="products" />
           <NavigationProperty Name="transactions" Relationship="Self.FK_transactions_buyer" FromRole="users" ToRole="transactions" />
+          <Property Name="is_deleted" Type="Boolean" />
+          <Property Name="status" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK_products_category">
           <End Role="categories" Type="komolineModel.CategoryEntity" Multiplicity="1" />
@@ -394,6 +398,7 @@
           <EntitySetMapping Name="ProductEntities">
             <EntityTypeMapping TypeName="komolineModel.ProductEntity">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="photo_path" ColumnName="photo_path" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -401,7 +406,6 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="created_time" ColumnName="created_time" />
                 <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -409,7 +413,7 @@
             <EntityTypeMapping TypeName="komolineModel.RatingEntity">
               <MappingFragment StoreEntitySet="ratings">
                 <ScalarProperty Name="trans_id" ColumnName="trans_id" />
-                <ScalarProperty Name="rating1" ColumnName="rating" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="created_time" ColumnName="created_time" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -434,6 +438,7 @@
           <EntitySetMapping Name="TransactionEntities">
             <EntityTypeMapping TypeName="komolineModel.TransactionEntity">
               <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="start_time" ColumnName="start_time" />
                 <ScalarProperty Name="finish_time" ColumnName="finish_time" />
@@ -445,6 +450,8 @@
           <EntitySetMapping Name="UserEntities">
             <EntityTypeMapping TypeName="komolineModel.UserEntity">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -455,7 +462,6 @@
                 <ScalarProperty Name="photo_path" ColumnName="photo_path" />
                 <ScalarProperty Name="register_time" ColumnName="register_time" />
                 <ScalarProperty Name="confirmed_time" ColumnName="confirmed_time" />
-                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

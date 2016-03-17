@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KomoLine.Entities
+namespace KomoLine.Data
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace KomoLine.Entities
     public partial class RatingEntity
     {
         public int trans_id { get; set; }
-        public double rating1 { get; set; }
+        public double rating { get; set; }
         public System.DateTime created_time { get; set; }
     
         public virtual TransactionEntity transaction { get; set; }

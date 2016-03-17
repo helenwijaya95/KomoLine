@@ -1,18 +1,19 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.Master.cs" Inherits="KomoLine.WebForm.Pages.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.Master.cs" Inherits="KomoLine.WebForm.Pages.Template" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>KomoLine: Online Platform for Commodity</title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="Header" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
+        <asp:ContentPlaceHolder ID="Content" runat="server">
         </asp:ContentPlaceHolder>
     </div>
     </form>
