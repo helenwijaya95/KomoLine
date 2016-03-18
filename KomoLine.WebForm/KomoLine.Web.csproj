@@ -103,7 +103,7 @@
     <Content Include="Pages\Profile.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Pages\SearchResult.aspx" />
     <Content Include="Pages\Welcome.aspx" />
@@ -138,7 +138,6 @@
     <Compile Include="Pages\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyModule1.cs" />
     <Compile Include="Pages\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,8 +145,6 @@
     <Compile Include="Pages\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tester.aspx.cs">
-      <DependentUpon>Tester.aspx</DependentUpon>
     <Compile Include="Pages\SearchResult.aspx.cs">
       <DependentUpon>SearchResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
