@@ -60,6 +60,11 @@ namespace KomoLine.Data.Controller
             t.Quantity = Quantity;
             t.Status = TransactionStatus.Started;
             TransactionEntity te = Converter.ToEntity(t);
+            var transCodes = DbContext.TransactionEntities.Select(x => x.code);
+            while (transCodes.Contains(te.code))
+            {
+                te.code = Converter.GenerateID();
+            }
             te.product = SearchByID(Item.ID, DbContext).SingleOrDefault();
             te.user = DbContext.UserEntities
                 .SingleOrDefault(x => !(x.is_deleted ?? false) && x.username == Reference.Username);

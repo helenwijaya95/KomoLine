@@ -32,6 +32,11 @@ namespace KomoLine.Data.Controller
         {
             komolineEntities DbContext = new komolineEntities();
             ProductEntity pe = Converter.ToEntity(NewProduct);
+            var productIDs = DbContext.ProductEntities.Select(x => x.id);
+            while (productIDs.Contains(pe.id))
+            {
+                pe.id = Converter.GenerateID();
+            }
             pe.created_time = DateTime.Now;
             NewProduct.Owner = Reference;
             pe.category = DbContext.CategoryEntities.SingleOrDefault(x => x.name == NewProduct.Category);
