@@ -17,14 +17,13 @@
          <hr id="hrSrc"/>
      <div id="srcRes">
 
-         <asp:Table ID="tblSearchRes" BorderColor="Black" GridLines="Both" runat="server">
-                        <asp:TableRow>
+         <asp:Table ID="tblSearchRes" GridLines="Both" BorderColor="Black" runat="server">
+                        <asp:TableRow style="padding-top:10px">
                             <asp:TableCell>
                                
                                 <asp:hyperlink id="linkProd" NavigateUrl="#" runat="server">
                                    <asp:image id="imgProd" runat="server" imageurl="#" />
                                 </asp:hyperlink>
-
                              </asp:TableCell>
                             <asp:TableCell> 
                                <asp:Label>Product Name</asp:Label>
@@ -39,7 +38,6 @@
                                 <asp:Button id="btnDetail" Text="Detail" runat="server" />
 
                             </asp:TableCell>
-                           
                         </asp:TableRow>
               <asp:TableRow>
                             <asp:TableCell>
