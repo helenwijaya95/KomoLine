@@ -95,6 +95,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\ProdDetail.css" />
+    <Content Include="CSS\SearchRes.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
@@ -105,7 +107,7 @@
     <Content Include="Pages\ProductDetail.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="jquery-2.2.1.js" />
+    <Content Include="Pages\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Pages\SearchResult.aspx" />
     <Content Include="Pages\Welcome.aspx" />
@@ -186,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KomoLine.Entities\KomoLine.Data.csproj">
