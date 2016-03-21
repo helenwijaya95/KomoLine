@@ -102,10 +102,13 @@
     <Content Include="Pages\Purchase.aspx" />
     <Content Include="Pages\Tester.aspx" />
     <Content Include="Pages\Profile.aspx" />
+    <Content Include="Pages\ProductDetail.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Pages\SearchResult.aspx" />
+    <Content Include="Pages\Welcome.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Pages\Template.Master" />
@@ -151,8 +154,22 @@
     <Compile Include="Pages\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tester.aspx.cs">
-      <DependentUpon>Tester.aspx</DependentUpon>
+    <Compile Include="Pages\SearchResult.aspx.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SearchResult.aspx.designer.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductDetail.aspx.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductDetail.aspx.designer.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Welcome.aspx.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Tester.aspx.designer.cs">
