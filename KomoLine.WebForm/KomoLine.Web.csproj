@@ -99,6 +99,7 @@
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Register.aspx" />
+    <Content Include="Pages\Purchase.aspx" />
     <Content Include="Pages\Tester.aspx" />
     <Content Include="Pages\Profile.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -137,6 +138,13 @@
     </Compile>
     <Compile Include="Pages\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Purchase.aspx.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Purchase.aspx.designer.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
