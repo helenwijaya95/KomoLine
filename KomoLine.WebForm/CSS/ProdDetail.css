@@ -1,2 +1,20 @@
 ﻿body {
+    margin:0
+}
+
+#searchForm{
+    padding-left:3%;
+    height:auto; 
+    width:50%;
+    background-color:red;
+    float:left;
+}
+
+#logReg{
+    padding-right:2%;
+    height:auto; 
+    width:20%;
+    float:right;
+    background-color:aqua;
+    text-align:right;
 }
