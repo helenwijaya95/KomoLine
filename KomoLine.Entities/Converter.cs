@@ -120,13 +120,13 @@ namespace KomoLine.Controller
             }
         }
         
-        private static string GenerateID()
+        internal static string GenerateID()
         {
             Guid g = Guid.NewGuid();
             string ID = Convert.ToBase64String(g.ToByteArray());
             return ID
                 .Replace("=", "")
-                .Replace("+", "_")
+                .Replace("+", "-")
                 .Replace("/", "_");
         }
     }
