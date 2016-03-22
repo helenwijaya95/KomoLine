@@ -6,8 +6,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div id="main">
        <div id="searchForm">
-          <asp:TextBox ID="tbSearch"  style=" align-items:center" class="searchControl" placeholder="type products or shop name here..." runat="server" Height="20" Width="300"></asp:TextBox>
-          <asp:Button Text="Search" ID="btnSearch" class="searchControl" runat="server" />
+          <asp:TextBox ID="tbSearch"  style=" align-items:center" class="searchControl" placeholder="ketik nama produk atau nama toko..." runat="server" Height="20" Width="300"></asp:TextBox>
+          <asp:Button Text="Cari" ID="btnSearch" class="searchControl" runat="server" />
         
         </div>
         <div id="logReg">
@@ -26,9 +26,9 @@
                                 </asp:hyperlink>
                              </asp:TableCell>
                             <asp:TableCell> 
-                               <asp:Label>Product Name</asp:Label>
+                               <asp:Label>Nama Produk</asp:Label>
                                 <br /><br />
-                                <asp:Label>Seller Name</asp:Label>
+                                <asp:Label>Nama Toko</asp:Label>
                                 <br />
                                 <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="10%" Height="10%" />
                                 <asp:image id="Star2" runat="server" imageurl="../Image/star.png" AlternateText="2Star" Width="10%" Height="10%"/>

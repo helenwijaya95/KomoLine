@@ -18,3 +18,39 @@
     background-color:aqua;
     text-align:right;
 }
+
+#productDet{
+      height: auto;
+    padding: 1%;;
+    border: 5px solid gray;
+    margin: 3%; 
+}
+
+#prodTabs{
+    
+		background:#DDA0DD;
+        margin:1%;
+        margin-top:1%;
+        width:inherit;
+		height:auto;
+		padding:0.5%;
+		border-radius:15px;
+}
+
+
+    #prodTabs li{
+        position:relative;
+	    display:inline;
+		padding-left:6%;
+    }
+
+.class1{
+   margin-left:20%;
+}
+
+#content{
+    height: auto;
+    padding: 1%;;
+    border: 2px solid red;
+    margin: 3%; 
+}
