@@ -6760,49 +6760,4 @@ button.close {
   }
 }
 
-
-/*SearchResult CSS>>>>>>>>>>>>>>*/
-#main{
-    height:auto; 
-    width:100%;
-    background-color:yellow
-}
-
-#srcRes{
-    margin: 3%;
-    text-align:center;
-}
-
-#searchForm{
-    padding-left:3%;
-    height:auto; 
-    width:50%;
-    background-color:red;
-    float:left;
-}
-
-#logReg{
-    padding-right:2%;
-    height:auto; 
-    width:50%;
-    float:right;
-    background-color:aqua;
-    text-align:right;
-}
-
-#tblSearchRes{
-    padding:2%;
-}
-
-#tblSearchRes{
-    padding:10%;
-}
-
-#hrSrc{
-    height: 3px;
-    color:brown;
-    background-color: brown;
-    border: none;
-}
-
 /*# sourceMappingURL=bootstrap.css.map */
