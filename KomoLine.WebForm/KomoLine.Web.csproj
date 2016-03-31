@@ -100,14 +100,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\ListTransaction.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\Purchase.aspx" />
+    <Content Include="Pages\ReviewRate.aspx" />
     <Content Include="Pages\Tester.aspx" />
     <Content Include="Pages\Profile.aspx" />
     <Content Include="Pages\ProductDetail.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-2.2.1.js" />    <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Pages\SearchResult.aspx" />
     <Content Include="Pages\Welcome.aspx" />
     <Content Include="Web.config" />
@@ -134,6 +137,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ListTransaction.aspx.cs">
+      <DependentUpon>ListTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListTransaction.aspx.designer.cs">
+      <DependentUpon>ListTransaction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,6 +157,13 @@
     </Compile>
     <Compile Include="Pages\Purchase.aspx.designer.cs">
       <DependentUpon>Purchase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReviewRate.aspx.cs">
+      <DependentUpon>ReviewRate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ReviewRate.aspx.designer.cs">
+      <DependentUpon>ReviewRate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
