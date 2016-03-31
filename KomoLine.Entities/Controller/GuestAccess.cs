@@ -11,7 +11,7 @@ namespace KomoLine.Data.Controller
 {
     public class GuestAccess : NoAccess
     {
-        protected delegate List<ProductEntity> SearchStrategy(String Query, komolineEntities DbContext);
+        protected delegate bool SearchStrategy(String Query, ProductEntity Product);
 
         public override UserRole Role
         {
@@ -62,16 +62,23 @@ namespace KomoLine.Data.Controller
 
         public override List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
-            List<ProductEntity> result = new List<ProductEntity>();
             komolineEntities DbContext = new komolineEntities();
-            Options.ForEach(x => result.AddRange(SearchMethod[x](Query.ToLower(), DbContext)));
-            return result.Select(x => Converter.ToModel(x)).ToList();
+            SearchStrategy SearchBy = (q, p) => false;
+            Options.ForEach(x => 
+                SearchBy = (q, p) => SearchBy(q, p) || SearchMethod[x](q, p));
+            return DbContext.ProductEntities
+                .Where(x => SearchBy(Query,x) && !x.is_deleted)
+                .OrderBy(x => x.created_time)
+                .Select(x => Converter.ToModel(x, null))
+                .ToList();
         }
 
         public override Product GetProduct(string ID)
         {
             komolineEntities DbContext = new komolineEntities();
-            var product = SearchByID(ID, DbContext).SingleOrDefault();
+            var product = DbContext.ProductEntities
+                .Where(x => SearchByID(ID, x) && !x.is_deleted)
+                .SingleOrDefault();
             if (product == null)
             {
                 string error = string.Format(ErrorMessage.ERR_MISSING, ID);
@@ -95,53 +102,14 @@ namespace KomoLine.Data.Controller
         }
 
 
-        protected static SearchStrategy SearchByName =
-            (n, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.name
-                    .ToLower()
-                    .Contains(n))
-                .ToList();
-        protected static SearchStrategy SearchByCategory =
-            (c, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.category.name
-                    .ToLower()
-                    .Contains(c))
-                .ToList();
-        protected static SearchStrategy SearchByDescription =
-            (d, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.description
-                    .ToLower()
-                    .Contains(d))
-                .ToList();
-        protected static SearchStrategy SearchByTag =
-            (tag, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.tags
-                    .Any(t => t.tag_name
-                        .ToLower()
-                        .Contains(tag)))
-                .ToList();
-        protected static SearchStrategy SearchByReview =
-            (r, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.transactions
-                    .Any(t => t.review.content
-                        .ToLower()
-                        .Contains(r)))
-                .ToList();
-        protected static SearchStrategy SearchByID =
-            (ID, db) => 
-                db.ProductEntities
-                .Where(x => x.id == ID && !x.is_deleted)
-                .ToList();
-        protected static SearchStrategy SearchByOwner =
-            (Owner, db) =>
-                db.ProductEntities
-                .Where(x => !x.is_deleted && x.user.username == Owner)
-                .ToList();
+        protected static SearchStrategy SearchByName = (q, p) => p.name.Contains(q);
+        protected static SearchStrategy SearchByCategory = (q, p) => p.category.name.Contains(q);
+        protected static SearchStrategy SearchByDescription = (q, p) => p.description.Contains(q);
+        protected static SearchStrategy SearchByTag = (q, p) => p.tags.Any(x => x.tag_name.Contains(q));
+        protected static SearchStrategy SearchByReview = (q, p) => p.transactions.Any(t => t.review.content.Contains(q));
+        protected static SearchStrategy SearchByID = (ID, p) => p.id == ID;
+        protected static SearchStrategy SearchByOwner = (Owner, p) => p.user.username == Owner;
+
         protected static readonly Dictionary<SearchBy, SearchStrategy> SearchMethod = new Dictionary<SearchBy, SearchStrategy>()
         {
             {SearchBy.Category,SearchByCategory},
