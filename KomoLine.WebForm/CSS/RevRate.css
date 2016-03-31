@@ -1,2 +1,22 @@
 ﻿body {
+    margin:0;
+}
+
+#detProduct{
+    float:left;
+    width:50%;
+    display:inline;
+    background-color:yellow
+}
+
+#rateRev{
+    float:right;
+    width:30%;
+    display:inline;
+    background-color:red
+}
+
+.stars:hover
+{
+    background-image: url('../Image/star.png') !important;
 }
