@@ -1,12 +1,13 @@
 ﻿body {
-    margin:0;
+    margin:2%;
 }
 
 #detProduct{
     float:left;
     width:50%;
     display:inline;
-    background-color:yellow
+    background-color:grey;
+    margin-top:2%;
 }
 
 #rateRev{
