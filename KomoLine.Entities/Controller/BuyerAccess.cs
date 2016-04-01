@@ -65,7 +65,7 @@ namespace KomoLine.Data.Controller
             {
                 te.code = Converter.GenerateID();
             }
-            te.product = SearchByID(Item.ID, DbContext).SingleOrDefault();
+            te.product = SearchByID(Item.ID, DbContext.ProductEntities).SingleOrDefault();
             te.user = DbContext.UserEntities
                 .SingleOrDefault(x => !(x.is_deleted ?? false) && x.username == Reference.Username);
             DbContext.TransactionEntities.Add(te);
