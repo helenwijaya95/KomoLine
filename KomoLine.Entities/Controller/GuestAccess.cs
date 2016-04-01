@@ -3,6 +3,7 @@ using KomoLine.Data.Model;
 using KomoLine.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace KomoLine.Data.Controller
 {
     public class GuestAccess : NoAccess
     {
-        protected delegate bool SearchStrategy(String Query, ProductEntity Product);
+        protected delegate IQueryable<ProductEntity> SearchStrategy(String Query, DbSet<ProductEntity> Product);
 
         public override UserRole Role
         {
@@ -63,22 +64,19 @@ namespace KomoLine.Data.Controller
         public override List<Product> SearchProduct(string Query, List<SearchBy> Options)
         {
             komolineEntities DbContext = new komolineEntities();
-            SearchStrategy SearchBy = (q, p) => false;
-            Options.ForEach(x => 
-                SearchBy = (q, p) => SearchBy(q, p) || SearchMethod[x](q, p));
-            return DbContext.ProductEntities
-                .Where(x => SearchBy(Query,x) && !x.is_deleted)
-                .OrderBy(x => x.created_time)
-                .Select(x => Converter.ToModel(x, null))
-                .ToList();
+            List<Product> result = new List<Product>();
+            foreach (SearchBy opt in Options)
+            {
+                var temp = SearchMethod[opt](Query, DbContext.ProductEntities);
+                result.AddRange(temp.Select(x => Converter.ToModel(x, null)));
+            }
+            return result.OrderByDescending(x => x.Rating).ToList();
         }
 
         public override Product GetProduct(string ID)
         {
             komolineEntities DbContext = new komolineEntities();
-            var product = DbContext.ProductEntities
-                .Where(x => SearchByID(ID, x) && !x.is_deleted)
-                .SingleOrDefault();
+            var product = SearchByID(ID, DbContext.ProductEntities).FirstOrDefault();
             if (product == null)
             {
                 string error = string.Format(ErrorMessage.ERR_MISSING, ID);
@@ -102,13 +100,13 @@ namespace KomoLine.Data.Controller
         }
 
 
-        protected static SearchStrategy SearchByName = (q, p) => p.name.Contains(q);
-        protected static SearchStrategy SearchByCategory = (q, p) => p.category.name.Contains(q);
-        protected static SearchStrategy SearchByDescription = (q, p) => p.description.Contains(q);
-        protected static SearchStrategy SearchByTag = (q, p) => p.tags.Any(x => x.tag_name.Contains(q));
-        protected static SearchStrategy SearchByReview = (q, p) => p.transactions.Any(t => t.review.content.Contains(q));
-        protected static SearchStrategy SearchByID = (ID, p) => p.id == ID;
-        protected static SearchStrategy SearchByOwner = (Owner, p) => p.user.username == Owner;
+        protected static SearchStrategy SearchByName = (q, p) => p.Where(x => x.name.Contains(q) && !x.is_deleted);
+        protected static SearchStrategy SearchByCategory = (q, p) => p.Where(x => x.category.name.Contains(q) && !x.is_deleted);
+        protected static SearchStrategy SearchByDescription = (q, p) => p.Where(x => x.description.Contains(q) && !x.is_deleted);
+        protected static SearchStrategy SearchByTag = (q, p) => p.Where(x => x.tags.Any(t => t.tag_name.Contains(q)) && !x.is_deleted);
+        protected static SearchStrategy SearchByReview = (q, p) => p.Where(x => x.transactions.Any(t => t.review.content.Contains(q)) && !x.is_deleted);
+        protected static SearchStrategy SearchByID = (ID, p) => p.Where(x => x.id == ID && !x.is_deleted);
+        protected static SearchStrategy SearchByOwner = (Owner, p) => p.Where(x => x.user.username == Owner && !x.is_deleted);
 
         protected static readonly Dictionary<SearchBy, SearchStrategy> SearchMethod = new Dictionary<SearchBy, SearchStrategy>()
         {
