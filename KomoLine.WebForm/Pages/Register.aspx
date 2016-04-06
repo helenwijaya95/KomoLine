@@ -6,10 +6,11 @@
     <div>
 		<h1>REGISTER HERE...</h1>
 	</div>
+    <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red"/>
     <table border="0">
 		<tr>
 			<div class="input-group">
-				<td><asp:TextBox ID="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+				<td><asp:TextBox ID="email" CssClass="form-control" placeholder="Email" aria-describedby="basic-addon1" runat="server" TextMode="Email"></asp:TextBox></td>
 			</div>
 		</tr>
 		<tr>
