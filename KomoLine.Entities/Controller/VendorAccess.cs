@@ -118,10 +118,10 @@ namespace KomoLine.Data.Controller
         public override List<Transaction> ViewSales()
         {
             komolineEntities DbContext = new komolineEntities();
-            return DbContext.TransactionEntities
+            var res = DbContext.TransactionEntities
                 .Where(x => x.product.user.username == Reference.Username)
-                .Select(x => Converter.ToModel(x, null))
                 .ToList();
+            return res.Select(x => Converter.ToModel(x, null)).ToList();
         }
     }
 }
