@@ -31,17 +31,15 @@ namespace KomoLine.Data.Controller
         public override List<Account> ViewUsers()
         {
             komolineEntities DbContext = new komolineEntities();
-            return DbContext.UserEntities
-                .Select(x => Converter.ToModel(x, null))
-                .ToList();
+            var res = DbContext.UserEntities.ToList();
+            return res.Select(x => Converter.ToModel(x, null)).ToList();
         }
 
         public override List<Transaction> ViewTransactions()
         {
             komolineEntities DbContext = new komolineEntities();
-            return DbContext.TransactionEntities
-                .Select(x => Converter.ToModel(x, null))
-                .ToList();
+            var res = DbContext.TransactionEntities.ToList();
+            return res.Select(x => Converter.ToModel(x, null)).ToList();
         }
 
         public override void ConfirmVendor(Account Vendor)
