@@ -16,29 +16,21 @@ namespace KomoLine.WebForm.Pages
             if (IsPostBack)
             {
                 //Proses form
-                try
-                {
                     Account a = new Account();//Guest
                     a.Username = username.Text;
                     a.Name = name.Text;
                     a.Email = email.Text;
                     
-                    if(String.Equals(password.Text, confirmpass.Text))
+                    if(password.Text == confirmpass.Text)
                     {
                         a.Register(password.Text);
+                        Session.Add("user", a);
                     }
                     else
                     {
                         error.Text = "Password and confirm password doesn't match";
                         error.Visible = true;
                     }
-                    
-                }
-                catch (FormatException fe)
-                {
-                    error.Text = fe.Message;
-                    error.Visible = true;
-                }
                 username.Text = "";
                 name.Text = "";
                 email.Text = "";
