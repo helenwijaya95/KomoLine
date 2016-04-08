@@ -5,7 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>KomoLine: Online Platform for Commodity</title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet"/>
+    <script type = "text/javascript" src = "~/Scripts/bootstrap.min.js"></script>
+    <script type = "text/javascript" src = "~/Scripts/jquery-2.2.1.min.js"></script>
 
     <asp:ContentPlaceHolder ID="Header" runat="server">
     </asp:ContentPlaceHolder>
