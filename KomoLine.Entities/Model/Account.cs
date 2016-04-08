@@ -41,6 +41,8 @@ namespace KomoLine.Data.Model
             get { return address; }
             set { address = value; }
         }
+
+
         public string PhoneNumber
         {
             get { return phoneNumber; }
