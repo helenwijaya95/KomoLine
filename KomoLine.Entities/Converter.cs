@@ -22,7 +22,7 @@ namespace KomoLine.Controller
             e.phone_number = User.PhoneNumber;
             e.photo_path = User.Photo;
             e.register_time = User.RegisterOn;
-            e.status = Enum.GetName(typeof(UserRole),User.AccessType);
+            e.status = Enum.GetName(typeof(UserRole),User.Role);
             e.username = User.Username;
             return e;
         }

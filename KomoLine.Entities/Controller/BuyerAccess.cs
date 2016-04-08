@@ -65,7 +65,7 @@ namespace KomoLine.Data.Controller
             {
                 te.code = Converter.GenerateID();
             }
-            te.product = SearchByID(Item.ID, DbContext).SingleOrDefault();
+            te.product = SearchByID(Item.ID, DbContext.ProductEntities).SingleOrDefault();
             te.user = DbContext.UserEntities
                 .SingleOrDefault(x => !(x.is_deleted ?? false) && x.username == Reference.Username);
             DbContext.TransactionEntities.Add(te);
@@ -136,10 +136,10 @@ namespace KomoLine.Data.Controller
         public override List<Transaction> ViewPurchases()
         {
             komolineEntities DbContext = new komolineEntities();
-            return DbContext.TransactionEntities
+            var res = DbContext.TransactionEntities
                 .Where(x => x.user.username == Reference.Username)
-                .Select(x => Converter.ToModel(x, null))
                 .ToList();
+            return res.Select(x => Converter.ToModel(x)).ToList();
         }
 
         public override Transaction GetTransaction(string Code)
