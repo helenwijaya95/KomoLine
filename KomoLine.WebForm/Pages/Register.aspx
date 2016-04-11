@@ -6,36 +6,26 @@
     <div>
 		<h1>REGISTER HERE...</h1>
 	</div>
-    <table border="0">
-		<tr>
+    <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red"/>
 			<div class="input-group">
-				<td><asp:TextBox ID="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+                    <span class="glyphicon glyphicon-envelope input-group-addon" aria-hidden="true" id="basic-addon2"> Email</span>
+                    <asp:TextBox ID="email" CssClass="form-control" placeholder="Email" aria-describedby="basic-addon1" runat="server" TextMode="Email"></asp:TextBox>
 			</div>
-		</tr>
-		<tr>
 			<div class="input-group">
-				<td><asp:TextBox ID="name" class="form-control" placeholder="Name" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+                    <span class="glyphicon glyphicon-user input-group-addon" aria-hidden="true" id="basic-addon2"> Name</span>
+                    <asp:TextBox ID="name" CssClass="form-control" placeholder="Name" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
-		</tr>
-		<tr>
 			<div class="input-group">
-				<td><asp:TextBox ID="username" class="form-control" placeholder="Username" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+                    <span class="glyphicon glyphicon-user input-group-addon" aria-hidden="true" id="basic-addon2"> Username</span>
+                    <asp:TextBox ID="username" CssClass="form-control" placeholder="Username" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
-		</tr>
-		<tr>
 			<div class="input-group">
-				<td><asp:TextBox ID="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+                    <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2"> Password</span>
+                    <asp:TextBox ID="password" type="password" CssClass="form-control" placeholder="Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
-		</tr>
-		<tr>
 			<div class="input-group">
-				<td><asp:TextBox ID="confirmpass" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
+                    <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2"> ConfirmPassword</span>
+                    <asp:TextBox ID="confirmpass" type="password" CssClass="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
-		</tr>
-		<tr>
-			<td>
 				<asp:Button ID="register" Text="Register" class="btn btn-default" runat="server"></asp:Button>
-			</td>
-		</tr>
-	</table>
 </asp:Content>
