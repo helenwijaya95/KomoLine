@@ -15,7 +15,7 @@
         </div>
         <br />
          <hr id="hrSrc"/>
-     <div id="srcRes">
+     <!--<div id="srcRes">
 
          <asp:Table ID="tblSearchRes" GridLines="Both" BorderColor="Black" runat="server">
                         <asp:TableRow style="padding-top:10px">
@@ -62,20 +62,35 @@
                             </asp:TableCell>
                            
                         </asp:TableRow>
-                    </asp:Table>
-           
-          <!-- create dynamic table
-              <asp:DataList runat="server" id="dlProd" 
+                    </asp:Table>-->
+       
+              <asp:DataList runat="server" ID="dlProd" 
                 Border="1"
                 Font-Name="Verdana" CellPadding="4"
                 Font-Size="10pt"
-                RepeatColumns="2" >
+                RepeatColumns="2" runat="server" >
+
+                  <HeaderTemplate>
+                      Hasil Pencarian
+                  </HeaderTemplate>
                 <ItemTemplate>
-                    put table in here
+                    <asp:hyperlink id="linkProd" NavigateUrl="#" runat="server">
+                        <asp:image id="imgProd" runat="server" imageurl="~/Image/<%# ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath %>" />
+                    </asp:hyperlink>
+
+                    <p><%# ((KomoLine.Data.Model.Product)Container.DataItem).Name %></p>
+                    <p><%# ((KomoLine.Data.Model.Product)Container.DataItem).Owner.Name %></p>
+               
+                    <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="10%" Height="10%" />
+                    <asp:image id="Star2" runat="server" imageurl="../Image/star.png" AlternateText="2Star" Width="10%" Height="10%"/>
+                    <asp:image id="Star3" runat="server" imageurl="../Image/star.png" AlternateText="3Star" Width="10%" Height="10%"/>
+                    <asp:image id="Star4" runat="server" imageurl="../Image/star.png" AlternateText="4Star" Width="10%" Height="10%"/>
+                    <asp:image id="Star5" runat="server" imageurl="../Image/star.png" AlternateText="5Star" Width="10%" Height="10%"/>
+                    <asp:Button id="btnDetail" Text="Detail" runat="server"/>
                 </ItemTemplate>   
-            </asp:DataList>-->
+            </asp:DataList>
                    
-        </div>
+        
     </div>
    
 

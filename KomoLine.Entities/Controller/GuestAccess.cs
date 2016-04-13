@@ -67,7 +67,7 @@ namespace KomoLine.Data.Controller
             List<Product> result = new List<Product>();
             foreach (SearchBy opt in Options)
             {
-                var temp = SearchMethod[opt](Query, DbContext.ProductEntities);
+                var temp = SearchMethod[opt](Query, DbContext.ProductEntities).ToList();
                 result.AddRange(temp.Select(x => Converter.ToModel(x, null)));
             }
             return result.OrderByDescending(x => x.Rating).ToList();

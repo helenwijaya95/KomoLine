@@ -19,6 +19,8 @@ namespace KomoLine.WebForm.Pages
                 //Ambil data user
                 //Account acc = Session["user"] as Account;
                 Account a = new Account();
+               
+
                 /* a.Username = "aaa";
                  a.Name = "Helen Wijaya";
                  a.PhoneNumber="0939848957948";
@@ -31,18 +33,7 @@ namespace KomoLine.WebForm.Pages
            
         }
 
-        struct TransData
-        {
-            public string code;
-            public string startTime;
-            public string finishTime;
-            public string status;
-            public string review;
-            public double? rating;
-            public double quantity;
-            public string product;
-            public string buyer;
-        };
+ 
       
     }
 }

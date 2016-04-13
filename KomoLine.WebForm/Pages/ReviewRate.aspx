@@ -3,12 +3,12 @@
     <script type="text/javascript" src="../Scripts/jquery-2.2.1.js"></script>  
     <script type="text/javascript" src="../Scripts/jquery-2.2.1.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-    $("#Button1").click(function () {
-       alert("hi");
-    });
+                $(document).ready(function () {
+            $("#Button1").onClick(function () {
+               alert("hi");
+            });
 
-});
+        });
     </script>  
     <link href="../CSS/RevRate.css" rel="stylesheet" runat="server" />
 </asp:Content>
@@ -16,8 +16,8 @@
 
     <div id="main">
         <div id="transForm">
-            <input id="transID" type="text" placeholder="Transaction id..." runat="server"/>
-            <input id="Button1" type="button" value="OK" runat="server" />
+            <asp:TextBox ID="transID" runat="server"/>
+            <asp:Button ID="Button1" Text="OK" runat="server" ClientIDMode="Static" />
         </div>
 
         <div id="detProduct">
@@ -27,7 +27,7 @@
                 <tr>
                     <td style="width:40%; text-align:center;">
                       <p>Nama Produk</p>   
-                        <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="30%" Height="10%" />
+                        <asp:Image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="30%" Height="10%" />
                         <p>Nama Toko</p>
                     </td>
                     <td>

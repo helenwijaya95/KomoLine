@@ -21,7 +21,7 @@
             <h2>Detail Product</h2>
             <p>Nama Produk</p>   
             <hr />
-            <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="10%" Height="10%" />
+            <asp:image id="Star1" runat="server" imageurl="~/Image/star.png" AlternateText="1Star" Width="10%" Height="10%" />
             <p>Nama Toko</p>
             <p>Rp 10000,00</p>
             <asp:Button Text="Beli Barang" runat="server" CssClass="class1" />
