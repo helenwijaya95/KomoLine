@@ -32,10 +32,7 @@ namespace KomoLine.WebForm.Pages
             }
         }
 
-        public int productRating()
-        {
 
-        }
 
     }
 }
