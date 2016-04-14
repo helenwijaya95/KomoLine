@@ -11,26 +11,43 @@ namespace KomoLine.WebForm.Pages
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        protected Account acc = new Account();
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-            if (IsPostBack)
-            {
+        {        
+           
                 List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name};
-                Account acc = new Account();
-                acc.Login("helen","password");
-                List<Product> res = acc.SearchProduct(tbSearch.Text, Opt);
+               
+                List<Product> res = acc.SearchProduct("", Opt);
 
                 //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
                 dlProd.DataSource = res;
                 dlProd.DataBind();
-              
-            }
-            else
-            {
-
-            }
+            
         }
+
+        protected void btnDetail_Command(object sender, CommandEventArgs e)
+        {
+            string pID = e.CommandArgument.ToString();
+            Response.Redirect("ProductDetail.aspx?prodId=" + pID);
+           
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name };
+
+            List<Product> res = acc.SearchProduct(tbSearch.Text, Opt);
+
+            /* foreach(Product p in res)
+             {
+                    
+                   
+             }*/
+            //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
+            dlProd.DataSource = res;
+            dlProd.DataBind();
+        }
+
 
 
 
