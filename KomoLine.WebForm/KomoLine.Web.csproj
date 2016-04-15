@@ -104,6 +104,7 @@
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
     <Content Include="Pages\ListTransaction.aspx" />
+    <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\Purchase.aspx" />
     <Content Include="Pages\ReviewRate.aspx" />
@@ -139,6 +140,13 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListTransaction.aspx.cs">
       <DependentUpon>ListTransaction.aspx</DependentUpon>
