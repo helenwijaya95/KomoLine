@@ -21,11 +21,11 @@
 			</div>
 			<div class="input-group">
                     <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2"> Password</span>
-                    <asp:TextBox ID="password" type="password" CssClass="form-control" placeholder="Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="password" TextMode="password" CssClass="form-control" placeholder="Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
 			<div class="input-group">
                     <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2"> ConfirmPassword</span>
-                    <asp:TextBox ID="confirmpass" type="password" CssClass="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="confirmpass" TextMode="password" CssClass="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
 			</div>
-				<asp:Button ID="register" Text="Register" class="btn btn-default" runat="server"></asp:Button>
+				<asp:Button ID="register" Text="Register" CssClass="btn btn-default" runat="server"></asp:Button>
 </asp:Content>

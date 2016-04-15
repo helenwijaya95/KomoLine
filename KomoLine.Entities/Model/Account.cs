@@ -48,7 +48,7 @@ namespace KomoLine.Data.Model
             get { return phoneNumber; }
             set
             {
-                if (value == null || RegexHelper.IsValidPhoneNumber(value))
+                if (string.IsNullOrWhiteSpace(value) || RegexHelper.IsValidPhoneNumber(value))
                 {
                     phoneNumber = value;
                 }
