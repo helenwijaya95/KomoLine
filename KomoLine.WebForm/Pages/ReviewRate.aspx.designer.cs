@@ -22,6 +22,15 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.TextBox transID;
         
         /// <summary>
+        /// transID2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox transID2;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,22 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Star1 control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Star1;
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// prodImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image prodImg;
         
         /// <summary>
         /// rate1 control.
@@ -85,12 +103,21 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.ImageButton rate5;
         
         /// <summary>
-        /// Button2 control.
+        /// tbReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.TextBox tbReview;
+        
+        /// <summary>
+        /// btnKirim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnKirim;
     }
 }

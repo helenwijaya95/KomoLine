@@ -19,9 +19,9 @@ namespace KomoLine.WebForm.Pages
             lusi.Name = "Kucing";
             lusi.SaveProfile();
 
-            Product p = lusi.SearchProduct("eidz_V0nQU2EpSp9_uHEtg", new List<SearchBy>() { SearchBy.ID }).SingleOrDefault();
-
-            lusi.Purchase(p, 444);
+            Transaction t = lusi.GetTransaction("fbDLZimumkGZFXad6m4Fpg");
+            Random rng = new Random();
+            lusi.RatePurchase(t, rng.Next(1,5));
         }
     }
 }
