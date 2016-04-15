@@ -25,6 +25,7 @@ namespace KomoLine.WebForm.Pages
                     {
                         a.Register(password.Text);
                         Session.Add("user", a);
+                        Response.Redirect("~");
                     }
                     else
                     {
