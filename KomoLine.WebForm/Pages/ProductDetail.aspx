@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Template.Master" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="KomoLine.WebForm.Pages.WebForm2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
     <link href="../CSS/ProdDetail.css" rel="stylesheet" />
+    <%@ Import Namespace="KomoLine.Data.Model" %>
+</script>
 </asp:Content>
 
 
@@ -18,12 +20,19 @@
          <hr id="hrSrc"/>
 
         <div id="productDet">
-            <h2>Detail Product</h2>
-            <p>Nama Produk</p>   
+           
+            <% string idProduct = Request.QueryString["prodId"]; %>
+            
+            <%
+               
+                
+             %>
+            <p><%= product.Name %></p>
+
             <hr />
-            <asp:image id="Star1" runat="server" imageurl="~/Image/star.png" AlternateText="1Star" Width="10%" Height="10%" />
-            <p>Nama Toko</p>
-            <p>Rp 10000,00</p>
+            <asp:image id="image1" runat="server" AlternateText="1Star" Width="25%" />
+
+            <p>Rp <%= product.Price %></p>
             <asp:Button Text="Beli Barang" runat="server" CssClass="class1" />
             <hr />
             <div id="prodTabs">
@@ -33,7 +42,7 @@
 				    <li><a href="#">Review</a></li>
                 </ul>
                 <div id="content">
-                    <p>some text</p>
+                    <p><%= product.Description %></p>
                 </div>
             </div>
         </div>

@@ -100,7 +100,7 @@
     <Content Include="CSS\RevRate.css" />
     <Content Include="CSS\SearchRes.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="JS\RateRev.js" />
+    <Content Include="Scripts\RateRev.js" />
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
     <Content Include="Pages\ListTransaction.aspx" />
