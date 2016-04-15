@@ -189,6 +189,9 @@
     <Compile Include="Pages\ProductDetail.aspx.designer.cs">
       <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Tester.aspx.cs">
+      <DependentUpon>Tester.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
