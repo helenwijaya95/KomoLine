@@ -13,14 +13,9 @@ namespace KomoLine.WebForm.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
-          
                 //Ambil data user
                 //Account acc = Session["user"] as Account;
                 Account a = new Account();
-               
-
                 /* a.Username = "aaa";
                  a.Name = "Helen Wijaya";
                  a.PhoneNumber="0939848957948";
@@ -29,11 +24,6 @@ namespace KomoLine.WebForm.Pages
                 a.Login("helen", "password");
                 TransRepeater.DataSource = a.ViewTransactions();
                 TransRepeater.DataBind();
-           
-           
         }
-
- 
-      
     }
 }
