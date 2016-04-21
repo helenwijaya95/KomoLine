@@ -33,6 +33,7 @@
             <asp:image id="image1" runat="server" AlternateText="1Star" Width="25%" />
 
             <p>Rp <%= product.Price %></p>
+            
             <asp:Button Text="Beli Barang" runat="server" CssClass="class1" />
             <hr />
             <div id="prodTabs">
