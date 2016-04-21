@@ -60,34 +60,38 @@ namespace KomoLine.Helper
             }
         }
 
-        public static bool UploadFile(HttpPostedFile File, string DirectoryPath)
+        public static string UploadFile(HttpPostedFile File, string DirectoryPath, string SaveAs = null)
         {
             HttpRequest Request = HttpContext.Current.Request;
             HttpServerUtility Server = HttpContext.Current.Server;
 
             //Create new directory if not exists
-            string directoryPath = DirectoryPath;
-            if (!Directory.Exists(directoryPath))
+            if (!Directory.Exists(DirectoryPath))
             {
-                Directory.CreateDirectory(directoryPath);
+                Directory.CreateDirectory(DirectoryPath);
             }
 
-            // Get file size
-            int FileSize = File.ContentLength;
-
             // Upload file
-            if (FileSize > 0)
+            if (File.ContentLength > 0)
             {
                 //Save files inside directory
                 try
                 {
-                    File.SaveAs(directoryPath + System.IO.Path.GetFileName(File.FileName));
-                    //File.SaveAs(directoryPath + System.IO.Path.GetFileName(File.FileName));
-                    return true;
+                    string filePath = DirectoryPath;
+                    if (string.IsNullOrWhiteSpace(SaveAs))
+                    {
+                        filePath = Path.GetFileName(File.FileName);
+                    }
+                    else
+                    {
+                        filePath = Path.GetFileName(SaveAs + Path.GetExtension(File.FileName));
+                    }
+                    File.SaveAs(filePath);
+                    return filePath;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new Exception(ex.Message.ToString());
+                    throw;
                 }
 
             }
