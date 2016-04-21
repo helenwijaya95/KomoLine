@@ -16,12 +16,7 @@
         </div>
         <br />
          <hr id="hrSrc"/>   
-              <asp:DataList runat="server" ID="dlProd" 
-                Font-Name="Verdana" CellPadding="4"
-                Font-Size="10pt"
-                RepeatColumns="2" runat="server" 
-                style="margin:5%; padding:5%;" 
-                  >
+              <asp:DataList runat="server" ID="dlProd" Font-Name="Verdana" CellPadding="4" Font-Size="10pt" RepeatColumns="2" runat="server" style="margin:5%; padding:5%;" OnItemDataBound="dlProd_ItemDataBound">
 
                   <HeaderTemplate>
                       Hasil Pencarian
@@ -33,20 +28,17 @@
 
                     <div id="prodDetail" style="float:right;">
                          <p><%# ((KomoLine.Data.Model.Product)Container.DataItem).Name %></p>
-                   
-               
                     <%
+                       // ((KomoLine.Data.Model.Product)Container.DataItem).Name
                         Account acc = new Account();
-                        for(int i =0; i<3; i++)
-                        {
-                            
                         
-                     %>
-                    <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="5%" Height="5%" />
-                    <% } %>
+                        for(int i = 0; i < rate1; i++)
+                    %>
+                        <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="5%" Height="5%" />
+                   
 
                     <%
-                        for(int i =0; i<2; i++)
+                        for(int j =0; j<rate1; j++)
                         {
                             
                         
