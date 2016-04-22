@@ -16,21 +16,28 @@ namespace KomoLine.WebForm.Pages
             if (IsPostBack)
             {
                 //Proses form
-                Account a = new Account();//Guest
-                a.Username = username.Text;
-                a.Name = name.Text;
-                a.Email = email.Text;
-
-                if (password.Text == confirmpass.Text)
-                {
-                    a.Register(password.Text);
-                    Session.Add("user", a);
-                }
-                else
-                {
-                    error.Text = "Password and confirm password doesn't match";
-                    error.Visible = true;
-                }
+                    Account a = new Account();//Guest
+                    a.Username = username.Text;
+                    a.Name = name.Text;
+                    a.Email = email.Text;
+                    
+                    if(password.Text == confirmpass.Text)
+                    {
+                        try
+                        {
+                            a.Register(password.Text);
+                            Session.Add("user", a);
+                            Response.Redirect("~");
+                        }
+                        catch (InvalidOperationException ioe)
+                        {
+                            ShowError(ioe.Message);
+                        }
+                    }
+                    else
+                    {
+                        ShowError("Password and confirm password doesn't match");
+                    }
                 username.Text = "";
                 name.Text = "";
                 email.Text = "";
@@ -41,6 +48,12 @@ namespace KomoLine.WebForm.Pages
             {
 
             }
+        }
+
+        private void ShowError(string message)
+        {
+            error.Text = message;
+            error.Visible = true;
         }
     }
 }
