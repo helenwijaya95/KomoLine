@@ -26,5 +26,10 @@
 				<asp:Button ID="kirim" Text="Kirim" class="btn btn-default" runat="server"></asp:Button>
 			</td>
 		</tr>
+        <tr>
+            <td>
+                <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red" />
+            </td>
+        </tr>
 	</table>
 </asp:Content>

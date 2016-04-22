@@ -24,6 +24,11 @@ namespace KomoLine.WebForm.Pages
              
         }
 
+        private void Button1_Click(object sender, System.EventArgs e)
+        {
+            // Value sent using HttpResponse
+            Response.Redirect("WebForm5.aspx?Name=" + txtName.Text);
+        }
 
     }
 }

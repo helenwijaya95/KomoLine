@@ -11,7 +11,28 @@ namespace KomoLine.WebForm.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
+                //Proses form
+                Account a = new Account();//Guest
 
+                if (id.Text != null && sandi.Text != null)
+                {
+                    a.Login(id.Text, sandi.Text);
+                    //Session.Contents(id);
+                }
+                else
+                {
+                    error.Text = "ID atau kata sandi salah!";
+                    error.Visible = true;
+                }
+                id.Text = "";
+                sandi.Text = "";
+            }
+            else
+            {
+
+            }
         }
     }
 }
