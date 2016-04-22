@@ -22,7 +22,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700"
         rel="stylesheet" type="text/css" />
     <!-- Required plugin - Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" />
     <link href="<%= ResolveUrl("~/fonts/font-awesome.min.css") %>" rel="stylesheet" type="text/css" />
 
     <style>
@@ -57,22 +57,30 @@
                 <div class="navbar-collapse collapse">
                     <!-- Left nav -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Produk</a></li>
-                        <li><a href="#">Toko</a></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToHome" NavigateUrl="~" Text="Beranda" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToProduct" NavigateUrl="~/Pages/SearchResult.aspx" Text="Produk" runat="server"></asp:HyperLink></li>
 
-                        <li><a id="A1" href="#" runat="server">Kontak</a></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profil" runat="server"></asp:HyperLink></li>
                         <li>
                             <!-- add search form -->
                             <div class="navbar-form" role="search">
                                 <div class="input-group">
                                     <asp:TextBox ID="txtsearch" runat="server" placeholder="Cari Produk atau Toko disini...." class="form-control"></asp:TextBox>
                                     <span class="input-group-btn">
-                                        <asp:LinkButton runat="server" ID="lbsearch" ToolTip="Search" CssClass="btn btn-default" Text='<i class="glyphicon glyphicon-search"></i>' />
+                                        <asp:LinkButton runat="server" ID="LinkToSearch" ToolTip="Search" CssClass="btn btn-default" Text='<i class="glyphicon glyphicon-search"></i>' OnClick="LinkToSearch_Click" />
                                     </span>
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <asp:HyperLink ID="LinkToLogin" NavigateUrl="~/Pages/Login.aspx" Text="Login" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
                     </ul>
                 </div>
             </div>

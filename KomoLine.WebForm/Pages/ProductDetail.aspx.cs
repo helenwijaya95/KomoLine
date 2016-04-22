@@ -16,14 +16,7 @@ namespace KomoLine.WebForm.Pages
             Account acc = new Account();
 
             product = acc.GetProduct(idProduct);
-            image1.ImageUrl = "~/Image/" + product.PhotoPath;
+            ProductImage.ImageUrl = "~/Image/" + product.PhotoPath;
         }
-
-        public static void getProduct(string Id)
-        {
-             
-        }
-
-
     }
 }
