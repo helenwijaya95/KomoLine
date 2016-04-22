@@ -100,6 +100,20 @@
     <Content Include="CSS\RevRate.css" />
     <Content Include="CSS\SearchRes.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Image\12.jpg" />
+    <Content Include="Image\13.jpg" />
+    <Content Include="Image\14.jpg" />
+    <Content Include="Image\700x300.jpg" />
+    <Content Include="Image\agsquare_%402X.png" />
+    <Content Include="Image\banner.jpg" />
+    <Content Include="Image\banner1.jpg" />
+    <Content Include="Image\blankstar.png" />
+    <Content Include="Image\Bomb.png" />
+    <Content Include="Image\brokoli.jpg" />
+    <Content Include="Image\halfstar.png" />
+    <Content Include="Image\logo.png" />
+    <Content Include="Image\star.png" />
+    <Content Include="Image\triangular_%402X.png" />
     <Content Include="Scripts\RateRev.js" />
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
@@ -219,7 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KomoLine.Entities\KomoLine.Data.csproj">
