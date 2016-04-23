@@ -26,17 +26,13 @@
                 </asp:HyperLink>
 
                 <div id="prodDetail" style="float: right;">
-                    <p><%# ((KomoLine.Data.Model.Product)Container.DataItem).Name %></p>
+                    <p><%# ((Product)Container.DataItem).Name %></p>
                     <%
                        // ((KomoLine.Data.Model.Product)Container.DataItem).Name
                         Account acc = new Account();
-                        
-                        
                         for(int i = 0; i < rate1; i++)
                     %>
-                        <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="5%" Height="5%" />
-                   
-
+                        <asp:Image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="5%" Height="5%" />                   
                     <%
                         for(int j =0; j<rate1; j++)
                         {
@@ -45,7 +41,10 @@
                     %>
                     <asp:Image ID="Image1" runat="server" ImageUrl="../Image/blankstar.png" AlternateText="1Star" Width="5%" Height="5%" />
                     <%  } %>
-                    <asp:Button ID="btnDetail" Text="Detail" OnCommand="btnDetail_Command" CommandArgument="<%# ((KomoLine.Data.Model.Product)Container.DataItem).ID %>" runat="server" />
+                     <asp:HyperLink ID="HyperLink1" Text="Detail" NavigateUrl='<%# String.Format("ProductDetail.aspx?prodId={0}", ((KomoLine.Data.Model.Product)Container.DataItem).ID )%>' Target="_self" runat="server">
+       
+                </asp:HyperLink>
+                 
                 </div>
             </ItemTemplate>
         </asp:DataList>

@@ -17,9 +17,7 @@ namespace KomoLine.WebForm.Pages
         {        
            
                 List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name};
-               
                 List<Product> res = acc.SearchProduct("", Opt);
-
                 //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
                
                 dlProd.DataSource = res;

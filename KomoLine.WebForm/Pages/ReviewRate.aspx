@@ -3,16 +3,16 @@
 <%@ Import Namespace="KomoLine.Data.Model" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
     <script src="<%= ResolveUrl("~/Scripts/RateRev.js") %>" type="text/javascript"></script>
-    <link href="<%= ResolveUrl("~/CSS/RevRate.css")%>" rel="stylesheet" runat="server" />
+    <link href="<%= ResolveUrl("~/CSS/RevRate.css")%>" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
     <div id="main">
         <div id="transForm">
-            <!--<asp:TextBox ID="transID" ClientIDMode="Static" runat="server"/>
-            <asp:TextBox ID="transID2" ClientIDMode="Static" runat="server"/>
-            <!--<asp:Button ID="Button1" Text="OK" runat="server" ClientIDMode="Static" />
-            <asp:Button ID="Button3" Text="OK" ClientIDMode="Static" runat="server" /> -->
+            <asp:Label Text="Transaction ID : " runat="server"></asp:Label>
+            <asp:TextBox ID="transID" ClientIDMode="Static" runat="server"/>
+            <asp:Button ID="btnTransID" Text="OK" runat="server" ClientIDMode="Static" OnClick="btnTransID_Click" />
+            
         </div>
 
         <div id="detProduct">
@@ -21,9 +21,9 @@
                 <th>Review & Rate</th>
                 <tr>
                     <td style="width: 40%; text-align: center;">
-                        <p><%= prod.Name %></p>
+                        <p><%= transByID.Product.Name %></p>
                         <asp:Image ID="prodImg" runat="server" ImageUrl="../Image/star.png" AlternateText="image" Width="50%" />
-                        <p><%= prod.Owner.Name %></p>
+                        <p><%= transByID.Product.Owner.Name %></p>
                     </td>
                     <td>
                         <p>Rate Produk (skala 1-5)</p>
@@ -42,8 +42,6 @@
 
                 </tr>
             </table>
-
-
         </div>
     </div>
 </asp:Content>

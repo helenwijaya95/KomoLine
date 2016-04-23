@@ -13,17 +13,19 @@ namespace KomoLine.WebForm.Pages
         public Product prod;
         protected Transaction trans;
         protected Account acc;
+        public Transaction transByID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string idProduct = Request.QueryString["prodId"];
-            string idProduct = "BK1";
-
             acc = new Account();
             acc.Login("helen", "password");
-            prod = acc.GetProduct(idProduct);
-            trans = acc.GetTransaction("6");
+           if(IsPostBack)
+           {
+               //string idProduct = Request.QueryString["prodId"];
+               string idTrans = transID.Text;
 
-            prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+              
+               transByID=acc.GetTransaction(idTrans);
+           }
         }
 
        protected void rate1_Command(object sender, CommandEventArgs e)
@@ -38,6 +40,19 @@ namespace KomoLine.WebForm.Pages
        {
            string rev = tbReview.Text;
            acc.ReviewPurchase(trans, rev);
+       }
+
+       protected void btnTransID_Click(object sender, EventArgs e)
+       {
+           //string idProduct = Request.QueryString["prodId"];
+           string idProduct = "BK1";
+
+           acc = new Account();
+           acc.Login("helen", "password");
+           prod = acc.GetProduct(idProduct);
+           trans = acc.GetTransaction("6");
+
+           prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
        }
     }
 }
