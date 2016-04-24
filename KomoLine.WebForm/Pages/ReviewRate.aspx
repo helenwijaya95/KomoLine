@@ -7,15 +7,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
-    <div id="main">
-        <div id="transForm">
+    <div id="main" runat="server" style="background-color:black;">
+       <div id="transForm">
             <asp:Label Text="Transaction ID : " runat="server"></asp:Label>
             <asp:TextBox ID="transID" ClientIDMode="Static" runat="server"/>
             <asp:Button ID="btnTransID" Text="OK" runat="server" ClientIDMode="Static" OnClick="btnTransID_Click" />
             
         </div>
 
-        <div id="detProduct">
+        <div id="detProduct" runat="server" visible="false" style="background-color:yellow;">
             <table border="1">
                 <th>Product</th>
                 <th>Review & Rate</th>
