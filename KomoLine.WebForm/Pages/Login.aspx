@@ -6,31 +6,18 @@
     <div>
         <h1>Form Login</h1>
     </div>
-    <table border="0">
-        <tr>
-            <div class="input-group">
-                <td>
-                    <asp:Label ID="iduser" Text="ID*" runat="server"></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="id" class="form-control" placeholder="ID" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
-            </div>
-        </tr>
-        <tr>
-            <div class="input-group">
-                <td>
-                    <asp:Label ID="katasandi" Text="Kata Sandi*" runat="server"></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="sandi" type="password" class="form-control" placeholder="Kata sandi" aria-describedby="basic-addon1" runat="server"></asp:TextBox></td>
-            </div>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="WI" Text="*Wajib diisi" runat="server"></asp:Label></td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Button ID="kirim" Text="Kirim" class="btn btn-default" runat="server"></asp:Button>
-            </td>
-        </tr>
-    </table>
+    <div class="input-group">
+        <asp:Label ID="ErrorLabel" runat="server" Visible="False" ForeColor="Red" />
+    </div>
+    <div class="input-group">
+        <span class="glyphicon glyphicon-user input-group-addon" aria-hidden="true" id="basic-addon2">ID</span>
+        <asp:TextBox ID="IDTextBox" class="form-control" placeholder="ID" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
+    </div>
+    <div class="input-group">
+        <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2">Password</span>
+        <asp:TextBox ID="PasswordTextBox" class="form-control" placeholder="Password" aria-describedby="basic-addon1" runat="server" TextMode="Password"></asp:TextBox>
+    </div>
+    <div class="input-group">
+        <asp:Button ID="LoginButton" Text="Login" class="btn btn-default" runat="server"></asp:Button>
+    </div>
 </asp:Content>

@@ -5,8 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>KomoLine: Online Platform for Commodity</title>
-    <script type= "text/javascript" src="<%= ResolveUrl("~/Scripts/jquery-2.2.1.min.js") %>"></script>
-    <script type= "text/javascript" src="<%= ResolveUrl("~/Scripts/bootstrap.min.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery-2.2.1.min.js") %>"></script>
     <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/bootstrap.min.js") %>"></script>
     <link href="<%= ResolveUrl("~/Content/bootstrap.min.css") %>" rel="stylesheet" />
@@ -21,19 +19,18 @@
     <!-- Custom CSS -->
     <link href="<%= ResolveUrl("~/CSS/1-col-portfolio.css") %>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" rel="stylesheet" type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700"
+        rel="stylesheet" type="text/css" />
     <!-- Required plugin - Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" />
     <link href="<%= ResolveUrl("~/fonts/font-awesome.min.css") %>" rel="stylesheet" type="text/css" />
+
     <style>
-	    body {
+        body {
             padding-top: 60px;
         }
 
-       @media (max-width: 979px) {
-           body {
-               padding-top: 0px;
-           }
     </style>
 
     <asp:ContentPlaceHolder ID="Header" runat="server">
@@ -43,55 +40,64 @@
     <!--buat tab bar, menu,dll-->
     <form id="form1" runat="server">
         <!-- Navbar fixed top -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
-                        class="icon-bar"></span><span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                   <asp:Image runat="server" ImageUrl="~/Image/logo.png" ID="LogoImage" Width="50px" Height="30px" /></a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <!-- Left nav -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Produk</a></li>
-                    <li><a href="#">Toko</a></li>
- 
-                    <li><a id="A1" href="#" runat="server">Kontak</a></li>
-                    <li>
-                        <!-- add search form -->
-                        <div class="navbar-form" role="search">
-                            <div class="input-group">
-                                <asp:TextBox ID="txtsearch" runat="server" placeholder="Cari Produk atau Toko disini...." class="form-control"></asp:TextBox>
-                                <span class="input-group-btn">
-                                    <asp:LinkButton runat="server" ID="lbsearch" ToolTip="Search" CssClass="btn btn-default" Text='<i class="glyphicon glyphicon-search"></i>' />
-                                </span>
-                            </div>
-                        </div>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-     </div>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                            class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <asp:Image runat="server" ImageUrl="~/Image/logo.png" ID="LogoImage" Width="50px" Height="30px" /></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <!-- Left nav -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <asp:HyperLink ID="LinkToHome" NavigateUrl="~" Text="Beranda" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToProduct" NavigateUrl="~/Pages/SearchResult.aspx" Text="Produk" runat="server"></asp:HyperLink></li>
 
-         <div class="padding100" id="blog">
-             <div class="container">
-                 <asp:ContentPlaceHolder ID="Content" runat="server">
-                 </asp:ContentPlaceHolder>
-             </div>
-         </div>
-  
+                        <li>
+                            <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profil" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <!-- add search form -->
+                            <div class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <asp:TextBox ID="txtsearch" runat="server" placeholder="Cari Produk atau Toko disini...." class="form-control"></asp:TextBox>
+                                    <span class="input-group-btn">
+                                        <asp:LinkButton runat="server" ID="LinkToSearch" ToolTip="Search" CssClass="btn btn-default" Text='<i class="glyphicon glyphicon-search"></i>' OnClick="LinkToSearch_Click" />
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="LinkToLogin" NavigateUrl="~/Pages/Login.aspx" Text="Login" runat="server"></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="padding100" id="blog">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
         <footer id="fh5co-footer" class="padding100">
-			<div class="fh5co-footer-content">
-                 <div class="container">
-                     <div class="row">
-                     </div>
-                 </div>
-             </div>
-         </footer>			
+
+            <div class="fh5co-footer-content">
+                <div class="container">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </footer>
     </form>
 </body>
 </html>

@@ -31,30 +31,21 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// image1 control.
+        /// ProductImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image1;
+        protected global::System.Web.UI.WebControls.Image ProductImage;
         
         /// <summary>
-        /// Star1 control.
+        /// PurchaseButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Star1;
-        
-        /// <summary>
-        /// Image2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
-    }
+        protected global::System.Web.UI.WebControls.Button PurchaseButton;
+     }
 }
