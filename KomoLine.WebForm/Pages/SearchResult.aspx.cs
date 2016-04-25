@@ -14,30 +14,22 @@ namespace KomoLine.WebForm.Pages
         protected Account acc = new Account();
         protected int rate1, rate2;
         protected void Page_Load(object sender, EventArgs e)
-        {        
-           
-                List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name};
-                List<Product> res = acc.SearchProduct("", Opt);
-                //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
-               
-                dlProd.DataSource = res;
-                dlProd.DataBind();
+        {
+            string search;
+            if(Request.QueryString["srcText"] == null)
+            {
+                search = "";
+            }
+            else
+            {
+                search = Request.QueryString["srcText"];
+            }
+
             
-        }
-
-        protected void btnDetail_Command(object sender, CommandEventArgs e)
-        {
-            string pID = e.CommandArgument.ToString();
-            Response.Redirect("ProductDetail.aspx?prodId=" + pID);
-           
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("hello world");
+            //System.Diagnostics.Debug.WriteLine("hello world");
             List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name };
 
-            List<Product> res = acc.SearchProduct(tbSearch.Text, Opt);
+            List<Product> res = acc.SearchProduct(search, Opt);
 
             /* foreach(Product p in res)
              {
@@ -47,7 +39,17 @@ namespace KomoLine.WebForm.Pages
             //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
             dlProd.DataSource = res;
             dlProd.DataBind();
+
+                       
         }
+
+        protected void btnDetail_Command(object sender, CommandEventArgs e)
+        {
+            string pID = e.CommandArgument.ToString();
+            Response.Redirect("ProductDetail.aspx?prodId=" + pID);
+           
+        }
+
 
         protected void dlProd_ItemDataBound(object sender, DataListItemEventArgs e)
         {
