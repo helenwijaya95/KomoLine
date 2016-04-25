@@ -22,13 +22,13 @@ namespace KomoLine.WebForm {
         protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
-        /// profpic control.
+        /// ProfileImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image profpic;
+        protected global::System.Web.UI.WebControls.Image ProfileImage;
         
         /// <summary>
         /// cemail control.

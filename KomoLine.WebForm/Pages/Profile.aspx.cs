@@ -19,9 +19,9 @@ namespace KomoLine.WebForm
             {
                 //FileTransferHelper.UploadFile(pic, "../Image/profpic");
 
-                if (profpic.ImageUrl == "" || profpic.ImageUrl == null)
+                if (ProfileImage.ImageUrl == "" || ProfileImage.ImageUrl == null)
                 {
-                    profpic.ImageUrl = "../Image/profpic/default.jpg";
+                    ProfileImage.ImageUrl = "~/Image/profpic/default.png";
                 }
                 else
                 {
@@ -30,7 +30,7 @@ namespace KomoLine.WebForm
                 acc.Email = cemail.Text;
                 acc.Username = cusername.Text;
                 acc.Name = cname.Text;
-                acc.Photo = profpic.ImageUrl;
+                acc.Photo = ProfileImage.ImageUrl;
                 acc.Address = caddress.Text;
                 acc.PhoneNumber = cphnumber.Text;
 
@@ -38,21 +38,13 @@ namespace KomoLine.WebForm
             }
             else
             {
-                profpic.ImageUrl = acc.Photo;
+                ProfileImage.ImageUrl = "~/Image/profpic/"+acc.Photo;
                 cemail.Text = acc.Email;
                 cusername.Text = acc.Username;
                 cname.Text = acc.Name;
                 caddress.Text = acc.Address;
                 cphnumber.Text = acc.PhoneNumber;
 
-                if (profpic.ImageUrl == "" || profpic.ImageUrl == null)
-                {
-                    profpic.ImageUrl = "../Image/profpic/default.jpg";
-                }
-                else
-                {
-
-                }
             }
         }
     }
