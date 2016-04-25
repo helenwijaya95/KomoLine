@@ -15,5 +15,11 @@ namespace KomoLine.WebForm.Pages
         {
             
         }
+
+        protected void LinkToSearch_Click(object sender, EventArgs e)
+        {
+            String link = "~/Pages/SearchResult.aspx?srcText="+txtsearch.Text;
+            Response.Redirect(link);
+        }
     }
 }

@@ -19,7 +19,8 @@ namespace KomoLine.WebForm
 
         void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapPageRoute("Portal","","~/Pages/Welcome.aspx");
+            routes.MapPageRoute("Portal","","~/Pages/SearchResult.aspx");
+            //routes.MapPageRoute("Product Detail", "/product/{id}", "~/Pages/ProductDetail.aspx?");
         }
     }
 }

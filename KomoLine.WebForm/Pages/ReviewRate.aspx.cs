@@ -8,22 +8,16 @@ using KomoLine.Data.Model;
 
 namespace KomoLine.WebForm.Pages
 {
+
     public partial class ReviewRate : System.Web.UI.Page
     {
         public Product prod;
         protected Transaction trans;
         protected Account acc;
+        public Transaction transByID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string idProduct = Request.QueryString["prodId"];
-            string idProduct = "BK1";
-
-            acc = new Account();
-            acc.Login("helen", "password");
-            prod = acc.GetProduct(idProduct);
-            trans = acc.GetTransaction("6");
-
-            prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+            acc = Session["user"] as Account;
         }
 
        protected void rate1_Command(object sender, CommandEventArgs e)
@@ -38,6 +32,19 @@ namespace KomoLine.WebForm.Pages
        {
            string rev = tbReview.Text;
            acc.ReviewPurchase(trans, rev);
+       }
+
+       protected void btnTransID_Click(object sender, EventArgs e)
+       {
+           
+           //string idProduct = Request.QueryString["prodId"];
+           string idTrans = transID.Text;
+           transByID = acc.GetTransaction(idTrans);
+           //string idProduct = "BK1";
+           prod = acc.GetProduct(transByID.Product.ID);
+
+           prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+           detProduct.Visible = true;
        }
     }
 }

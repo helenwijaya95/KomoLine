@@ -95,7 +95,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\1-col-portfolio.css" />
+    <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\jquery.smartmenus.bootstrap.css" />
     <Content Include="CSS\ListTrans.css" />
+    <Content Include="CSS\owl\owl.carousel.css" />
+    <Content Include="CSS\owl\owl.carousel.js" />
+    <Content Include="CSS\owl\owl.theme.css" />
+    <Content Include="CSS\owl\owl.transitions.css" />
     <Content Include="CSS\ProdDetail.css" />
     <Content Include="CSS\RevRate.css" />
     <Content Include="CSS\SearchRes.css" />

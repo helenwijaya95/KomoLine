@@ -6,7 +6,6 @@
     float:left;
     width:50%;
     display:inline;
-    background-color:aqua;
     margin-top:2%;
 }
 
@@ -14,7 +13,7 @@
     float:right;
     width:30%;
     display:inline;
-    background-color:red
+    background-color:red;
 }
 
 .stars:hover

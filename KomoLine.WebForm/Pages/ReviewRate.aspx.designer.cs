@@ -13,6 +13,15 @@ namespace KomoLine.WebForm.Pages {
     public partial class ReviewRate {
         
         /// <summary>
+        /// main control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl main;
+        
+        /// <summary>
         /// transID control.
         /// </summary>
         /// <remarks>
@@ -22,31 +31,22 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.TextBox transID;
         
         /// <summary>
-        /// transID2 control.
+        /// btnTransID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox transID2;
+        protected global::System.Web.UI.WebControls.Button btnTransID;
         
         /// <summary>
-        /// Button1 control.
+        /// detProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl detProduct;
         
         /// <summary>
         /// prodImg control.
