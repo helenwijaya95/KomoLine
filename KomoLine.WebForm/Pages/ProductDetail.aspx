@@ -32,6 +32,37 @@
                 </ul>
                 <div id="content">
                     <p><%= product.Description %></p>
+                    <%
+                        for (int i = 0; i < product.Rating; i++)
+                        {
+                            %>
+                    <asp:image id="Star1" runat="server" imageurl="../Image/star.png" AlternateText="1Star" Width="5%" Height="5%" />
+                    <%
+                        }
+                    %>
+
+                     <%
+                        for (int i = 0; i < 5- product.Rating; i++)
+                        {
+                            %>
+                    <asp:image id="Image2" runat="server" imageurl="../Image/blankstar.png" AlternateText="1Star" Width="5%" Height="5%" />
+                    <%
+                        }
+                        for (int count = 0; count < product.Reviews.Count; count++)
+                        {
+                            var element = product.Reviews.ElementAt(count);
+                            var Key = element.Key;
+                            var Value = element.Value;
+            
+                     %>
+                    <p><%= Key.Name %></p>
+                    <p><%= Value %></p>
+
+                            <%
+                        }
+                    %>
+                    
+                    
                 </div>
             </div>
         </div>

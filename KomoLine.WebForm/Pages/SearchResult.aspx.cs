@@ -12,14 +12,14 @@ namespace KomoLine.WebForm.Pages
     public partial class WebForm1 : System.Web.UI.Page
     {
         protected Account acc = new Account();
+        protected int rate1, rate2;
         protected void Page_Load(object sender, EventArgs e)
         {        
            
                 List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name};
-               
                 List<Product> res = acc.SearchProduct("", Opt);
-
                 //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
+               
                 dlProd.DataSource = res;
                 dlProd.DataBind();
             
@@ -34,6 +34,7 @@ namespace KomoLine.WebForm.Pages
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("hello world");
             List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name };
 
             List<Product> res = acc.SearchProduct(tbSearch.Text, Opt);
@@ -46,6 +47,20 @@ namespace KomoLine.WebForm.Pages
             //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
             dlProd.DataSource = res;
             dlProd.DataBind();
+        }
+
+        protected void dlProd_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            var product = e.Item.DataItem as Product;
+            rate1 = int.Parse(product.Rating+"");
+            System.Diagnostics.Debug.WriteLine(rate1 + "...rating1");
+        }
+
+        protected void dlProd_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            var product = e.Item.DataItem as Product;
+            rate1 = int.Parse(product.Rating+"");
+            System.Diagnostics.Debug.WriteLine(rate1 + "rating");
         }
 
 

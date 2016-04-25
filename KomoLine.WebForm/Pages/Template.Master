@@ -22,6 +22,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700"
         rel="stylesheet" type="text/css" />
     <!-- Required plugin - Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" />
     <link href="<%= ResolveUrl("~/fonts/font-awesome.min.css") %>" rel="stylesheet" type="text/css" />
 
@@ -30,11 +31,6 @@
             padding-top: 60px;
         }
 
-        @media (max-width: 979px) {
-            body {
-                padding-top: 0px;
-            }
-        }
     </style>
 
     <asp:ContentPlaceHolder ID="Header" runat="server">
