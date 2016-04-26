@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="kirim" Text="Kirim" class="btn btn-default" runat="server"></asp:Button>
+                <asp:Button ID="PurchaseButton" Text="Confirm" class="btn btn-default" runat="server" OnClick="PurchaseButton_Click"></asp:Button>
             </td>
         </tr>
         <tr>

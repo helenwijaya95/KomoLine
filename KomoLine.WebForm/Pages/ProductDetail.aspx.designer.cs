@@ -40,12 +40,30 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
-        /// buyLink control.
+        /// QuantityLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink buyLink;
+        protected global::System.Web.UI.WebControls.Label QuantityLabel;
+        
+        /// <summary>
+        /// QuantityValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField QuantityValue;
+        
+        /// <summary>
+        /// BuyButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BuyButton;
     }
 }

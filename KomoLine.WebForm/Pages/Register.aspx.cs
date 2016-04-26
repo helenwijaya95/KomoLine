@@ -27,7 +27,7 @@ namespace KomoLine.WebForm.Pages
                     {
                         a.Register(password.Text);
                         Session.Add("user", a);
-                        Session.Add("welcome", "hi");
+                        Session.Add("message", string.Format("Welcome, {0}!", a.Name));
                         Response.Redirect("~");
                     }
                     catch (InvalidOperationException ioe)

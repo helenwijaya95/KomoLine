@@ -94,25 +94,33 @@
                         <div class="quantity">
                             <div class="quantity-select">
                                 <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span>1</span></div>
+                                <div class="entry value">
+                                    <asp:Label ID="QuantityLabel" runat="server" Text="1"></asp:Label>
+                                    <asp:HiddenField ID="QuantityValue" runat="server" Value="1"/>
+                                </div>
                                 <div class="entry value-plus active">&nbsp;</div>
                             </div>
                         </div>
                         <!--quantity-->
                         <script>
+                            
                             $('.value-plus').on('click', function () {
-                                var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
-                                divUpd.text(newVal);
+                                var qty = parseInt(document.getElementById('<%=QuantityValue.ClientID %>').value);
+                                document.getElementById('<%=QuantityLabel.ClientID %>').innerHTML = qty + 1;
+                                document.getElementById('<%=QuantityValue.ClientID %>').value = qty + 1;
                             });
 
                             $('.value-minus').on('click', function () {
-                                var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
-                                if (newVal >= 1) divUpd.text(newVal);
+                                if (currentVal > 1) {
+                                    var qty = parseInt(document.getElementById('<%=QuantityValue.ClientID %>').value);
+                                    document.getElementById('<%=QuantityLabel.ClientID %>').innerHTML = qty - 1;
+                                    document.getElementById('<%=QuantityValue.ClientID %>').value = qty - 1;
+                                }
                             });
                         </script>
                         <!--quantity-->
 
-                        <asp:HyperLink ID="buyLink" class="add-to item_add hvr-skew-backward" runat="server">Beli</asp:HyperLink>
+                        <asp:LinkButton ID="BuyButton" class="add-to item_add hvr-skew-backward" runat="server" OnClick="BuyButton_Click">Beli</asp:LinkButton>
                         <div class="clearfix"></div>
                     </div>
 

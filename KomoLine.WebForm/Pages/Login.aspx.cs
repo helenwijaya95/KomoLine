@@ -20,7 +20,7 @@ namespace KomoLine.WebForm.Pages
                 {
                     a.Login(IDTextBox.Text, PasswordTextBox.Text);
                     Session.Add("user", a);
-                    Session.Add("welcome", "hi");
+                    Session.Add("message", string.Format("Welcome, {0}!",a.Name));
                     Response.Redirect("~");
                 }
                 catch (Exception ex)
