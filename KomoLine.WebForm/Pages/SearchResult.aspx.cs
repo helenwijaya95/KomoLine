@@ -46,8 +46,7 @@ namespace KomoLine.WebForm.Pages
         protected void btnDetail_Command(object sender, CommandEventArgs e)
         {
             string pID = e.CommandArgument.ToString();
-            Response.Redirect("ProductDetail.aspx?prodId=" + pID);
-           
+            Response.Redirect("ProductDetail.aspx?id=" + pID);
         }
 
 

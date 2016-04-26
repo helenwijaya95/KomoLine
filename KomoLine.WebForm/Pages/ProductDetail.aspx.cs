@@ -12,12 +12,26 @@ namespace KomoLine.WebForm.Pages
         public Product product;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string idProduct = Request.QueryString["prodId"];
+            string idProduct = Request.QueryString["id"];
             Account acc = new Account();
+            try
+            {
+                product = acc.GetProduct(idProduct);
+                ProductImage.ImageUrl = "~/Image/" + product.PhotoPath;
+            }
+            catch (ArgumentException ex)
+            {
+                Session["message"] = ex.Message;
+                Response.Redirect("~");
+            }
+        }
 
-            product = acc.GetProduct(idProduct);
-            ProductImage.ImageUrl = "~/Image/" + product.PhotoPath;
-            buyLink.NavigateUrl = "~/Pages/Purchase.aspx?idProd="+product.ID;
+        protected void BuyButton_Click(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+            string qty = QuantityValue.Value;
+            string url = string.Format("~/Pages/Purchase.aspx?id={0}&qty={1}", id, qty);
+            Response.Redirect(url);
         }
     }
 }

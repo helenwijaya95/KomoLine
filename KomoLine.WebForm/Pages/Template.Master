@@ -105,7 +105,7 @@
 
         <asp:PlaceHolder runat="server" ID="AlertPlaceholder" Visible="false">
             <script type="text/javascript">
-                var message = '<%= AlertMessage %>';
+                var message = '<%= HttpUtility.JavaScriptStringEncode(AlertMessage,true) %>';
                 alert(message);
             </script>
         </asp:PlaceHolder>
