@@ -67,15 +67,6 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.HyperLink LinkToLink;
         
         /// <summary>
-        /// LinkToProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkToProfile;
-        
-        /// <summary>
         /// txtsearch control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace KomoLine.WebForm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkToSearch;
+        
+        /// <summary>
+        /// LoginPlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder LoginPlaceholder;
         
         /// <summary>
         /// LinkToLogin control.
@@ -112,6 +112,33 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.HyperLink LinkToRegister;
         
         /// <summary>
+        /// UserPlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder UserPlaceholder;
+        
+        /// <summary>
+        /// LinkToProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToProfile;
+        
+        /// <summary>
+        /// LinkToLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkToLogout;
+        
+        /// <summary>
         /// Content control.
         /// </summary>
         /// <remarks>
@@ -119,5 +146,14 @@ namespace KomoLine.WebForm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
+        
+        /// <summary>
+        /// AlertPlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder AlertPlaceholder;
     }
 }

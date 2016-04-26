@@ -36,7 +36,7 @@ namespace KomoLine.WebForm.Pages
                     
                    
              }*/
-            //var res = acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
+            //var res = Acc.SearchProduct(tbSearch.Text, Opt); --> klo gk tau tipe datanya
             dlProd.DataSource = res;
             dlProd.DataBind();
 

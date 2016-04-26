@@ -30,7 +30,6 @@
         body {
             padding-top: 60px;
         }
-
     </style>
 
     <asp:ContentPlaceHolder ID="Header" runat="server">
@@ -61,8 +60,6 @@
                         <li>
                             <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
                         <li>
-                            <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profil" runat="server"></asp:HyperLink></li>
-                        <li>
                             <!-- add search form -->
                             <div class="navbar-form" role="search">
                                 <div class="input-group">
@@ -73,10 +70,18 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <asp:HyperLink ID="LinkToLogin" NavigateUrl="~/Pages/Login.aspx" Text="Login" runat="server"></asp:HyperLink></li>
-                        <li>
-                            <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
+                        <asp:PlaceHolder runat="server" ID="LoginPlaceholder">
+                            <li>
+                                <asp:HyperLink ID="LinkToLogin" NavigateUrl="~/Pages/Login.aspx" Text="Login" runat="server"></asp:HyperLink></li>
+                            <li>
+                                <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="UserPlaceholder">
+                            <li>
+                                <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profile" runat="server"></asp:HyperLink></li>
+                            <li>
+                                <asp:LinkButton ID="LinkToLogout" runat="server" OnClick="LinkToLogout_Click">Logout</asp:LinkButton></li>
+                        </asp:PlaceHolder>
                     </ul>
                 </div>
             </div>
@@ -90,7 +95,6 @@
         </div>
 
         <footer id="fh5co-footer" class="padding100">
-
             <div class="fh5co-footer-content">
                 <div class="container">
                     <div class="row">
@@ -98,6 +102,13 @@
                 </div>
             </div>
         </footer>
+
+        <asp:PlaceHolder runat="server" ID="AlertPlaceholder" Visible="false">
+            <script type="text/javascript">
+                var message = '<%= AlertMessage %>';
+                alert(message);
+            </script>
+        </asp:PlaceHolder>
     </form>
 </body>
 </html>
