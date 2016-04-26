@@ -12,24 +12,40 @@ namespace KomoLine.WebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account a = new Account();
-            a.Login("lusilala", "lusi");
-            profpic.ImageUrl = a.Photo;
-            cemail.Text = a.Email;
-            cusername.Text = a.Username;
-            cname.Text = a.Name;
-            caddress.Text = a.Address;
-            cphnumb.Text = a.PhoneNumber;
-        }
 
-        protected void chpic_Click(object sender, EventArgs e)
-        {
-            
-        }
+            Account acc = new Account();
+            acc.Login("lusilala", "lusi");
+            if (IsPostBack)
+            {
+                //FileTransferHelper.UploadFile(pic, "../Image/profpic");
 
-        protected void editprof_Click(object sender, EventArgs e)
-        {
+                if (ProfileImage.ImageUrl == "" || ProfileImage.ImageUrl == null)
+                {
+                    ProfileImage.ImageUrl = "~/Image/profpic/default.png";
+                }
+                else
+                {
 
+                }
+                acc.Email = cemail.Text;
+                acc.Username = cusername.Text;
+                acc.Name = cname.Text;
+                acc.Photo = ProfileImage.ImageUrl;
+                acc.Address = caddress.Text;
+                acc.PhoneNumber = cphnumber.Text;
+
+                acc.SaveProfile();
+            }
+            else
+            {
+                ProfileImage.ImageUrl = "~/Image/profpic/"+acc.Photo;
+                cemail.Text = acc.Email;
+                cusername.Text = acc.Username;
+                cname.Text = acc.Name;
+                caddress.Text = acc.Address;
+                cphnumber.Text = acc.PhoneNumber;
+
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ namespace KomoLine.Data.Model
             get { return phoneNumber; }
             set
             {
-                if (value == null || RegexHelper.IsValidPhoneNumber(value))
+                if (string.IsNullOrWhiteSpace(value) || RegexHelper.IsValidPhoneNumber(value))
                 {
                     phoneNumber = value;
                 }
@@ -225,7 +225,7 @@ namespace KomoLine.Data.Model
             u.username = "Guest";
             u.name = "Guest";
             u.phoneNumber = null;
-            u.photoPath = "Default.jpg";
+            u.photoPath = "default.png";
             u.address = null;
             u.register = DateTime.Now;
             u.email = "example@domain.com";

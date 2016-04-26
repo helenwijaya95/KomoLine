@@ -120,6 +120,8 @@
     <Content Include="Image\brokoli.jpg" />
     <Content Include="Image\halfstar.png" />
     <Content Include="Image\logo.png" />
+    <Content Include="Image\product\readme.txt" />
+    <Content Include="Image\profpic\default.png" />
     <Content Include="Image\star.png" />
     <Content Include="Image\triangular_%402X.png" />
     <Content Include="Scripts\RateRev.js" />
