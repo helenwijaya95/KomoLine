@@ -20,6 +20,7 @@ namespace KomoLine.WebForm.Pages
                 {
                     a.Login(IDTextBox.Text, PasswordTextBox.Text);
                     Session.Add("user", a);
+                    Session.Add("welcome", "hi");
                     Response.Redirect("~");
                 }
                 catch (Exception ex)
@@ -29,10 +30,6 @@ namespace KomoLine.WebForm.Pages
                 }
                 IDTextBox.Text = "";
                 PasswordTextBox.Text = "";
-            }
-            else
-            {
-
             }
         }
     }
