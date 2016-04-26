@@ -17,6 +17,7 @@ namespace KomoLine.WebForm.Pages
 
             product = acc.GetProduct(idProduct);
             ProductImage.ImageUrl = "~/Image/" + product.PhotoPath;
+            buyLink.NavigateUrl = "~/Pages/Purchase.aspx?idProd="+product.ID;
         }
     }
 }
