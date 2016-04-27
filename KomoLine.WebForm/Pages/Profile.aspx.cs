@@ -36,6 +36,7 @@ namespace KomoLine.WebForm
                     acc.Name = cname.Text;
                     acc.Address = caddress.Text;
                     acc.PhoneNumber = cphnumber.Text;
+                    acc.RequestPromotion = CheckPromotion.Checked;
                     acc.SaveProfile();
                     Session["message"] = "Your profile has been saved!";
                 }
@@ -56,7 +57,11 @@ namespace KomoLine.WebForm
                 cname.Text = acc.Name;
                 caddress.Text = acc.Address;
                 cphnumber.Text = acc.PhoneNumber;
+                StatusLabel.Text = Enum.GetName(typeof(UserRole), acc.Role);
+                CheckPromotion.Checked = acc.RequestPromotion ?? false;
             }
+            PromotePlaceholder.Visible = acc.Role == UserRole.Buyer;
+            RequestLabel.Text = acc.RequestPromotion ?? false ? "Your request is being processed. You can uncheck to cancel" : "Check the box to apply for vendor";
         }
     }
 }

@@ -24,6 +24,7 @@ namespace KomoLine.Controller
             e.register_time = User.RegisterOn;
             e.status = Enum.GetName(typeof(UserRole),User.Role);
             e.username = User.Username;
+            e.request_promotion = User.RequestPromotion;
             return e;
         }
 
@@ -40,6 +41,7 @@ namespace KomoLine.Controller
             u.RegisterOn = UserEntity.register_time;
             u.Username = UserEntity.username;
             u.AccessType = GetUserAccess(UserEntity.status, u);
+            u.RequestPromotion = UserEntity.request_promotion;
             return u;
         }
 

@@ -40,6 +40,15 @@ namespace KomoLine.WebForm {
         protected global::System.Web.UI.WebControls.FileUpload UploadImage;
         
         /// <summary>
+        /// StatusLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StatusLabel;
+        
+        /// <summary>
         /// cemail control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,33 @@ namespace KomoLine.WebForm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cphnumber;
+        
+        /// <summary>
+        /// PromotePlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PromotePlaceholder;
+        
+        /// <summary>
+        /// RequestLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RequestLabel;
+        
+        /// <summary>
+        /// CheckPromotion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckPromotion;
         
         /// <summary>
         /// editprof control.
