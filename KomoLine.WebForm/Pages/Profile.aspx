@@ -8,7 +8,7 @@
     </div>
     <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red" />
     <asp:Image ID="ProfileImage" ImageUrl="~/Image/profpic/default.png" Height="100px" Width="100px" runat="server" />
-    <input type="file" name="pic" accept="image/*" />
+    <asp:FileUpload runat="server" ID="UploadImage" accept="image/*"/>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Email</span>
         <asp:TextBox ID="cemail" CssClass="form-control" aria-describedby="basic-addon1" runat="server" TextMode="Email"></asp:TextBox>

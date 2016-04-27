@@ -1,6 +1,8 @@
 ﻿using KomoLine.Data.Model;
+using KomoLine.Helper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,38 +15,47 @@ namespace KomoLine.WebForm
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Account acc = new Account();
-            acc.Login("lusilala", "lusi");
+            Account acc = Session["user"] as Account;
+            if (acc == null)
+            {
+                Session["message"] = "Shouldn't you login first?";
+                Response.Redirect("~");
+            }
             if (IsPostBack)
             {
-                //FileTransferHelper.UploadFile(pic, "../Image/profpic");
-
-                if (ProfileImage.ImageUrl == "" || ProfileImage.ImageUrl == null)
+                try
                 {
-                    ProfileImage.ImageUrl = "~/Image/profpic/default.png";
+                    if (UploadImage.HasFile)
+                    {
+                        FileTransferHelper.UploadFile(UploadImage.PostedFile, "~/Image/profpic");
+                        acc.Photo = Path.GetFileName(UploadImage.PostedFile.FileName);
+                        ProfileImage.ImageUrl = "~/Image/profpic/"+acc.Photo;
+                    }
+                    acc.Email = cemail.Text;
+                    acc.Username = cusername.Text;
+                    acc.Name = cname.Text;
+                    acc.Address = caddress.Text;
+                    acc.PhoneNumber = cphnumber.Text;
+                    acc.SaveProfile();
+                    Session["message"] = "Your profile has been saved!";
                 }
-                else
+                catch (Exception ex)  
                 {
-
+                    if (ex is FormatException || ex is InvalidOperationException)
+                    {
+                        error.Text = ex.Message;
+                        error.Visible = true;
+                    }
                 }
-                acc.Email = cemail.Text;
-                acc.Username = cusername.Text;
-                acc.Name = cname.Text;
-                acc.Photo = ProfileImage.ImageUrl;
-                acc.Address = caddress.Text;
-                acc.PhoneNumber = cphnumber.Text;
-
-                acc.SaveProfile();
             }
             else
             {
-                ProfileImage.ImageUrl = "~/Image/profpic/"+acc.Photo;
+                ProfileImage.ImageUrl = "~/Image/profpic/" + acc.Photo;
                 cemail.Text = acc.Email;
                 cusername.Text = acc.Username;
                 cname.Text = acc.Name;
                 caddress.Text = acc.Address;
                 cphnumber.Text = acc.PhoneNumber;
-
             }
         }
     }
