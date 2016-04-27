@@ -47,6 +47,7 @@ namespace KomoLine.Data.Controller
             komolineEntities DbContext = new komolineEntities();
             var user = DbContext.UserEntities.SingleOrDefault(x => x.username == Vendor.Username);
             user.confirmed_time = DateTime.Now;
+            user.request_promotion = false;
             user.status = Enum.GetName(typeof(UserRole), UserRole.Vendor);
             DbContext.SaveChanges();
         }

@@ -17,6 +17,7 @@ namespace KomoLine.Data.Model
         private string phoneNumber;
         private string email;
         private string photoPath;
+        private bool? requestPromotion;
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
@@ -41,8 +42,7 @@ namespace KomoLine.Data.Model
             get { return address; }
             set { address = value; }
         }
-
-
+        
         public string PhoneNumber
         {
             get { return phoneNumber; }
@@ -87,6 +87,11 @@ namespace KomoLine.Data.Model
         {
             get { return confirmed; }
             set { confirmed = value; }
+        }
+        public bool? RequestPromotion
+        {
+            get { return requestPromotion; }
+            set { requestPromotion = value; }
         }
 
         internal IAccess AccessType

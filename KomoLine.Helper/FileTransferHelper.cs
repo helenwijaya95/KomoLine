@@ -60,11 +60,11 @@ namespace KomoLine.Helper
             }
         }
 
-        public static string UploadFile(HttpPostedFile File, string DirectoryPath, string SaveAs = null)
+        public static string UploadFile(HttpPostedFile File, string DirectoryPath, bool IsRelative = true, string SaveAs = null)
         {
             HttpRequest Request = HttpContext.Current.Request;
             HttpServerUtility Server = HttpContext.Current.Server;
-
+            if (IsRelative) DirectoryPath = Server.MapPath(DirectoryPath);
             //Create new directory if not exists
             if (!Directory.Exists(DirectoryPath))
             {
@@ -77,14 +77,14 @@ namespace KomoLine.Helper
                 //Save files inside directory
                 try
                 {
-                    string filePath = DirectoryPath;
+                    string filePath = DirectoryPath + "\\";
                     if (string.IsNullOrWhiteSpace(SaveAs))
                     {
-                        filePath = Path.GetFileName(File.FileName);
+                        filePath += Path.GetFileName(File.FileName);
                     }
                     else
                     {
-                        filePath = Path.GetFileName(SaveAs + Path.GetExtension(File.FileName));
+                        filePath += Path.GetFileName(SaveAs + Path.GetExtension(File.FileName));
                     }
                     File.SaveAs(filePath);
                     return filePath;
