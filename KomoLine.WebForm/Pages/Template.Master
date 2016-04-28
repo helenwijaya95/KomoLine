@@ -60,6 +60,10 @@
                         <li>
                             <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
                         <li>
+                     <!--List User - Admin Login-->
+                        <li>
+                            <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Pages/ListUser.aspx" Text="List User" runat="server"></asp:HyperLink></li>
+                        <li>
                             <!-- add search form -->
                             <div class="navbar-form" role="search">
                                 <div class="input-group">
