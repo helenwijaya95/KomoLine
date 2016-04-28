@@ -11,20 +11,22 @@ namespace KomoLine.WebForm.Pages
     public partial class ListUser : System.Web.UI.Page
     {
         Account acc;
-        string SelectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
             acc = Session["user"] as Account ?? new Account();
-            if (acc.Role != UserRole.Admin)
+            try
             {
-                Session["message"] = "You don't have the required access to this page";
+                var src = acc.ViewUsers();
+                UserRepeater.DataSource = src;
+                DetailRepeater.DataSource = src;
+                UserRepeater.DataBind();
+                DetailRepeater.DataBind();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Session["message"] = ex.Message;
                 Response.Redirect("~");
             }
-            var src = acc.ViewUsers();
-            UserRepeater.DataSource = src;
-            DetailRepeater.DataSource = src;
-            UserRepeater.DataBind();
-            DetailRepeater.DataBind();
         }
 
         protected void DetailRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -40,24 +42,67 @@ namespace KomoLine.WebForm.Pages
                 var PhoneLabel = e.Item.FindControl("PhoneLabel") as Label;
                 var RegisterLabel = e.Item.FindControl("RegisterLabel") as Label;
                 var ConfirmLabel = e.Item.FindControl("ConfirmLabel") as Label;
+                var ConfirmButton = e.Item.FindControl("ConfirmButton") as Button;
+                var DeleteButton = e.Item.FindControl("DeleteButton") as Button;
+                var RestoreButton = e.Item.FindControl("RestoreButton") as Button;
 
-                StatusLabel.Text = Enum.GetName(typeof(UserRole), viewed.Role);
+                ConfirmButton.Visible = viewed.RequestPromotion ?? false;
+                DeleteButton.Visible = !(viewed.IsDeleted ?? false);
+                RestoreButton.Visible = viewed.IsDeleted ?? false;
+
+                StatusLabel.Text = Enum.GetName(typeof(UserRole), viewed.Role) + " | " + ((viewed.IsDeleted ?? false) ? "Deleted" : "Active");
                 NameLabel.Text = viewed.Username + " - " + viewed.Name;
                 ProfilePicture.ImageUrl = "~/Image/profpic/" + viewed.Photo;
                 AddressLabel.Text = viewed.Address;
                 EmailLabel.Text = viewed.Email;
                 PhoneLabel.Text = viewed.PhoneNumber;
 
-                RegisterLabel.Text = viewed.RegisterOn.ToLongDateString();
+                RegisterLabel.Text = viewed.RegisterOn.ToString("dd MMMM yyyy hh:mm:ss");
                 if (viewed.ConfirmedOn.HasValue)
                 {
-                    ConfirmLabel.Text = viewed.ConfirmedOn.Value.ToLongDateString();
+                    ConfirmLabel.Text = viewed.ConfirmedOn.Value.ToString("dd MMMM yyyy hh:mm:ss");
                 }
                 else
                 {
                     ConfirmLabel.Text = "Not confirmed";
                 }
             }
+        }
+
+        protected void DetailRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            try
+            {
+                var ID = e.CommandArgument as string;
+                switch (e.CommandName)
+                {
+                    case "Confirm":
+                        {
+                            var user = acc.GetProfile(ID);
+                            acc.ConfirmVendor(user);
+                            Session["message"] = "Congratulations, " + ID + " is now a vendor!";
+                        } break;
+                    case "Delete":
+                        {
+                            var user = acc.GetProfile(ID);
+                            acc.BlockUser(user);
+                            Session["message"] = "So, it has come to this. " + ID + " has been deleted!";
+                        } break;
+                    case "Restore":
+                        {
+                            acc.UnblockUser(ID);
+                            Session["message"] = ID + " has been restored! Be careful now...";
+                        } break;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is InvalidOperationException || ex is ArgumentException)
+                {
+                    Session["message"] = ex.Message;
+                }
+            }
+            Response.Redirect("~/Pages/ListUser.aspx");
         }
     }
 }

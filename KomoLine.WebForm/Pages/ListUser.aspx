@@ -4,9 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
     <style>
-        .input-group-addon{
-            width:40%;
-            text-align:left;
+        .input-group-addon {
+            width: 40%;
+            text-align: left;
         }
     </style>
 </asp:Content>
@@ -26,7 +26,7 @@
                 <asp:Repeater runat="server" ID="UserRepeater">
                     <ItemTemplate>
                         <div class="col-md-4 col-sm-6 portfolio-item wow zoomIn animated" data-wow-duration="1500ms" data-wow-delay="100ms">
-                            <asp:HyperLink runat="server" CssClass="portfolio-link" data-target='<%# "#detailModal_"+(Container.DataItem as Account).Username.Replace(" ","_") %>' data-toggle="modal" >
+                            <asp:HyperLink runat="server" CssClass="portfolio-link" data-target='<%# "#detailModal_"+(Container.DataItem as Account).Username.Replace(" ","_") %>' data-toggle="modal">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-chain fa-2x"></i>
@@ -46,62 +46,62 @@
         <!--/.container-->
     </section>
     <!-- Use the modals below to showcase DETAIL USER ! -->
-    <asp:Repeater runat="server" ID="DetailRepeater" OnItemDataBound="DetailRepeater_ItemDataBound">
+    <asp:Repeater runat="server" ID="DetailRepeater" OnItemDataBound="DetailRepeater_ItemDataBound" OnItemCommand="DetailRepeater_ItemCommand">
         <ItemTemplate>
             <div class="modal fade" id="detailModal_<%# (Container.DataItem as Account).Username.Replace(" ","_") %>" role="dialog" aria-hidden="false">
                 <div class="modal-dialog modal-lg">
-                    <asp:UpdatePanel runat="server" ID="DetailPanel" UpdateMode="Conditional" ChildrenAsTriggers="false">
-                        <ContentTemplate>
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h2 class="modal-title">
-                                        <asp:Label runat="server" ID="NameLabel"></asp:Label></h2>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <!-- Project Details Go Here -->
-                                                <p class="item-intro text-muted">
-                                                    <asp:Label runat="server" ID="StatusLabel" ForeColor="Green" Font-Bold="true"></asp:Label>
-                                                </p>
-                                                <div class="col-lg-4">
-                                                    <asp:Image runat="server" ID="ProfilePicture" CssClass="img-responsive img-centered" AlternateText="Profile Picture" />
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="input-group col-lg-8">
-                                                        <span class="glyphicons glyphicons-home input-group-addon">Address</span>
-                                                        <asp:Label runat="server" ID="AddressLabel" CssClass="form-control"></asp:Label>
-                                                    </div>
-                                                    <div class="input-group col-lg-8">
-                                                        <span class="glyphicons glyphicons-envelope input-group-addon">Email</span>
-                                                        <asp:Label runat="server" ID="EmailLabel" CssClass="form-control"></asp:Label>
-                                                    </div>
-                                                    <div class="input-group col-lg-8">
-                                                        <span class="glyphicons glyphicons-phone-alt input-group-addon">Phone Number</span>
-                                                        <strong><asp:Label runat="server" ID="PhoneLabel" CssClass="form-control"></asp:Label></strong>
-                                                    </div>
-                                                    <hr class="col-lg-8"/>
-                                                    <div class="input-group col-lg-8">
-                                                        <span class="glyphicons glyphicons-clock input-group-addon">Confirmed On</span>
-                                                        <asp:Label runat="server" ID="ConfirmLabel" CssClass="form-control"></asp:Label>
-                                                    </div>
-                                                    <div class="input-group col-lg-8">
-                                                        <span class="glyphicons glyphicons-clock input-group-addon">Register On</span>
-                                                        <asp:Label runat="server" ID="RegisterLabel" CssClass="form-control"></asp:Label>
-                                                    </div>
-                                                </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h2 class="modal-title">
+                                <asp:Label runat="server" ID="NameLabel"></asp:Label></h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- Project Details Go Here -->
+                                        <p class="item-intro text-muted">
+                                            <asp:Label runat="server" ID="StatusLabel" ForeColor="Green" Font-Bold="true"></asp:Label>
+                                        </p>
+                                        <div class="col-lg-4">
+                                            <asp:Image runat="server" ID="ProfilePicture" CssClass="img-responsive img-centered" AlternateText="Profile Picture" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group col-lg-8">
+                                                <span class="glyphicons glyphicons-home input-group-addon">Address</span>
+                                                <asp:Label runat="server" ID="AddressLabel" CssClass="form-control"></asp:Label>
+                                            </div>
+                                            <div class="input-group col-lg-8">
+                                                <span class="glyphicons glyphicons-envelope input-group-addon">Email</span>
+                                                <asp:Label runat="server" ID="EmailLabel" CssClass="form-control"></asp:Label>
+                                            </div>
+                                            <div class="input-group col-lg-8">
+                                                <span class="glyphicons glyphicons-phone-alt input-group-addon">Phone Number</span>
+                                                <strong>
+                                                    <asp:Label runat="server" ID="PhoneLabel" CssClass="form-control"></asp:Label></strong>
+                                            </div>
+                                            <hr class="col-lg-8" />
+                                            <div class="input-group col-lg-8">
+                                                <span class="glyphicons glyphicons-clock input-group-addon">Confirmed On</span>
+                                                <asp:Label runat="server" ID="ConfirmLabel" CssClass="form-control"></asp:Label>
+                                            </div>
+                                            <div class="input-group col-lg-8">
+                                                <span class="glyphicons glyphicons-clock input-group-addon">Register On</span>
+                                                <asp:Label runat="server" ID="RegisterLabel" CssClass="form-control"></asp:Label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button runat="server" ID="ConfirmButton" CommandName="Confirm" CommandArgument="<%# (Container.DataItem as Account).Username %>" Text="Promote User" CssClass="btn btn-warning" UseSubmitBehavior="false"/>
+                            <asp:Button runat="server" ID="DeleteButton" CommandName="Delete" CommandArgument="<%# (Container.DataItem as Account).Username %>" Text="Delete User" CssClass="btn btn-danger" UseSubmitBehavior="false"/>
+                            <asp:Button runat="server" ID="RestoreButton" CommandName="Restore" CommandArgument="<%# (Container.DataItem as Account).Username %>" Text="Restore User" CssClass="btn btn-success" UseSubmitBehavior="false"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </ItemTemplate>

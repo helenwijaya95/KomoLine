@@ -16,8 +16,9 @@ namespace KomoLine.WebForm.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Acc = Session["user"] as Account ?? new Account();
-            LoginPlaceholder.Visible = Acc.Role == UserRole.Guest;
+            GuestPlaceholder.Visible = Acc.Role == UserRole.Guest;
             UserPlaceholder.Visible = Acc.Role != UserRole.Guest;
+            AdminPlaceholder.Visible = Acc.Role == UserRole.Admin;
             if (Acc.Role != UserRole.Guest)
             {
                 LinkToProfile.Text = Acc.Name + "'s Profile";
