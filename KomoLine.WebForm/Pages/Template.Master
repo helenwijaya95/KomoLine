@@ -91,7 +91,7 @@
                         </asp:PlaceHolder>
                         <asp:PlaceHolder runat="server" ID="UserPlaceholder">
                             <li>
-                                <asp:HyperLink ID="LinkToHistory" NavigateUrl="~/Pages/historyPurchasing.aspx" Text="History Pembelian" runat="server"></asp:HyperLink></li>
+                                <asp:HyperLink ID="LinkToHistory" NavigateUrl="~/Pages/HistoryPurchasing.aspx" Text="History Pembelian" runat="server"></asp:HyperLink></li>
                             <li>
                                 <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profile" runat="server"></asp:HyperLink></li>
                             <li>
