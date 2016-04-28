@@ -11,5 +11,23 @@ namespace KomoLine.WebForm.Pages {
     
     
     public partial class ListUser {
+        
+        /// <summary>
+        /// UserRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater UserRepeater;
+        
+        /// <summary>
+        /// DetailRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater DetailRepeater;
     }
 }
