@@ -33,5 +33,6 @@ namespace KomoLine.Data.Controller
         List<Transaction> ViewTransactions();//Admin
         void ConfirmVendor(Account Vendor);//Admin
         void BlockUser(Account User);//Admin
+        void UnblockUser(string Username);//Admin
     }
 }

@@ -42,6 +42,7 @@ namespace KomoLine.Controller
             u.Username = UserEntity.username;
             u.AccessType = GetUserAccess(UserEntity.status, u);
             u.RequestPromotion = UserEntity.request_promotion;
+            u.IsDeleted = UserEntity.is_deleted;
             return u;
         }
 

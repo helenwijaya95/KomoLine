@@ -59,5 +59,13 @@ namespace KomoLine.Data.Controller
             user.is_deleted = true;
             DbContext.SaveChanges();
         }
+
+        public override void UnblockUser(string Username)
+        {
+            komolineEntities DbContext = new komolineEntities();
+            var user = DbContext.UserEntities.SingleOrDefault(x => x.username == Username);
+            user.is_deleted = false;
+            DbContext.SaveChanges();
+        }
     }
 }
