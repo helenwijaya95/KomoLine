@@ -17,40 +17,56 @@ namespace KomoLine.WebForm.Pages
         public Transaction transByID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acc = Session["user"] as Account;
+            acc = Session["user"] as Account ?? new Account();
         }
 
-       protected void rate1_Command(object sender, CommandEventArgs e)
+        protected void rate1_Command(object sender, CommandEventArgs e)
         {
+            try
+            {
+                transByID = acc.GetTransaction((string)Session["transid"]);
+                string temp = e.CommandArgument.ToString();
+                string[] temp2 = temp.Split(',');
+                acc.RatePurchase(transByID, int.Parse(temp2[0]));
+            }
+            catch (InvalidOperationException ex)
+            {
+                Session["message"] = ex.Message;
+            }
+        }
 
-            transByID = acc.GetTransaction((string)Session["transid"]);
-            string temp = e.CommandArgument.ToString();
-            string[] temp2 = temp.Split(',');
-            acc.RatePurchase(transByID, int.Parse(temp2[0]));
-       }
+        protected void btnKirim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                transByID = acc.GetTransaction((string)Session["transid"]);
+                string rev = tbReview.Text;
+                acc.ReviewPurchase(transByID, rev);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Session["message"] = ex.Message;
+            }
+        }
 
-       protected void btnKirim_Click(object sender, EventArgs e)
-       {
-           transByID = acc.GetTransaction((string)Session["transid"]);
-           string rev = tbReview.Text;
-           acc.ReviewPurchase(transByID, rev);
-       }
-
-       protected void btnTransID_Click(object sender, EventArgs e)
-       
-       {
-           acc = Session["user"] as Account;
-          
-           //string idProduct = Request.QueryString["prodId"];
-           string idTrans = transID.Text;
-           Session.Add("transid", idTrans);
-           transByID = acc.GetTransaction((string)Session["transid"]);
-           //string idProduct = "BK1";
-           prod = acc.GetProduct(transByID.Product.ID);
-
-           prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
-           Session.Add("transid", idTrans);
-           detProduct.Visible = true;
-       }
+        protected void btnTransID_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //string idProduct = Request.QueryString["prodId"];
+                string idTrans = transID.Text;
+                Session.Add("transid", idTrans);
+                transByID = acc.GetTransaction((string)Session["transid"]);
+                //string idProduct = "BK1";
+                tbReview.Text = transByID.Review;
+                prod = acc.GetProduct(transByID.Product.ID);
+                prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+                detProduct.Visible = true;
+            }
+            catch (InvalidOperationException ex)
+            {
+                Session["message"] = ex.Message;
+            }
+        }
     }
 }

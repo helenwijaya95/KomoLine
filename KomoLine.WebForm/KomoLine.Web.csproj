@@ -136,7 +136,6 @@
     <Content Include="Image\star.png" />
     <Content Include="Image\product\susukedelai.png" />
     <Content Include="Image\triangular_%402X.png" />
-    <Content Include="Pages\AdminListBarang.aspx" />
     <Content Include="Pages\EditBarang.aspx" />
     <Content Include="Pages\ListBarang.aspx" />
     <Content Include="Pages\TambahBarang.aspx" />
@@ -190,13 +189,6 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminListBarang.aspx.cs">
-      <DependentUpon>AdminListBarang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AdminListBarang.aspx.designer.cs">
-      <DependentUpon>AdminListBarang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditBarang.aspx.cs">
       <DependentUpon>EditBarang.aspx</DependentUpon>

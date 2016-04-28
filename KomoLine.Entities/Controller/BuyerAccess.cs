@@ -81,7 +81,6 @@ namespace KomoLine.Data.Controller
             {
                 RatingEntity re = new RatingEntity();
                 re.rating = Rate;
-                re.created_time = DateTime.Now;
                 re.trans_id = trans.id;
                 re.transaction = trans;
                 DbContext.RatingEntities.Add(re);
@@ -89,7 +88,6 @@ namespace KomoLine.Data.Controller
             else
             {
                 trans.rating.rating = Rate;
-                trans.rating.created_time = DateTime.Now;
             }
             DbContext.SaveChanges();
         }
@@ -103,7 +101,6 @@ namespace KomoLine.Data.Controller
             {
                 ReviewEntity re = new ReviewEntity();
                 re.content = Review;
-                re.created_time = DateTime.Now;
                 re.trans_id = trans.id;
                 re.transaction = trans;
                 DbContext.ReviewEntities.Add(re);
@@ -111,7 +108,6 @@ namespace KomoLine.Data.Controller
             else
             {
                 trans.review.content = Review;
-                trans.review.created_time = DateTime.Now;
             }
             DbContext.SaveChanges();
         }

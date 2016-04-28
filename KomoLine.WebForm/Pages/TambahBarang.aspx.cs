@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using KomoLine.Data.Model;
 using KomoLine.Helper;
 using System.IO;
-using System.Linq;
 
 namespace KomoLine.WebForm.Pages
 {
@@ -37,7 +36,7 @@ namespace KomoLine.WebForm.Pages
         {
             try
             {
-                acc = Session["user"] as Account;
+                acc = Session["user"] as Account ?? new Account();
                 prod = new Product();
 
                 double mo;
@@ -53,7 +52,7 @@ namespace KomoLine.WebForm.Pages
                     else
                     {
                         prod.PhotoPath = "noPImage.png";
-                        ProductImage.ImageUrl = "~/Image/" + prod.PhotoPath;
+                        ProductImage.ImageUrl = "~/Image/product/" + prod.PhotoPath;
                     }
                     prod.Category = ddCat.SelectedItem.Text;
                     prod.Name = tbProdName.Text;
@@ -66,14 +65,11 @@ namespace KomoLine.WebForm.Pages
                 }
                 else
                 {
-
                     error.Text = "Input data tidak valid";
                     error.Visible = true;
                 }
 
             }
-
-
             catch (Exception ex)
             {
                 if (ex is FormatException || ex is InvalidOperationException)
