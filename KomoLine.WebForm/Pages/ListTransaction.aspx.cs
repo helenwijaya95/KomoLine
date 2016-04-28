@@ -14,14 +14,14 @@ namespace KomoLine.WebForm.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
                 //Ambil data user
-                //Account Acc = Session["user"] as Account;
-                Account a = new Account();
+                Account a = Session["user"] as Account;
+                //Account a = new Account();
                 /* a.Username = "aaa";
                  a.Name = "Helen Wijaya";
                  a.PhoneNumber="0939848957948";
                  a.Email = "helz.w8312@gmail.com";
                  a.Register("password","admin");*/
-                a.Login("helen", "password");
+                //a.Login("helen", "password");
                 TransRepeater.DataSource = a.ViewTransactions();
                 TransRepeater.DataBind();
         }
