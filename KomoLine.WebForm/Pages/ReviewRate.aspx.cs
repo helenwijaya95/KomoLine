@@ -23,27 +23,31 @@ namespace KomoLine.WebForm.Pages
        protected void rate1_Command(object sender, CommandEventArgs e)
         {
 
+            transByID = acc.GetTransaction((string)Session["transid"]);
             string temp = e.CommandArgument.ToString();
             string[] temp2 = temp.Split(',');
-            acc.RatePurchase(trans, int.Parse(temp2[0]));
+            acc.RatePurchase(transByID, int.Parse(temp2[0]));
        }
 
        protected void btnKirim_Click(object sender, EventArgs e)
        {
+           transByID = acc.GetTransaction((string)Session["transid"]);
            string rev = tbReview.Text;
-           acc.ReviewPurchase(trans, rev);
+           acc.ReviewPurchase(transByID, rev);
        }
 
        protected void btnTransID_Click(object sender, EventArgs e)
        {
-           
+          
            //string idProduct = Request.QueryString["prodId"];
            string idTrans = transID.Text;
-           transByID = acc.GetTransaction(idTrans);
+           Session.Add("transid", idTrans);
+           transByID = acc.GetTransaction((string)Session["transid"]);
            //string idProduct = "BK1";
            prod = acc.GetProduct(transByID.Product.ID);
 
            prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+           Session.Add("transid", idTrans);
            detProduct.Visible = true;
        }
     }

@@ -124,17 +124,21 @@
     <Content Include="Image\banner.jpg" />
     <Content Include="Image\banner1.jpg" />
     <Content Include="Image\blankstar.png" />
-    <Content Include="Image\Bomb.png" />
-    <Content Include="Image\brokoli.jpg" />
+    <Content Include="Image\product\Bomb.png" />
+    <Content Include="Image\product\brokoli.jpg" />
     <Content Include="Image\close.png" />
-    <Content Include="Image\dagingsapi.png" />
+    <Content Include="Image\product\dagingsapi.png" />
     <Content Include="Image\halfstar.png" />
     <Content Include="Image\logo.png" />
+    <Content Include="Image\noPImage.png" />
     <Content Include="Image\product\readme.txt" />
     <Content Include="Image\profpic\default.png" />
     <Content Include="Image\star.png" />
-    <Content Include="Image\susukedelai.png" />
+    <Content Include="Image\product\susukedelai.png" />
     <Content Include="Image\triangular_%402X.png" />
+    <Content Include="Pages\EditBarang.aspx" />
+    <Content Include="Pages\ListBarang.aspx" />
+    <Content Include="Pages\TambahBarang.aspx" />
     <Content Include="Pages\historyPurchasing.aspx" />
     <Content Include="Pages\ListUser.aspx" />
     <Content Include="Scripts\imagezoom.js" />
@@ -186,6 +190,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditBarang.aspx.cs">
+      <DependentUpon>EditBarang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EditBarang.aspx.designer.cs">
+      <DependentUpon>EditBarang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListBarang.aspx.cs">
+      <DependentUpon>ListBarang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListBarang.aspx.designer.cs">
+      <DependentUpon>ListBarang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\historyPurchasing.aspx.cs">
       <DependentUpon>historyPurchasing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,6 +252,13 @@
     </Compile>
     <Compile Include="Pages\ReviewRate.aspx.designer.cs">
       <DependentUpon>ReviewRate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TambahBarang.aspx.cs">
+      <DependentUpon>TambahBarang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TambahBarang.aspx.designer.cs">
+      <DependentUpon>TambahBarang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>

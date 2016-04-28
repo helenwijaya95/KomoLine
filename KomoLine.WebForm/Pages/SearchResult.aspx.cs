@@ -26,10 +26,17 @@ namespace KomoLine.WebForm.Pages
             }
 
             
+            
             //System.Diagnostics.Debug.WriteLine("hello world");
             List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name };
 
             List<Product> res = acc.SearchProduct(search, Opt);
+            if(res.Count ==0)
+            {
+                error.Visible = true;
+               error.Text= "Tidak ada data barang";
+                
+            }
 
             /* foreach(Product p in res)
              {

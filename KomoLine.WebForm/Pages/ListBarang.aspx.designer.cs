@@ -10,7 +10,7 @@
 namespace KomoLine.WebForm.Pages {
     
     
-    public partial class WebForm1 {
+    public partial class EditHapusBarang {
         
         /// <summary>
         /// error control.
@@ -22,12 +22,12 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
-        /// dlProd control.
+        /// editBarangRpt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlProd;
+        protected global::System.Web.UI.WebControls.Repeater editBarangRpt;
     }
 }
