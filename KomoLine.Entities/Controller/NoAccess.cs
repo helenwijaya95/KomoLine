@@ -127,8 +127,12 @@ namespace KomoLine.Data.Controller
             throw RESTRICTED_ACCESS;
         }
 
-
         public virtual void BlockUser(Account User)
+        {
+            throw RESTRICTED_ACCESS;
+        }
+
+        public virtual void UnblockUser(string Username)
         {
             throw RESTRICTED_ACCESS;
         }

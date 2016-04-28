@@ -18,6 +18,7 @@ namespace KomoLine.Data.Model
         private string email;
         private string photoPath;
         private bool? requestPromotion;
+        private bool? isDeleted;
         private DateTime register;
         private DateTime? confirmed;
         private IAccess userAccess;
@@ -93,7 +94,11 @@ namespace KomoLine.Data.Model
             get { return requestPromotion; }
             set { requestPromotion = value; }
         }
-
+        public bool? IsDeleted
+        {
+            get { return isDeleted; }
+            set { isDeleted = value; }
+        }
         internal IAccess AccessType
         {
             get { return userAccess; }
@@ -222,6 +227,11 @@ namespace KomoLine.Data.Model
         public void BlockUser(Account User)
         {
             userAccess.BlockUser(User);
+        }
+
+        public void UnblockUser(string Username)
+        {
+            userAccess.UnblockUser(Username);
         }
         #endregion
 

@@ -59,6 +59,7 @@
 
                         <li>
                             <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
+                        <!--List User - Admin Login-->
                         <li>
                             <!-- add search form -->
                             <div class="navbar-form" role="search">
@@ -70,13 +71,27 @@
                                 </div>
                             </div>
                         </li>
-                        <asp:PlaceHolder runat="server" ID="LoginPlaceholder">
+                        <asp:PlaceHolder runat="server" ID="AdminPlaceholder">
+                            <li class="dropdown"><a href="blog.aspx" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false" runat="server">Administrative<span class="caret"
+                                    runat="server"></span></a>
+                                <ul class="dropdown-menu" data-dropdown-in="fadeInUp" data-dropdown-out="fadeOutDown">
+                                    <li>
+                                        <asp:HyperLink ID="LinkToUsers" NavigateUrl="~/Pages/ListUser.aspx" Text="List User" runat="server"></asp:HyperLink></li>
+                                    <li>
+                                        <asp:HyperLink ID="LinkToTransactions" NavigateUrl="~/Pages/ListTransaction.aspx" Text="List Transaksi" runat="server"></asp:HyperLink></li>
+                                </ul>
+                            </li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="GuestPlaceholder">
                             <li>
                                 <asp:HyperLink ID="LinkToLogin" NavigateUrl="~/Pages/Login.aspx" Text="Login" runat="server"></asp:HyperLink></li>
                             <li>
                                 <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
                         </asp:PlaceHolder>
                         <asp:PlaceHolder runat="server" ID="UserPlaceholder">
+                            <li>
+                                <asp:HyperLink ID="LinkToHistory" NavigateUrl="~/Pages/historyPurchasing.aspx" Text="History Pembelian" runat="server"></asp:HyperLink></li>
                             <li>
                                 <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profile" runat="server"></asp:HyperLink></li>
                             <li>
