@@ -32,6 +32,7 @@ namespace KomoLine.Data
         public Nullable<System.DateTime> confirmed_time { get; set; }
         public Nullable<bool> is_deleted { get; set; }
         public string status { get; set; }
+        public Nullable<bool> request_promotion { get; set; }
     
         public virtual ICollection<ProductEntity> products { get; set; }
         public virtual ICollection<TransactionEntity> transactions { get; set; }

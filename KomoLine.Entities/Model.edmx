@@ -33,7 +33,7 @@
           </Key>
           <Property Name="trans_id" Type="int" Nullable="false" />
           <Property Name="rating" Type="double" Nullable="false" />
-          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="None" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="reviews">
           <Key>
@@ -41,7 +41,7 @@
           </Key>
           <Property Name="trans_id" Type="int" Nullable="false" />
           <Property Name="content" Type="text" Nullable="false" />
-          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="None" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="tags">
           <Key>
@@ -80,6 +80,7 @@
           <Property Name="confirmed_time" Type="timestamp" Precision="0" />
           <Property Name="status" Type="varchar" MaxLength="20" />
           <Property Name="is_deleted" Type="bool" />
+          <Property Name="request_promotion" Type="bool" />
         </EntityType>
         <Association Name="FK_products_category">
           <End Role="categories" Type="Self.categories" Multiplicity="1" />
@@ -291,6 +292,7 @@
           <NavigationProperty Name="transactions" Relationship="Self.FK_transactions_buyer" FromRole="users" ToRole="transactions" />
           <Property Name="is_deleted" Type="Boolean" />
           <Property Name="status" Type="String" Nullable="false" />
+          <Property Name="request_promotion" Type="Boolean" />
         </EntityType>
         <Association Name="FK_products_category">
           <End Role="categories" Type="komolineModel.CategoryEntity" Multiplicity="1" />
@@ -450,6 +452,7 @@
           <EntitySetMapping Name="UserEntities">
             <EntityTypeMapping TypeName="komolineModel.UserEntity">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="request_promotion" ColumnName="request_promotion" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="id" ColumnName="id" />

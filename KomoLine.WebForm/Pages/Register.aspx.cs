@@ -16,37 +16,34 @@ namespace KomoLine.WebForm.Pages
             if (IsPostBack)
             {
                 //Proses form
-                    Account a = new Account();//Guest
-                    a.Username = username.Text;
-                    a.Name = name.Text;
-                    a.Email = email.Text;
-                    
-                    if(password.Text == confirmpass.Text)
+                Account a = new Account();//Guest
+                a.Username = username.Text;
+                a.Name = name.Text;
+                a.Email = email.Text;
+
+                if (password.Text == confirmpass.Text)
+                {
+                    try
                     {
-                        try
-                        {
-                            a.Register(password.Text);
-                            Session.Add("user", a);
-                            Response.Redirect("~");
-                        }
-                        catch (InvalidOperationException ioe)
-                        {
-                            ShowError(ioe.Message);
-                        }
+                        a.Register(password.Text);
+                        Session.Add("user", a);
+                        Session.Add("message", string.Format("Welcome, {0}!", a.Name));
+                        Response.Redirect("~");
                     }
-                    else
+                    catch (InvalidOperationException ioe)
                     {
-                        ShowError("Password and confirm password doesn't match");
+                        ShowError(ioe.Message);
                     }
+                }
+                else
+                {
+                    ShowError("Password and confirm password doesn't match");
+                }
                 username.Text = "";
                 name.Text = "";
                 email.Text = "";
                 password.Text = "";
                 confirmpass.Text = "";
-            }
-            else
-            {
-
             }
         }
 

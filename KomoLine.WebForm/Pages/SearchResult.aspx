@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a class="picture" href='<%# String.Format("../Image/{0}", ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath )%>' class="b-link-stripe b-animate-go  thickbox">
                                 <i class="glyphicon glyphicon-search icon "></i>    
                             </a>
-                            <asp:HyperLink NavigateUrl='<%# String.Format("ProductDetail.aspx?prodId={0}", ((KomoLine.Data.Model.Product)Container.DataItem).ID )%>' runat="server" Target="_self">
+                            <asp:HyperLink NavigateUrl='<%# String.Format("ProductDetail.aspx?id={0}", ((KomoLine.Data.Model.Product)Container.DataItem).ID )%>' runat="server" Target="_self">
                                 <i class="glyphicon glyphicon-menu-right icon"></i>
                             </asp:HyperLink>				
 						</div>
@@ -80,12 +80,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="women">
 						<div class="women-top">
 							<span><%# ((KomoLine.Data.Model.Product)Container.DataItem).Category %></span>
-							<h6><asp:HyperLink NavigateUrl='<%# String.Format("ProductDetail.aspx?prodId={0}", ((KomoLine.Data.Model.Product)Container.DataItem).ID )%>' runat="server"><%# ((KomoLine.Data.Model.Product)Container.DataItem).Name %></asp:HyperLink></h6>
+							<h6><asp:HyperLink NavigateUrl='<%# String.Format("ProductDetail.aspx?id={0}", ((KomoLine.Data.Model.Product)Container.DataItem).ID )%>' runat="server"><%# ((KomoLine.Data.Model.Product)Container.DataItem).Name %></asp:HyperLink></h6>
 							</div>
 							
 							<div class="clearfix"></div>
 							</div>
-							<div class="mid-2 
+							<div class="mid-2>
 								<p ><label>$100.00</label><em class="item_price"><%# ((KomoLine.Data.Model.Product)Container.DataItem).Price %></em></p>
 								  <div class="block">
 									<div class="starbox small ghosting"> </div>

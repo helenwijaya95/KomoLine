@@ -49,13 +49,13 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.TextBox quantity;
         
         /// <summary>
-        /// kirim control.
+        /// PurchaseButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button kirim;
+        protected global::System.Web.UI.WebControls.Button PurchaseButton;
         
         /// <summary>
         /// error control.

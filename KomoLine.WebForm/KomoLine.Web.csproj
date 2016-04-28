@@ -98,15 +98,23 @@
     <Content Include="CSS\1-col-portfolio.css" />
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\chocolat.css" />
+    <Content Include="CSS\form.css" />
     <Content Include="CSS\jquery.smartmenus.bootstrap.css" />
+    <Content Include="CSS\jstarbox.css" />
     <Content Include="CSS\ListTrans.css" />
     <Content Include="CSS\owl\owl.carousel.css" />
     <Content Include="CSS\owl\owl.carousel.js" />
     <Content Include="CSS\owl\owl.theme.css" />
     <Content Include="CSS\owl\owl.transitions.css" />
+    <Content Include="CSS\popuo-box.css" />
     <Content Include="CSS\ProdDetail.css" />
     <Content Include="CSS\RevRate.css" />
     <Content Include="CSS\SearchRes.css" />
+    <Content Include="CSS\searchStyle.css" />
+    <Content Include="CSS\searchStyle2.css" />
+    <Content Include="fonts\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Image\12.jpg" />
     <Content Include="Image\13.jpg" />
@@ -118,12 +126,18 @@
     <Content Include="Image\blankstar.png" />
     <Content Include="Image\Bomb.png" />
     <Content Include="Image\brokoli.jpg" />
+    <Content Include="Image\close.png" />
+    <Content Include="Image\dagingsapi.png" />
     <Content Include="Image\halfstar.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\product\readme.txt" />
     <Content Include="Image\profpic\default.png" />
     <Content Include="Image\star.png" />
+    <Content Include="Image\susukedelai.png" />
     <Content Include="Image\triangular_%402X.png" />
+    <Content Include="Scripts\imagezoom.js" />
+    <Content Include="Scripts\jquery.chocolat.js" />
+    <Content Include="Scripts\jstarbox.js" />
     <Content Include="Scripts\RateRev.js" />
     <Content Include="packages.config" />
     <Content Include="Global.asax" />
@@ -152,6 +166,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Web.Debug.config">
@@ -248,6 +267,10 @@
     <ProjectReference Include="..\KomoLine.Entities\KomoLine.Data.csproj">
       <Project>{c66144e0-5805-47f5-b3cc-694899c69385}</Project>
       <Name>KomoLine.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KomoLine.Helper\KomoLine.Helper.csproj">
+      <Project>{f1b8f4fe-f028-49ae-81df-229d5479ad46}</Project>
+      <Name>KomoLine.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
