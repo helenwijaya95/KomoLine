@@ -10,6 +10,7 @@ namespace KomoLine.WebForm.Pages
     public partial class WebForm2 : System.Web.UI.Page
     {
         public Product product;
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             string idProduct = Request.QueryString["id"];
@@ -17,7 +18,7 @@ namespace KomoLine.WebForm.Pages
             try
             {
                 product = acc.GetProduct(idProduct);
-                ProductImage.ImageUrl = "~/Image/" + product.PhotoPath;
+                ProductImage.ImageUrl = "~/Image/product/" + product.PhotoPath;
             }
             catch (ArgumentException ex)
             {

@@ -10,24 +10,24 @@
 namespace KomoLine.WebForm.Pages {
     
     
-    public partial class ListUser {
+    public partial class EditHapusBarang {
         
         /// <summary>
-        /// UserRepeater control.
+        /// error control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater UserRepeater;
+        protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
-        /// DetailRepeater control.
+        /// editBarangRpt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater DetailRepeater;
+        protected global::System.Web.UI.WebControls.Repeater editBarangRpt;
     }
 }

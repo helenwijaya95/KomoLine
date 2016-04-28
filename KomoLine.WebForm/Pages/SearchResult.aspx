@@ -52,21 +52,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								 
 	<!--content-->
     
-
+    
 		<div class="product">
+            
 			<div class="container">
-               
+               <asp:Label ID="error" runat="server" style="float:left;" Visible="False" ForeColor="Black" />
 			<div class="col-md-9">
 			 <div class="mid-popular" style="margin:0;">
                <asp:DataList runat="server" ID="dlProd" Font-Name="Verdana" CellPadding="1" RepeatColumns="3" >                
                    <HeaderTemplate>
-                    Hasil Pencarian
+                   
+                       
                 </HeaderTemplate>
                 <ItemTemplate>
 					<div class="col-md-4 item-grid1 simpleCart_shelfItem" style="width:50%;">
 					<div class=" mid-pop">
 					<div class="pro-img">
-						<asp:Image CssClass="img-responsive" ID="Image1" runat="server" ImageUrl='<%# String.Format("~/Image/{0}", ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath )%>'  />
+						<asp:Image CssClass="img-responsive" ID="Image1" runat="server" ImageUrl='<%# String.Format("~/Image/product/{0}", ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath )%>'  />
 						<div class="zoom-icon ">
                             <a class="picture" href='<%# String.Format("../Image/{0}", ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath )%>' class="b-link-stripe b-animate-go  thickbox">
                                 <i class="glyphicon glyphicon-search icon "></i>    
