@@ -139,7 +139,7 @@
     <Content Include="Pages\EditBarang.aspx" />
     <Content Include="Pages\ListBarang.aspx" />
     <Content Include="Pages\TambahBarang.aspx" />
-    <Content Include="Pages\historyPurchasing.aspx" />
+    <Content Include="Pages\HistoryPurchasing.aspx" />
     <Content Include="Pages\ListUser.aspx" />
     <Content Include="Scripts\imagezoom.js" />
     <Content Include="Scripts\jquery.chocolat.js" />
@@ -204,12 +204,12 @@
     <Compile Include="Pages\ListBarang.aspx.designer.cs">
       <DependentUpon>ListBarang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\historyPurchasing.aspx.cs">
-      <DependentUpon>historyPurchasing.aspx</DependentUpon>
+    <Compile Include="Pages\HistoryPurchasing.aspx.cs">
+      <DependentUpon>HistoryPurchasing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\historyPurchasing.aspx.designer.cs">
-      <DependentUpon>historyPurchasing.aspx</DependentUpon>
+    <Compile Include="Pages\HistoryPurchasing.aspx.designer.cs">
+      <DependentUpon>HistoryPurchasing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListUser.aspx.cs">
       <DependentUpon>ListUser.aspx</DependentUpon>
