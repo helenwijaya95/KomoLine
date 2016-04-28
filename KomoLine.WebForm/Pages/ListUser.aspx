@@ -3,7 +3,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <section id="portfolio" > 
+    <section id="portfolio">
         <div class="container">
           <!-- Heading -->
             <div class="section-header">
@@ -63,11 +63,18 @@
                 </div>        
             </div>
     </div><!--/.container-->
- </section>
+    </section>
     <!-- Use the modals below to showcase DETAIL USER ! -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
         aria-hidden="true">
-        <div class="modal-content">
+        <div class="modal-content"><div class="section-header">
+             <div class="row section-title text-center">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="wow zoomIn animated" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <span>Detail User</span> "ID & Nama Admin"</h1>
+                 </div>
+                </div>
+              </div>
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
                     <div class="rl">
@@ -86,16 +93,16 @@
                                 <img class="img-responsive img-centered" src="img/portfolio/item01.jpg" alt="">
                             </div>
                             <div class="col-lg-6">
-                                <p>Address</p>
+                                <p>Address : </p>
                                 <a href="#">Email</a>
                                 <p>
-                                    <strong>Phone Number</a>.</p>
+                                    <strong>Phone Number : </a>.</p>
                                 <ul class="list-inline">
-                                    <li>Confirm Time</li>
-                                    <li>Register Time</li>
+                                    <li>Confirm Time : </li>
+                                    <li>Register Time : </li>
                                 </ul>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">
-                                    Close</button>
+                                    Back</button>
                             </div>
                         </div>
                     </div>
