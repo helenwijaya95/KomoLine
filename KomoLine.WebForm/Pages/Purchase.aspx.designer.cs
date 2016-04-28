@@ -13,15 +13,6 @@ namespace KomoLine.WebForm.Pages {
     public partial class Purchase {
         
         /// <summary>
-        /// IdBarang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label IdBarang;
-        
-        /// <summary>
         /// id control.
         /// </summary>
         /// <remarks>
@@ -31,13 +22,13 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.TextBox id;
         
         /// <summary>
-        /// quantityBarang control.
+        /// error control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label quantityBarang;
+        protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
         /// quantity control.
@@ -49,21 +40,12 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.TextBox quantity;
         
         /// <summary>
-        /// PurchaseButton control.
+        /// BuyButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PurchaseButton;
-        
-        /// <summary>
-        /// error control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label error;
+        protected global::System.Web.UI.WebControls.Button BuyButton;
     }
 }

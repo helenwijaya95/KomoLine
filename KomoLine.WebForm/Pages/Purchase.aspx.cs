@@ -35,8 +35,9 @@ namespace KomoLine.WebForm.Pages
                 if (double.TryParse(Request.QueryString["qty"], out qty))
                 {
                     acc.Purchase(product, qty);
-                    Session["message"] = "Pembelian Anda berhasil diproses!";
-                    Response.Redirect("~");
+                    Session["message"] = "Pembelian Anda berhasil diproses,silahkan konfirmasi pembelian!";
+                    string url = string.Format("~/Pages/HistoryPurchasing.aspx");
+                    Response.Redirect(url);
                 }
                 else
                 {
