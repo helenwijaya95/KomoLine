@@ -61,9 +61,17 @@
                             <asp:HyperLink ID="LinkToLink" NavigateUrl="~/Pages/SearchResult.aspx" Text="Toko" runat="server"></asp:HyperLink></li>
                         <li>
                      <!--List User - Admin Login-->
-                        <li>
-                            <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Pages/ListUser.aspx" Text="List User" runat="server"></asp:HyperLink></li>
-                        <li>
+                        <li class="dropdown"><a href="blog.aspx" class="dropdown-toggle" data-toggle="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false" runat="server">Admin<span class="caret"
+                                runat="server"></span></a>
+                            <ul class="dropdown-menu" data-dropdown-in="fadeInUp" data-dropdown-out="fadeOutDown">
+                                <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/Pages/ListUser.aspx" Text="List User" runat="server"></asp:HyperLink></li>
+                                <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/Pages/ListTransaction.aspx" Text="List Transaksi" runat="server"></asp:HyperLink></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                        <li><asp:HyperLink ID="HyperLink3" NavigateUrl="~/Pages/historyPurchasing.aspx" Text="History Pembelian" runat="server"></asp:HyperLink></li>
                             <!-- add search form -->
                             <div class="navbar-form" role="search">
                                 <div class="input-group">

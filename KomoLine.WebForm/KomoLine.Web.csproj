@@ -135,6 +135,7 @@
     <Content Include="Image\star.png" />
     <Content Include="Image\susukedelai.png" />
     <Content Include="Image\triangular_%402X.png" />
+    <Content Include="Pages\historyPurchasing.aspx" />
     <Content Include="Pages\ListUser.aspx" />
     <Content Include="Scripts\imagezoom.js" />
     <Content Include="Scripts\jquery.chocolat.js" />
@@ -184,6 +185,13 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\historyPurchasing.aspx.cs">
+      <DependentUpon>historyPurchasing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\historyPurchasing.aspx.designer.cs">
+      <DependentUpon>historyPurchasing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListUser.aspx.cs">
       <DependentUpon>ListUser.aspx</DependentUpon>
