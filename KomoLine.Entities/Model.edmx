@@ -33,7 +33,7 @@
           </Key>
           <Property Name="trans_id" Type="int" Nullable="false" />
           <Property Name="rating" Type="double" Nullable="false" />
-          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="reviews">
           <Key>
@@ -41,7 +41,7 @@
           </Key>
           <Property Name="trans_id" Type="int" Nullable="false" />
           <Property Name="content" Type="text" Nullable="false" />
-          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="tags">
           <Key>
@@ -238,7 +238,7 @@
           </Key>
           <Property Name="trans_id" Type="Int32" Nullable="false" />
           <Property Name="rating" Type="Double" Nullable="false" />
-          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="transaction" Relationship="Self.FK_ratings" FromRole="ratings" ToRole="transactions" />
         </EntityType>
         <EntityType Name="ReviewEntity">
@@ -247,7 +247,7 @@
           </Key>
           <Property Name="trans_id" Type="Int32" Nullable="false" />
           <Property Name="content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="created_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="transaction" Relationship="Self.FK_reviews" FromRole="reviews" ToRole="transactions" />
         </EntityType>
         <EntityType Name="TagEntity">

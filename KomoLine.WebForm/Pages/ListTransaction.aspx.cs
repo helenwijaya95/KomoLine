@@ -11,19 +11,20 @@ namespace KomoLine.WebForm.Pages
 {
     public partial class ListTransaction : System.Web.UI.Page
     {
+        Account acc;
         protected void Page_Load(object sender, EventArgs e)
         {
-                //Ambil data user
-                Account a = Session["user"] as Account;
-                //Account a = new Account();
-                /* a.Username = "aaa";
-                 a.Name = "Helen Wijaya";
-                 a.PhoneNumber="0939848957948";
-                 a.Email = "helz.w8312@gmail.com";
-                 a.Register("password","admin");*/
-                //a.Login("helen", "password");
-                TransRepeater.DataSource = a.ViewTransactions();
+            acc = Session["user"] as Account ?? new Account();
+            try
+            {
+                TransRepeater.DataSource = acc.ViewTransactions();
                 TransRepeater.DataBind();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Session["message"] = ex.Message;
+                Response.Redirect("~");
+            }
         }
     }
 }
