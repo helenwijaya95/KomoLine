@@ -37,7 +37,9 @@ namespace KomoLine.WebForm.Pages
        }
 
        protected void btnTransID_Click(object sender, EventArgs e)
+       
        {
+           acc = Session["user"] as Account;
           
            //string idProduct = Request.QueryString["prodId"];
            string idTrans = transID.Text;

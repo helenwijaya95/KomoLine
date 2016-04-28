@@ -15,7 +15,7 @@
             
         </div>
 
-        <div id="detProduct" runat="server" visible="false" style="background-color:yellow;">
+        <div id="detProduct" runat="server" visible="false" >
             <table border="1">
                 <th>Product</th>
                 <th>Review & Rate</th>
