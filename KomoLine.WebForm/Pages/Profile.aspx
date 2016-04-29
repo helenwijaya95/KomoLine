@@ -41,7 +41,7 @@
         </div>
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="padding-right: 67px">Username</span>
-            <asp:TextBox ID="cusername" CssClass="form-control" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="cusername" CssClass="form-control" aria-describedby="basic-addon1" runat="server" Enabled="False"></asp:TextBox>
         </div>
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="padding-right: 94px">Name</span>
