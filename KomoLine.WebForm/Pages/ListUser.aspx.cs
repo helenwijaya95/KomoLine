@@ -11,16 +11,19 @@ namespace KomoLine.WebForm.Pages
     public partial class ListUser : System.Web.UI.Page
     {
         Account acc;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             acc = Session["user"] as Account ?? new Account();
             try
             {
+             
                 var src = acc.ViewUsers();
                 UserRepeater.DataSource = src;
                 DetailRepeater.DataSource = src;
                 UserRepeater.DataBind();
                 DetailRepeater.DataBind();
+                
             }
             catch (InvalidOperationException ex)
             {

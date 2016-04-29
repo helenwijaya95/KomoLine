@@ -6,7 +6,7 @@
     float:left;
     width:50%;
     display:inline;
-    margin-top:2%;
+    margin-top:1%;
 }
 
 #rateRev{
@@ -19,4 +19,14 @@
 .stars:hover
 {
     background-image: url('../Image/star.png') !important;
+}
+
+.imageSet
+{
+    margin-top:5%;
+}
+
+#btnKirim
+{
+    margin:10%;
 }

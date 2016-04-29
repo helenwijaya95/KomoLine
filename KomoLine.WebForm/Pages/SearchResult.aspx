@@ -59,13 +59,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                <asp:Label ID="error" runat="server" style="float:left;" Visible="False" ForeColor="Black" />
 			<div class="col-md-9">
 			 <div class="mid-popular" style="margin:0;">
-               <asp:DataList runat="server" ID="dlProd" Font-Name="Verdana" CellPadding="1" RepeatColumns="3" >                
+               <asp:DataList runat="server" ID="dlProd" Font-Name="Verdana" CellPadding="1" RepeatColumns="2" >                
                    <HeaderTemplate>
                    
                        
                 </HeaderTemplate>
                 <ItemTemplate>
-					<div class="col-md-4 item-grid1 simpleCart_shelfItem" style="width:50%;">
+					<div class="col-md-4 item-grid1 simpleCart_shelfItem" style="width:60%;">
 					<div class=" mid-pop">
 					<div class="pro-img">
 						<asp:Image CssClass="img-responsive" ID="Image1" runat="server" ImageUrl='<%# String.Format("~/Image/product/{0}", ((KomoLine.Data.Model.Product)Container.DataItem).PhotoPath )%>'  />
@@ -111,7 +111,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--//content-->
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
 <!-- slide -->
  <!--light-box-files -->
 		<script src="<%= ResolveUrl("~/Scripts/jquery.chocolat.js")%>"></script>

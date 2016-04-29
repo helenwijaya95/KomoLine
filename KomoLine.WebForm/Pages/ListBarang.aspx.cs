@@ -18,9 +18,23 @@ namespace KomoLine.WebForm.Pages
         {
            acc = Session["user"] as Account;
         
-           List<SearchBy> Opt = new List<SearchBy>() { SearchBy.Name };
+             List<Product> res;
+            List<SearchBy> Opt;
+            
+            if(acc.Role.Equals(UserRole.Admin))
+            {
+               Opt = new List<SearchBy>() { SearchBy.Name };
 
-           List<Product> res = acc.SearchProduct("", Opt);
+                res= acc.SearchProduct("", Opt);
+            }
+            else
+            {
+                Opt = new List<SearchBy>() { SearchBy.Owner };
+
+                res = acc.SearchProduct(acc.Name, Opt);
+            }
+
+           
           
              if(res.Count==0)
              {
