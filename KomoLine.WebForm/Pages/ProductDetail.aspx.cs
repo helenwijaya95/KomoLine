@@ -30,7 +30,7 @@ namespace KomoLine.WebForm.Pages
         protected void BuyButton_Click(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];
-            string qty = QuantityValue.Value;
+            string qty = tbqty.Text;
             string url = string.Format("~/Pages/Purchase.aspx?id={0}&qty={1}", id, qty);
             Response.Redirect(url);
         }

@@ -13,21 +13,21 @@ namespace KomoLine.WebForm.Pages {
     public partial class historyPurchasing {
         
         /// <summary>
-        /// rating control.
+        /// HistRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rating;
+        protected global::System.Web.UI.WebControls.Repeater HistRepeater;
         
         /// <summary>
-        /// review control.
+        /// DetailHistRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox review;
+        protected global::System.Web.UI.WebControls.Repeater DetailHistRepeater;
     }
 }

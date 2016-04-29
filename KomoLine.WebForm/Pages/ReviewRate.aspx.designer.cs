@@ -13,13 +13,13 @@ namespace KomoLine.WebForm.Pages {
     public partial class ReviewRate {
         
         /// <summary>
-        /// main control.
+        /// main2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl main;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl main2;
         
         /// <summary>
         /// transID control.
