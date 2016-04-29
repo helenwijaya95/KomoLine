@@ -28,7 +28,7 @@ namespace KomoLine.WebForm.Pages
                     ShowError(fe.Message);
                 }
 
-                if (password.Text == confirmpass.Text && username.Text != "" && name.Text == "" && email.Text == "" && password.Text == "" && confirmpass.Text == "")
+                if (password.Text == confirmpass.Text && username.Text != "" && name.Text != "" && email.Text != "" && password.Text != "" && confirmpass.Text != "")
                 {
                     try
                     {

@@ -15,7 +15,7 @@ namespace KomoLine.WebForm.Pages
         Account acc;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acc = Session["user"] as Account;
+            acc = Session["user"] as Account ?? new Account();
 
             List<Product> res = new List<Product>();
             List<SearchBy> Opt;
@@ -28,7 +28,7 @@ namespace KomoLine.WebForm.Pages
             else if (acc.Role == UserRole.Vendor)
             {
                 Opt = new List<SearchBy>() { SearchBy.Owner };
-                res = acc.SearchProduct(acc.Name, Opt);
+                res = acc.SearchProduct(acc.Username, Opt);
             }
             else
             {
@@ -39,7 +39,6 @@ namespace KomoLine.WebForm.Pages
             if (res.Count == 0)
             {
                 Session["message"] = "Tidak ada data barang";
-                Response.Redirect("~/Pages/ListBarang.aspx");
             }
             else
             {
