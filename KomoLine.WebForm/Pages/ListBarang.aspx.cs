@@ -39,7 +39,7 @@ namespace KomoLine.WebForm.Pages
             if (res.Count == 0)
             {
                 Session["message"] = "Tidak ada data barang";
-                Response.Redirect("~");
+                Response.Redirect("~/Pages/ListBarang.aspx");
             }
             else
             {

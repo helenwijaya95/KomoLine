@@ -25,6 +25,27 @@ namespace KomoLine.WebForm.Pages
                 error.Text = ex.Message;
                 Response.Redirect("~");
             }
+
+            double price = 0, qty;
+            if (!Double.TryParse(Request.QueryString["qty"], out qty))
+            {
+                Session["Message"] = "Quantity can't be null";
+                Response.Redirect("~/Pages/ProductDetail.aspx?id=" + Request.QueryString["id"]);
+            }
+            price = product.Price * qty;
+
+            ProductPic.ImageUrl = "~/Image/product/"+product.PhotoPath;
+            ProductName.Text = product.Name;
+            StoreName.Text = product.Owner.Name;
+            DescBarang.Text = product.Description;
+            kategori.Text = product.Category;
+            MinOrder.Text = product.MinimalOrder.ToString();
+            Harga.Text = product.Price.ToString();
+            quantity.Text = Request.QueryString["qty"];
+            PrName.Text = product.Name;
+            PrQty.Text = qty + "";
+            PrPrice.Text = price + "";
+            PrImage.ImageUrl = "~/Image/product/" + product.PhotoPath;
         }
 
         protected void PurchaseButton_Click(object sender, EventArgs e)
