@@ -26,22 +26,21 @@
                     <h3>
                         <strong>ID & Nama Produk</strong></h3>
                     <h4>ID & Nama Pembeli</h4>
-                    <a class="btn btn-success" href="#portfolioModal1" data-toggle="modal">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-success" href="#portfolioModal1" data-toggle="modal">View Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-7">
                     <a href="#portfolioModal1" data-toggle="modal">
-                        <img class="img-responsive animated wow fadeInUp" data-wow-delay="0.2s" src="img/700x300.jpg"
-                            alt="">
+                        <img class="img-responsive animated wow fadeInUp" data-wow-delay="0.2s" src="img/700x300.jpg" alt="">
                     </a>
                 </div>
                 <div class="col-md-5 animated wow fadeInRight" data-wow-delay="0.4s">
                     <h3>
                         <strong>ID & Nama Produk</strong></h3>
                     <h4>ID & Nama Pembeli</h4>
-                    <a class="btn btn-success" href="#portfolioModal1" data-toggle="modal">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-success" href="#portfolioModal1" data-toggle="modal">View Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
 
