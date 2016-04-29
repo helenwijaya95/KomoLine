@@ -17,9 +17,16 @@ namespace KomoLine.WebForm.Pages
             {
                 //Proses form
                 Account a = new Account();//Guest
-                a.Username = username.Text.Trim();
-                a.Name = name.Text;
-                a.Email = email.Text;
+                try
+                {
+                    a.Username = username.Text;
+                    a.Name = name.Text;
+                    a.Email = email.Text;
+                }
+                catch (FormatException fe)
+                {
+                    ShowError(fe.Message);
+                }
 
                 if (password.Text == confirmpass.Text && username.Text != "" && name.Text == "" && email.Text == "" && password.Text == "" && confirmpass.Text == "")
                 {
