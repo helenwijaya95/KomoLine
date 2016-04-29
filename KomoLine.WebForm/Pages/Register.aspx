@@ -14,11 +14,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red" />
     <div class="form">
         <div>
             <h1>REGISTER HERE...</h1>
         </div>
+        <asp:Label ID="error" runat="server" Visible="False" ForeColor="Red" Font-Bold="True" />
         <div class="input-group">
             <span class="glyphicon glyphicon-envelope input-group-addon" aria-hidden="true" id="basic-addon2" style="padding-right: 103px; margin-right: 0px">Email</span>
             <asp:TextBox ID="email" CssClass="form-control" placeholder="Email" aria-describedby="basic-addon1" runat="server" TextMode="Email"></asp:TextBox>

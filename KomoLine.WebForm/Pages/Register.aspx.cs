@@ -19,7 +19,7 @@ namespace KomoLine.WebForm.Pages
                 Account a = new Account();//Guest
                 try
                 {
-                    a.Username = username.Text;
+                    a.Username = username.Text.Trim();
                     a.Name = name.Text;
                     a.Email = email.Text;
                 }
@@ -28,7 +28,7 @@ namespace KomoLine.WebForm.Pages
                     ShowError(fe.Message);
                 }
 
-                if (password.Text == confirmpass.Text)
+                if (password.Text == confirmpass.Text && username.Text != "" && name.Text == "" && email.Text == "" && password.Text == "" && confirmpass.Text == "")
                 {
                     try
                     {
@@ -42,9 +42,13 @@ namespace KomoLine.WebForm.Pages
                         ShowError(ioe.Message);
                     }
                 }
-                else
+                else if(password.Text != confirmpass.Text)
                 {
                     ShowError("Password and confirm password doesn't match");
+                }
+                else
+                {
+                    ShowError("All field must be filled.");
                 }
                 username.Text = "";
                 name.Text = "";
