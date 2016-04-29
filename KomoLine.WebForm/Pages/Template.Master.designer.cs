@@ -112,6 +112,51 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.HyperLink LinkToTransactions;
         
         /// <summary>
+        /// LinkToHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToHistory;
+        
+        /// <summary>
+        /// VendorPlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder VendorPlaceholder;
+        
+        /// <summary>
+        /// LinkToAddItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToAddItem;
+        
+        /// <summary>
+        /// LinkToShop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToShop;
+        
+        /// <summary>
+        /// LinkToSales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToSales;
+        
+        /// <summary>
         /// GuestPlaceholder control.
         /// </summary>
         /// <remarks>
@@ -146,15 +191,6 @@ namespace KomoLine.WebForm.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder UserPlaceholder;
-        
-        /// <summary>
-        /// LinkToHistory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkToHistory;
         
         /// <summary>
         /// LinkToProfile control.
