@@ -28,6 +28,9 @@ namespace KomoLine.WebForm.Pages
                 string temp = e.CommandArgument.ToString();
                 string[] temp2 = temp.Split(',');
                 acc.RatePurchase(transByID, int.Parse(temp2[0]));
+                Session["message"] = "Rating Produk berhasil. Terima kasih telah berbelanja di KomoLine.";
+                Response.Redirect("~/Pages/ReviewRate.aspx");
+                
             }
             catch (InvalidOperationException ex)
             {
@@ -42,6 +45,8 @@ namespace KomoLine.WebForm.Pages
                 transByID = acc.GetTransaction((string)Session["transid"]);
                 string rev = tbReview.Text;
                 acc.ReviewPurchase(transByID, rev);
+                Session["message"] = "Review Produk berhasil. Terima kasih telah berbelanja di KomoLine.";
+                Response.Redirect("~/Pages/ReviewRate.aspx");
             }
             catch (InvalidOperationException ex)
             {
@@ -60,10 +65,10 @@ namespace KomoLine.WebForm.Pages
                 //string idProduct = "BK1";
                 tbReview.Text = transByID.Review;
                 prod = acc.GetProduct(transByID.Product.ID);
-                prodImg.ImageUrl = "~/Image/" + prod.PhotoPath;
+                prodImg.ImageUrl = "~/Image/product/" + prod.PhotoPath;
                 detProduct.Visible = true;
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 Session["message"] = ex.Message;
             }
