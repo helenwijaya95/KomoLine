@@ -106,5 +106,7 @@ namespace KomoLine.WebForm.Pages
             }
             Response.Redirect("~/Pages/HistoryPurchasing.aspx");
         }
+
+     
     }
 }
