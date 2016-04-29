@@ -19,7 +19,7 @@ namespace KomoLine.WebForm.Pages
                 Account a = new Account();//Guest
                 try
                 {
-                    a.Username = username.Text;
+                    a.Username = username.Text.Trim();
                     a.Name = name.Text;
                     a.Email = email.Text;
                 }
