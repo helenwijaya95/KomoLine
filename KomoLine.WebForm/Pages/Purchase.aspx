@@ -76,7 +76,7 @@
                                 <p>Quantity    : </p>
                                 <p>Harga       : </p>
 
-                                <asp:Button ID="BuyButton" class="add-to item_add hvr-skew-backward" runat="server" OnClick="PurchaseButton_Click">Konfirmasi Pemesanan</asp:Button>
+                                <asp:Button ID="BuyButton" class="add-to item_add hvr-skew-backward" runat="server" OnClick="PurchaseButton_Click" Text="Konfirmasi Pemesanan"></asp:Button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">
                                     Batal Pemesanan</button>
 

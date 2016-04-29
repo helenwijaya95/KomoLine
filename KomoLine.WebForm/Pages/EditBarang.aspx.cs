@@ -7,8 +7,6 @@ using System.Web.UI.WebControls;
 using KomoLine.Data.Model;
 using KomoLine.Helper;
 using System.IO;
-using System.Linq;
-
 
 namespace KomoLine.WebForm.Pages
 {
@@ -33,60 +31,51 @@ namespace KomoLine.WebForm.Pages
             ddCat.Items.Insert(11, new ListItem("Spices and Herbs"));
 
             Account acc = Session["user"] as Account;
-            Product prod = acc.GetProduct(Request.QueryString["id"]);
             if (acc == null)
             {
                 Session["message"] = "Shouldn't you login first?";
                 Response.Redirect("~");
             }
-            if (IsPostBack)
+            try
             {
-                try
+                Product prod = acc.GetProduct(Request.QueryString["id"]);
+                if (IsPostBack)
                 {
                     if (UploadImage.HasFile)
                     {
                         FileTransferHelper.UploadFile(UploadImage.PostedFile, "~/Image/product");
                         prod.PhotoPath = Path.GetFileName(UploadImage.PostedFile.FileName);
-                        ProductImage.ImageUrl = "~/Image/product/"+prod.PhotoPath;
+                        ProductImage.ImageUrl = "~/Image/product/" + prod.PhotoPath;
                     }
 
-                    prod.MinimalOrder=int.Parse(tbMinOrder.Text);
-                    prod.Name=tbProdName.Text;
-                    prod.Price=int.Parse(tbPrice.Text);
-                    prod.Category=ddCat.SelectedItem.Text;
-                    prod.Description=tbDesc.Text;
+                    prod.MinimalOrder = int.Parse(tbMinOrder.Text);
+                    prod.Name = tbProdName.Text;
+                    prod.Price = int.Parse(tbPrice.Text);
+                    prod.Category = ddCat.SelectedItem.Text;
+                    prod.Description = tbDesc.Text;
                     acc.SaveProduct(prod);
 
-                  
+
                     Session["message"] = "Barang berhasil diedit!";
                     Response.Redirect("~/Pages/ListBarang.aspx");
                 }
-                catch (Exception ex)  
+                else
                 {
-                    if (ex is FormatException || ex is InvalidOperationException)
-                    {
-                        error.Text = ex.Message;
-                        error.Visible = true;
-                    }
+                    ProductImage.ImageUrl = "~/Image/product/" + prod.PhotoPath;
+                    tbDesc.Text = prod.Description;
+                    tbMinOrder.Text = "" + prod.MinimalOrder;
+                    tbPrice.Text = "" + prod.Price;
+                    tbProdName.Text = prod.Name;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                ProductImage.ImageUrl="~/Image/product/"+prod.PhotoPath;
-                tbDesc.Text=prod.Description;
-                tbMinOrder.Text=""+prod.MinimalOrder;
-                tbPrice.Text=""+prod.Price;
-                tbProdName.Text=prod.Name;
-                
+                if (ex is FormatException || ex is InvalidOperationException)
+                {
+                    error.Text = ex.Message;
+                    error.Visible = true;
+                }
             }
-           
-        
-
         }
-
-    
-       
-        
-        
     }
 }

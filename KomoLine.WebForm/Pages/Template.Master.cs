@@ -18,6 +18,7 @@ namespace KomoLine.WebForm.Pages
             Acc = Session["user"] as Account ?? new Account();
             GuestPlaceholder.Visible = Acc.Role == UserRole.Guest;
             UserPlaceholder.Visible = Acc.Role != UserRole.Guest;
+            VendorPlaceholder.Visible = Acc.Role == UserRole.Vendor || Acc.Role == UserRole.Admin;
             AdminPlaceholder.Visible = Acc.Role == UserRole.Admin;
             if (Acc.Role != UserRole.Guest)
             {
