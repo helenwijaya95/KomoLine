@@ -49,13 +49,13 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.Label QuantityLabel;
         
         /// <summary>
-        /// QuantityValue control.
+        /// tbqty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField QuantityValue;
+        protected global::System.Web.UI.WebControls.TextBox tbqty;
         
         /// <summary>
         /// BuyButton control.

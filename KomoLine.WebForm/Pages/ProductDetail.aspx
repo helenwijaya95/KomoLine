@@ -92,33 +92,12 @@
                          <!-- close display rating -->
 
                         <div class="quantity">
-                            <div class="quantity-select">
-                                <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value">
-                                    <asp:Label ID="QuantityLabel" runat="server" Text="1"></asp:Label>
-                                    <asp:HiddenField ID="QuantityValue" runat="server" Value="1"/>
-                                </div>
-                                <div class="entry value-plus active">&nbsp;</div>
-                            </div>
-                        </div>
-                        <!--quantity-->
-                        <script>
                             
-                            $('.value-plus').on('click', function () {
-                                var qty = parseInt(document.getElementById('<%=QuantityValue.ClientID %>').value);
-                                document.getElementById('<%=QuantityLabel.ClientID %>').innerHTML = qty + 1;
-                                document.getElementById('<%=QuantityValue.ClientID %>').value = qty + 1;
-                            });
-
-                            $('.value-minus').on('click', function () {
-                                if (currentVal > 1) {
-                                    var qty = parseInt(document.getElementById('<%=QuantityValue.ClientID %>').value);
-                                    document.getElementById('<%=QuantityLabel.ClientID %>').innerHTML = qty - 1;
-                                    document.getElementById('<%=QuantityValue.ClientID %>').value = qty - 1;
-                                }
-                            });
-                        </script>
-                        <!--quantity-->
+                                    <asp:Label ID="QuantityLabel" runat="server" Text="Quantity"></asp:Label>
+                                    <asp:TextBox ID="tbqty" runat="server" style="width:50%;"></asp:TextBox>
+                               
+                        </div>
+                       
 
                         <asp:LinkButton ID="BuyButton" class="add-to item_add hvr-skew-backward" runat="server" OnClick="BuyButton_Click">Beli</asp:LinkButton>
                         <div class="clearfix"></div>
