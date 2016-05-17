@@ -33,7 +33,7 @@
                             <p>Jumlah: <%# (Container.DataItem as Transaction).Quantity %> </p>
                             <p>Tanggal Transaksi: <%# (Container.DataItem as Transaction).StartOn %> </p>
                             
-                            <a class="btn btn-success" href="#portfolioModal1" data-toggle="modal">Lihat Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-success" data-target='<%# "#portModal2_"+(Container.DataItem as Transaction).Code %>' data-toggle="modal">Lihat Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -47,14 +47,14 @@
     <!-- Use the modals below to showcase DETAIL USER ! -->
     <asp:Repeater runat="server" ID="DetailPurchRepeater" OnItemDataBound="DetailPurchRepeater_ItemDataBound" OnItemCommand="DetailPurchRepeater_ItemCommand">
         <ItemTemplate>
-            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
+            <div class="portfolio-modal modal fade" id="portModal2_<%# (Container.DataItem as Transaction).Code %>" tabindex="-1" role="dialog"
                 aria-hidden="true">
                 <div class="modal-content">
                     <div class="section-header">
                         <div class="row section-title text-center">
                             <div class="col-sm-8 col-sm-offset-2">
                                 <h1 class="wow zoomIn animated" data-wow-duration="1500ms" data-wow-delay="100ms">
-                                    <span>Detail Pembelian</span>ID Transaksi</h1>
+                                    <span>Detail Pembelian</span></h1>
                             </div>
                         </div>
                     </div>
@@ -84,28 +84,30 @@
                                             <div class="row">
                                                 <div class="faq-wrap">
                                                     <div class="col-md-6">
-                                                        <div class="panel-group" id="accordion">
+                                                        <div class="panel-group" id="accordion_<%# (Container.DataItem as Transaction).Code %>">
                                                             <div class="panel panel-default">
-                                                                <div class="panel-heading">
-                                                                    <h4 class="panel-title">
-                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-comments-o"></i>1. What is Lorem Ipsum? </a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                               
+                                                                 <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" data-parent='<%# "#accordion_"+(Container.DataItem as Transaction).Code %>' data-target='<%# "#collapseOne_"+(Container.DataItem as Transaction).Code %>'><i class="glyphicon glyphicon-star"></i>Rating </a>
+                                                                        </h4>
+                                                                    </div>
+
+                                                                <div id="collapseOne_<%# (Container.DataItem as Transaction).Code %>" class="panel-collapse collapse"" class="panel-collapse collapse in">
 
                                                                     <div class="input-group">
-                                                                        <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2">Rating</span>
+                                                                        <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="false" id="basic-addon2_<%# (Container.DataItem as Transaction).Code %>">Rating</span>
 
                                                                         <div id="stars" style="margin-left: 10%;">
 
-                                                                            <input type="submit" style="position: absolute; left: -100px; top: -100px; width: 0px; height: 0px;" onclick="javascript: return false;" />
+                                                                            <input type="submit" style="top: -100px; width: 0px; height: 0px; margin-left:0px; " onclick="javascript: return false;" />
 
-                                                                            <asp:Button ID="rate1" Text="Rate 1" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("1,{0}", (Container.DataItem as Transaction).Code )%>' />
-                                                                            <asp:Button ID="rate2" Text="Rate 2" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("2,{0}", (Container.DataItem as Transaction).Code )%>' />
-                                                                            <asp:Button ID="rate3"  Text="Rate 3" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("3,{0}", (Container.DataItem as Transaction).Code )%>' />
-                                                                            <asp:Button ID="rate4" Text="Rate 4" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("4,{0}", (Container.DataItem as Transaction).Code )%>' />
-                                                                            <asp:Button ID="rate5" Text="Rate 5" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("5,{0}", (Container.DataItem as Transaction).Code )%>' />
-
+                                                                           <asp:Button  ID="rate1" Text="1"  class="btn btn-default" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("1,{0}", (Container.DataItem as Transaction).Code )%>' />
+                                                                            <asp:Button ID="rate2" Text="2"  class="btn btn-default"  runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("2,{0}", (Container.DataItem as Transaction).Code )%>' />
+                                                                            <asp:Button ID="rate3"  Text="3" class="btn btn-default" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("3,{0}", (Container.DataItem as Transaction).Code )%>' />
+                                                                            <asp:Button ID="rate4" Text="4"   class="btn btn-default" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("4,{0}", (Container.DataItem as Transaction).Code )%>' />
+                                                                            <asp:Button ID="rate5" Text="5"  class="btn btn-default" runat="server" ImageUrl="../Image/blankstar.png" Height="8%" Width="8%" OnCommand="rate1_Command" UseSubmitBehavior="false" CommandArgument='<%# String.Format("5,{0}", (Container.DataItem as Transaction).Code )%>' />
+                                                                       
                                                                         </div>
 
                                                                     </div>
@@ -114,14 +116,14 @@
                                                                 <div class="panel panel-default">
                                                                     <div class="panel-heading">
                                                                         <h4 class="panel-title">
-                                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-comments-o"></i>Review </a>
+                                                                            <a data-toggle="collapse" data-parent='<%# "#accordion_"+(Container.DataItem as Transaction).Code %>' data-target='<%# "#collapseTwo_"+(Container.DataItem as Transaction).Code %>'><i class="fa fa-comments-o"></i>Review </a>
                                                                         </h4>
                                                                     </div>
-                                                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                                                    <div id="collapseTwo_<%# (Container.DataItem as Transaction).Code %>" class="panel-collapse collapse">
                                                                         <div class="input-group">
-                                                                            <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon2">Review</span>
+                                                                            <span class="glyphicon glyphicon-lock input-group-addon" aria-hidden="true" id="basic-addon3_<%# (Container.DataItem as Transaction).Code %>">Review</span>
                                                                             <div class="input-group">
-                                                                                <asp:TextBox ID="tbReview" TextMode="MultiLine" Columns="50" Rows="5" runat="server" Style="margin-left: 10%;" class="form-control" aria-describedby="basic-addon1">hahaahah</asp:TextBox>
+                                                                                <asp:TextBox ID="tbReview" TextMode="MultiLine" Columns="45" Rows="5" runat="server" Style="margin-left: 10%;" class="form-control" aria-describedby="basic-addon1">hahaahah</asp:TextBox>
                                                                             </div>
                                                                             <div class="input-group">
                                                                                 <asp:Button ID="btnKirim" CssClass="btn btn-default" Style="margin-left: 50%;" runat="server" Text="Kirim" CommandArgument='<%# String.Format("{0}", (Container.DataItem as Transaction).Code )%>' class="form-control" aria-describedby="basic-addon1" />
@@ -142,7 +144,7 @@
                                                 <asp:Label runat="server" ID="lblNamaProduk" CssClass="form-control"></asp:Label>
                                             </div>
                                             <div class="input-group col-lg-8">
-                                                <span class="glyphicons glyphicons-home input-group-addon">User</span>
+                                                <span class="glyphicons glyphicons-home input-group-addon">Pembeli</span>
                                                 <asp:Label runat="server" ID="lblNamaUser" CssClass="form-control"></asp:Label>
                                             </div>
                                             <div class="input-group col-lg-8">

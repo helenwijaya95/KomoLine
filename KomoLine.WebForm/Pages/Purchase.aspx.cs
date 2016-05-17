@@ -57,7 +57,7 @@ namespace KomoLine.WebForm.Pages
                 {
                     acc.Purchase(product, qty);
                     Session["message"] = "Pembelian Anda berhasil diproses,silahkan konfirmasi pembelian!";
-                    string url = string.Format("~/Pages/HistoryPurchasing.aspx");
+                    string url = string.Format("~/Pages/PurchaseHistory.aspx");
                     Response.Redirect(url);
                 }
                 else

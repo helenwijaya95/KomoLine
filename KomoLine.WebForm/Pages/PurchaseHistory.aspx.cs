@@ -13,7 +13,7 @@ namespace KomoLine.WebForm.Pages
         public String idTransaksi;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acc = Session["user"] as Account;
+            acc = Session["user"] as Account ?? new Account();
             try
             {
                 var src = acc.ViewPurchase();
@@ -52,7 +52,7 @@ namespace KomoLine.WebForm.Pages
 
 
 
-
+                lblCode.Text = viewed.Code;
                 lblStatus.Text = Enum.GetName(typeof(TransactionStatus), viewed.Status);
                 lblNamaProduk.Text = viewed.Product.Name;
                 ProdImg.ImageUrl = "~/Image/product/" + viewed.Product.PhotoPath;
@@ -80,7 +80,7 @@ namespace KomoLine.WebForm.Pages
                 transByID = acc.GetTransaction(temp2[1]);
                 acc.RatePurchase(transByID, int.Parse(temp2[0]));
                 Session["message"] = "Rating Produk berhasil. Terima kasih telah berbelanja di KomoLine.";
-                Response.Redirect("~/Pages/ReviewRate.aspx");
+                Response.Redirect("~/Pages/PurchaseHistory.aspx");
 
             }
             catch (InvalidOperationException ex)

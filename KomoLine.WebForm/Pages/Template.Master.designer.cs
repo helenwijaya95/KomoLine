@@ -184,6 +184,24 @@ namespace KomoLine.WebForm.Pages {
         protected global::System.Web.UI.WebControls.HyperLink LinkToRegister;
         
         /// <summary>
+        /// BuyerPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder BuyerPlaceHolder;
+        
+        /// <summary>
+        /// LinkToPurchHist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LinkToPurchHist;
+        
+        /// <summary>
         /// UserPlaceholder control.
         /// </summary>
         /// <remarks>

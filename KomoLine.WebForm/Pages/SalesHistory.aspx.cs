@@ -14,7 +14,7 @@ namespace KomoLine.WebForm.Pages
         Account acc;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acc = Session["user"] as Account;
+            acc = Session["user"] as Account ?? new Account();
             try
             {
                 var src = acc.ViewSales();
@@ -56,8 +56,9 @@ namespace KomoLine.WebForm.Pages
                     ConfirmButton.Visible = false;
                     CancelButton.Visible = false;
                 }
-                
 
+
+                lblCode.Text = viewed.Code;
                 lblStatus.Text = Enum.GetName(typeof(TransactionStatus), viewed.Status);
                 lblNamaProduk.Text = viewed.Product.Name;
                 ProdImg.ImageUrl = "~/Image/product/" + viewed.Product.PhotoPath;
@@ -82,16 +83,16 @@ namespace KomoLine.WebForm.Pages
                 var ID = e.CommandArgument as string;
                 switch (e.CommandName)
                 {
-                    case "Confirm":
+                    case "Konfirmasi":
                         {
                             var trans = acc.GetTransaction(ID);
                             acc.AcceptOrder(trans);
                             Session["message"] = "Transaksi no. " + ID + "telahh dikonfirmasi";
                         } break;
-                    case "Delete":
+                    case "Batal":
                         {
-                            var user = acc.GetProfile(ID);
-                            acc.BlockUser(user);
+                            var trans2 = acc.GetTransaction(ID);
+                            acc.CancelPurchase(trans2);
                             Session["message"] = "Transaksi no. " + ID + " dibatalkan";
                         } break;
                    
@@ -104,7 +105,7 @@ namespace KomoLine.WebForm.Pages
                     Session["message"] = ex.Message;
                 }
             }
-            Response.Redirect("~/Pages/HistoryPurchasing.aspx");
+            Response.Redirect("~/Pages/SalesHistory.aspx");
         }
 
      

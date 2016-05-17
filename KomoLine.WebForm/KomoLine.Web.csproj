@@ -161,7 +161,9 @@
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Pages\SearchResult.aspx" />
     <Content Include="Pages\Welcome.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Pages\Template.Master" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -82,6 +82,7 @@
                                         <asp:HyperLink ID="LinkToTransactions" NavigateUrl="~/Pages/ListTransaction.aspx" Text="List Transaksi" runat="server"></asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="LinkToHistory" NavigateUrl="~/Pages/ListBarang.aspx" Text="List Barang" runat="server"></asp:HyperLink></li>
+                                   
                                 </ul>
                             </li>
                         </asp:PlaceHolder>
@@ -96,6 +97,7 @@
                                         <asp:HyperLink ID="LinkToShop" NavigateUrl="~/Pages/ListBarang.aspx" Text="Daftar Barang" runat="server"></asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="LinkToSales" NavigateUrl="~/Pages/SalesHistory.aspx" Text="Daftar Penjualan" runat="server"></asp:HyperLink></li>
+                                     
                                 </ul>
                             </li>
                         </asp:PlaceHolder>
@@ -105,13 +107,18 @@
                             <li>
                                 <asp:HyperLink ID="LinkToRegister" NavigateUrl="~/Pages/Register.aspx" Text="Register" runat="server"></asp:HyperLink></li>
                         </asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="BuyerPlaceHolder">
+                            <li>
+                               <asp:HyperLink ID="LinkToPurchHist" NavigateUrl="~/Pages/PurchaseHistory.aspx" Text="My Purchase History" runat="server"></asp:HyperLink></li>
+                        </asp:PlaceHolder>
                         <asp:PlaceHolder runat="server" ID="UserPlaceholder">
                             <li>
                                 <asp:HyperLink ID="LinkToProfile" NavigateUrl="~/Pages/Profile.aspx" Text="Profile" runat="server"></asp:HyperLink></li>
                             <li>
                                 <asp:LinkButton ID="LinkToLogout" runat="server" OnClick="LinkToLogout_Click">Logout</asp:LinkButton></li>
                         </asp:PlaceHolder>
-                    </ul>
+                      
+                     </ul>
                 </div>
             </div>
         </div>
@@ -139,5 +146,7 @@
             </script>
         </asp:PlaceHolder>
     </form>
+
+
 </body>
 </html>
