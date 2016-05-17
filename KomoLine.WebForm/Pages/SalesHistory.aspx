@@ -30,7 +30,7 @@
                                 <strong><%# (Container.DataItem as Transaction).Status %> </strong></h3>
                             <h4><%# (Container.DataItem as Transaction).Buyer.Name %> </h4>
                             <p><%# (Container.DataItem as Transaction).Product.Name %> </p>
-                              <p><%# (Container.DataItem as Transaction).Quantity %> </p>
+                              <p><%# (Container.DataItem as Transaction).Quantity %></p>
                             <a class="btn btn-success" data-target='<%# "#portModal_"+(Container.DataItem as Transaction).Code %>'  data-toggle="modal">Lihat Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                     </ItemTemplate>
