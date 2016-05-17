@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-5 animated wow fadeInRight" data-wow-delay="0.4s">
                             <h3>
-                                <strong><%# (Container.DataItem as Transaction).Status %> </strong></h3>
+                                <strong><%# (Container.DataItem as Transaction).Status %></strong></h3>
                             <h4><%# (Container.DataItem as Transaction).Buyer.Name %> </h4>
                             <p><%# (Container.DataItem as Transaction).Product.Name %> </p>
                               <p><%# (Container.DataItem as Transaction).Quantity %></p>
