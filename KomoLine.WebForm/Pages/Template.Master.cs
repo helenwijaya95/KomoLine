@@ -20,6 +20,7 @@ namespace KomoLine.WebForm.Pages
             UserPlaceholder.Visible = Acc.Role != UserRole.Guest;
             VendorPlaceholder.Visible = Acc.Role == UserRole.Vendor || Acc.Role == UserRole.Admin;
             AdminPlaceholder.Visible = Acc.Role == UserRole.Admin;
+            BuyerPlaceHolder.Visible = Acc.Role != UserRole.Guest;
             if (Acc.Role != UserRole.Guest)
             {
                 LinkToProfile.Text = Acc.Name + "'s Profile";

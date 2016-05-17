@@ -15,19 +15,34 @@ namespace KomoLine.WebForm.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             acc = Session["user"] as Account;
-            try
-            {
-                var src = acc.ViewSales();
-                HistRepeater.DataSource = src;
-                DetailHistRepeater.DataSource = src;
-                HistRepeater.DataBind();
-                DetailHistRepeater.DataBind();
-            }
-            catch (InvalidOperationException ex)
-            {
-                Session["message"] = ex.Message;
-                Response.Redirect("~");
-            }
+            List<Product> res = new List<Product>();
+            
+                try
+                {
+                    var src = acc.ViewSales();
+                    HistRepeater.DataSource = src;
+                    DetailHistRepeater.DataSource = src;
+                    HistRepeater.DataBind();
+                    DetailHistRepeater.DataBind();
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Session["message"] = ex.Message;
+                    Response.Redirect("~");
+                }
+                if (res.Count == 0)
+                {
+                    Session["message"] = "Tidak ada daftar penjualan";
+                }
+                else
+                {
+                    var src = acc.ViewSales();
+                    HistRepeater.DataSource = res;
+                    DetailHistRepeater.DataSource = res;
+                    HistRepeater.DataBind();
+                    DetailHistRepeater.DataBind();
+
+                }
         }
 
         protected void DetailHistRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -104,7 +119,7 @@ namespace KomoLine.WebForm.Pages
                     Session["message"] = ex.Message;
                 }
             }
-            Response.Redirect("~/Pages/HistoryPurchasing.aspx");
+            Response.Redirect("~/Pages/SalesHistory.aspx");
         }
 
      

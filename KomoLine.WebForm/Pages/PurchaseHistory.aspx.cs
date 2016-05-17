@@ -13,23 +13,36 @@ namespace KomoLine.WebForm.Pages
         public String idTransaksi;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acc = Session["user"] as Account;
-            try
-            {
-                var src = acc.ViewPurchase();
-                if (!IsPostBack)
+                acc = Session["user"] as Account;
+                List<Product> res = new List<Product>();
+                try
                 {
-                    PurchRepeater.DataSource = src;
-                    DetailPurchRepeater.DataSource = src;
+                        var src = acc.ViewPurchase();
+                        if (!IsPostBack)
+                        {
+                            PurchRepeater.DataSource = src;
+                            DetailPurchRepeater.DataSource = src;
+                            PurchRepeater.DataBind();
+                            DetailPurchRepeater.DataBind();
+                        }
+                     }
+                catch (InvalidOperationException ex)
+                {
+                    Session["message"] = ex.Message;
+                    Response.Redirect("~");
+                }
+
+                if (res.Count == 0)
+                {
+                    Session["message"] = "Tidak ada daftar pembelian";
+                }
+                else
+                {
+                    PurchRepeater.DataSource = res;
+                    DetailPurchRepeater.DataSource = res;
                     PurchRepeater.DataBind();
                     DetailPurchRepeater.DataBind();
                 }
-            }
-            catch (InvalidOperationException ex)
-            {
-                Session["message"] = ex.Message;
-                Response.Redirect("~");
-            }
         }
 
         protected void DetailPurchRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)

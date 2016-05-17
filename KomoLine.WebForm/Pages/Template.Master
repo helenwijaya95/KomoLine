@@ -96,6 +96,18 @@
                                         <asp:HyperLink ID="LinkToShop" NavigateUrl="~/Pages/ListBarang.aspx" Text="Daftar Barang" runat="server"></asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="LinkToSales" NavigateUrl="~/Pages/SalesHistory.aspx" Text="Daftar Penjualan" runat="server"></asp:HyperLink></li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink2" NavigateUrl="~/Pages/PurchaseHistory.aspx" Text="Daftar Pembelian" runat="server"></asp:HyperLink></li>
+                                </ul>
+                            </li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="BuyerPlaceHolder">
+                            <li class="dropdown"><a href="blog.aspx" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false" runat="server">Buyer<span class="caret"
+                                    runat="server"></span></a>
+                                <ul class="dropdown-menu" data-dropdown-in="fadeInUp" data-dropdown-out="fadeOutDown">
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Pages/PurchaseHistory.aspx" Text="Daftar Pembelian" runat="server"></asp:HyperLink></li>
                                 </ul>
                             </li>
                         </asp:PlaceHolder>
