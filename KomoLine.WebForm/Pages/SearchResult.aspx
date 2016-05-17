@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div class="mid-2">
                                             <p>
-                                                <label>$100.00</label><em class="item_price"><%# ((KomoLine.Data.Model.Product)Container.DataItem).Price %></em></p>
+                                               <em class="item_price">Rp <%# ((KomoLine.Data.Model.Product)Container.DataItem).Price %>,-</em></p>
                                             <div class="block">
                                                 <div class="starbox small ghosting"></div>
                                             </div>
